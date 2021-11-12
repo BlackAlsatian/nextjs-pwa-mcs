@@ -4,7 +4,7 @@ import Date from './date'
 import Avatar from './avatar'
 import styles from '../styles/postMeta.module.scss'
 
-const PostMeta = ({ tags, categories, date, author }) => {
+const PostMeta = ({ tags, date, author }) => {
   return (
     <section className={styles.wrapper}>
       <Container>
@@ -20,7 +20,7 @@ const PostMeta = ({ tags, categories, date, author }) => {
               )
             })}
         </div>
-        {categories?.nodes && (
+        {/* {categories?.nodes && (
           <div className={styles.categories}>
             <p>
               Posted in:{' '}
@@ -31,7 +31,7 @@ const PostMeta = ({ tags, categories, date, author }) => {
               </Link>
             </p>
           </div>
-        )}
+        )} */}
         {date && (
           <div className={styles.date}>
             <Date dateString={date} />

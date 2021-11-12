@@ -13,6 +13,7 @@ import {
   POSTS_BY_TAG_ID,
   PAGE_BY_URI,
   POST_BY_URI,
+  POST_BY_SLUG,
   POSTS_BY_CATEGORY_ID,
   TAG_BY_SLUG
 } from './api'
@@ -23,23 +24,57 @@ export async function getSlugs(allPosts) {
   return response?.data
 }
 
-// get all category and post slugs and return array of paths
-export async function getAllCommonPostTypeSlugs() {
+// get all page slugs
+export async function getAllPageSlugs() {
   const allPages = await getSlugs(ALL_PAGES)
-  const allCategories = await getSlugs(ALL_CATEGORIES)
-  const allPosts = await getSlugs(ALL_POSTS)
 
-  const allPaths = []
+  const allPagePaths = []
 
   allPages &&
     allPages?.pages?.edges.map(page => {
       if (page?.node?.uri !== null && !includesPageUri(page?.node?.uri)) {
         const slugs = page?.node?.uri?.split('/').filter(pageSlug => pageSlug)
-        allPaths.push({
+        allPagePaths.push({
           params: { slug: slugs }
         })
       }
     })
+
+  return allPagePaths
+}
+
+// get all page data
+export async function getPageData({ params: { slug } }) {
+  const menusData = await fetcher(ALL_MENUS)
+
+  const metaData = await fetcher(ALL_SITE_META)
+
+  let data = {}
+  const response = await getAllPageData(slug, PAGE_BY_URI)
+  const pageData = response?.pageData?.data?.page
+
+  // return if paths don't exist
+  if (isEmpty(slug)) {
+    return data
+  }
+
+  return (data = {
+    menus: menusData.data || {},
+    meta: metaData.data || {},
+    page: {
+      uri: pageData?.uri || {},
+      seo: pageData?.seo || {},
+      pageInfo: pageData || {}
+    }
+  })
+}
+
+// get all category and post slugs and return array of paths
+export async function getAllCatPostSlugs() {
+  const allCategories = await getSlugs(ALL_CATEGORIES)
+  const allPosts = await getSlugs(ALL_POSTS)
+
+  const allPaths = []
 
   allCategories &&
     allCategories?.categories?.edges.map(category => {
@@ -66,21 +101,50 @@ export async function getAllCommonPostTypeSlugs() {
   return allPaths
 }
 
+// all category/posts data
+export async function getAllCatPostsData({ params: { slug } }) {
+  const menusData = await fetcher(ALL_MENUS)
+
+  const metaData = await fetcher(ALL_SITE_META)
+
+  let data = {}
+
+  // return if paths don't exist
+  if (isEmpty(slug)) {
+    return data
+  }
+
+  //get post data
+  const response = await getAllPageData(slug, POST_BY_SLUG)
+  const documentData = {
+    pageData: response?.pageData?.data?.post
+  }
+
+  return (data = {
+    menus: menusData.data || {},
+    meta: metaData.data || {},
+    page: {
+      uri: documentData?.pageData?.uri || {},
+      seo: documentData?.pageData?.seo || {},
+      pageInfo: documentData?.pageData || {}
+    }
+  })
+}
+
 // get index page data
-export async function getIndexPageData() {
+export async function getBlogPageData() {
   const menusData = await fetcher(ALL_MENUS)
   const metaData = await fetcher(ALL_SITE_META)
 
   let data = {}
   const variables = {
-    uri: '/'
+    uri: '/blog/'
   }
 
   const latestPosts = await fetcher(LATEST_POSTS)
   const pageData = await fetcher(PAGE_BY_URI, { variables })
 
   return (data = {
-    type: 'category',
     menus: menusData.data || {},
     meta: metaData.data || {},
     page: {
@@ -96,9 +160,11 @@ export async function getIndexPageData() {
 export async function getAllPageData(slug, query) {
   let data = {}
 
-  const uri = `/${slug.join('/')}/`
+  // const postSlug = `${blogPost ? '/blog' : ''}/${slug.join('/')}/`
+  const postSlug = slug.pop()
+
   const variables = {
-    uri: uri
+    slug: postSlug
   }
 
   const pageData = await fetcher(query, { variables })

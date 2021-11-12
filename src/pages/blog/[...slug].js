@@ -1,21 +1,21 @@
 import { isEmpty } from 'lodash'
-import { getPageData, getAllPageSlugs } from '../lib/query'
-import Layout from '../components/layout'
-import Page from '../components/page'
-import { FALLBACK } from '../config'
+import { getAllCatPostsData, getAllCatPostSlugs } from '../../lib/query'
+import Layout from '../../components/layout'
+import Post from '../../components/post'
+import { FALLBACK } from '../../config'
 
-const SinglePage = ({ data }) => {
+const BlogCatPost = ({ data }) => {
   return (
     <Layout data={data}>
-      <Page page={data?.pageData?.pageInfo} />
+      <Post post={data?.pageData?.pageInfo} />
     </Layout>
   )
 }
 
-export default SinglePage
+export default BlogCatPost
 
 export async function getStaticProps({ params }) {
-  const response = await getPageData({ params })
+  const response = await getAllCatPostsData({ params })
 
   if (
     isEmpty(response) ||
@@ -40,10 +40,10 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const pagePaths = await getAllPageSlugs()
+  const catPostPaths = await getAllCatPostSlugs()
 
   return {
-    paths: pagePaths || [],
+    paths: catPostPaths || [],
     fallback: FALLBACK
   }
 }

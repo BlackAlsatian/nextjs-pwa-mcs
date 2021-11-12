@@ -1,5 +1,5 @@
 {
-  "name": "nextjs-wp-starter-blackalsatian",
+  "name": "nextjs-wp-starter-mcs",
   "homepage": "https://github.com/ibjorn/nextjs-wp-starter",
   "version": "0.1.2",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "start": "next start"
   },
   "dependencies": {
-    "@wordpress/base-styles": "^4.0.1",
-    "@wordpress/block-library": "^6.0.1",
+    "@wordpress/base-styles": "^4.0.3",
+    "@wordpress/block-library": "^6.0.5",
     "classnames": "^2.3.1",
     "date-fns": "^2.25.0",
     "dompurify": "^2.3.3",
@@ -26,18 +26,18 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "sass": "^1.43.2",
+    "sass": "^1.43.4",
     "sharp": "^0.29.2"
   },
   "devDependencies": {
-    "autoprefixer": "^10.3.7",
+    "autoprefixer": "^10.4.0",
     "eslint": "^7.32.0",
     "eslint-config-next": "^11.1.2",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "postcss": "^8.3.9",
+    "postcss": "^8.3.11",
     "prettier": "^2.4.1",
-    "tailwindcss": "^2.2.17"
+    "tailwindcss": "^2.2.19"
   },
   "repository": {
     "type": "git",

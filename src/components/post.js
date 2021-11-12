@@ -18,7 +18,7 @@ const Post = ({ post }) => {
       <PostHeader title={post?.title} />
       <PostMeta
         tags={post?.tags}
-        categories={post?.categories}
+        // categories={post?.categories}
         date={post?.date}
         author={post?.author?.node}
       />

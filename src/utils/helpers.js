@@ -25,7 +25,7 @@ export const getSingularOrPluralText = (count, text) => {
 }
 
 export const includesPageUri = uri => {
-  const excludePages = ['/']
+  const excludePages = ['/', '/blog/']
 
   return excludePages.includes(uri)
 }
@@ -71,6 +71,7 @@ export function isInternal(url) {
   if (url.startsWith('mailto:')) return false
   if (url.startsWith('tel:')) return false
   if (url.startsWith('http')) return false
+  if (url.endsWith('.pdf')) return false
   return true
 }
 

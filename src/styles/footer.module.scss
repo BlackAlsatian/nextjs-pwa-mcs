@@ -8,7 +8,7 @@
   }
 }
 .links {
-  @apply flex flex-col justify-center lg:flex-row lg:pl-4 lg:w-1/2 text-2xl;
+  @apply flex flex-col justify-center lg:pl-4 lg:w-1/2 text-2xl;
   a {
     @apply no-underline px-12 py-3 mx-3 mb-6 font-semibold transition-colors text-black duration-200 hover:text-gray-800 lg:px-8 lg:mb-0 hover:underline;
     &:hover {
@@ -17,6 +17,12 @@
   }
   ul {
     @apply list-none;
+    li {
+      // @apply -ml-10 pl-0;
+      a {
+        @apply ml-0 pl-0;
+      }
+    }
   }
 }
 // .darkLink {

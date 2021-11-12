@@ -6,10 +6,10 @@ Source from a WP GraphQL endpoint.
 
 ## Features
 
-- Categories (TODO - sub categories)
+- Blog with categories and sub categories
 - Posts
 - Tags
-- Pages
+- Pages with nested pages
 - Replaces internal links with 'next/link'
 - Replaces 'inline images' with 'next/image'
 - Off Canvas menu
@@ -30,7 +30,6 @@ Source from a WP GraphQL endpoint.
 
 ## TODO
 
-- There's an issue with sub-categories that still needs sorting out
 - Custom Gutenberg blocks
 - Elementor.. ?
 - Match WP theme.. ?

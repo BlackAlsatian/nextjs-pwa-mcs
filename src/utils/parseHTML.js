@@ -40,12 +40,7 @@ const config = {
           </Link>
         )
       }
-      if (!isInternal(href))
-        return (
-          <a href={href} title={title} rel={rel} target={target}>
-            {domNode.children[0].data}
-          </a>
-        )
+      return domNode
     }
   }
 }
