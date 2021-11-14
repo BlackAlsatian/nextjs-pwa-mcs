@@ -12,6 +12,7 @@ import {
   LATEST_POSTS,
   POSTS_BY_TAG_ID,
   PAGE_BY_URI,
+  PAGE_BY_SLUG,
   POST_BY_URI,
   POST_BY_SLUG,
   POSTS_BY_CATEGORY_ID,
@@ -77,6 +78,7 @@ export async function getPageData({ params: { slug } }) {
 
   let data = {}
   const response = await getAllPageData(slug, PAGE_BY_URI)
+
   const pageData = response?.pageData?.data?.page
 
   // return if paths don't exist
@@ -141,7 +143,8 @@ export async function getAllCatPostsData({ params: { slug } }) {
   }
 
   //get post data
-  const response = await getAllPageData(slug, POST_BY_SLUG)
+  const response = await getAllPageData(slug, POST_BY_SLUG, true)
+  console.log('query response: ', response)
   const documentData = {
     pageData: response?.pageData?.data?.post
   }
@@ -183,14 +186,20 @@ export async function getBlogPageData() {
 }
 
 // all pages data
-export async function getAllPageData(slug, query) {
+export async function getAllPageData(slug, query, isPost) {
   let data = {}
 
-  // const postSlug = `${blogPost ? '/blog' : ''}/${slug.join('/')}/`
-  const postSlug = slug.pop()
+  let postSlug = `/${slug.join('/')}/`
 
-  const variables = {
-    slug: postSlug
+  let variables = {
+    uri: postSlug
+  }
+  if (isPost) {
+    postSlug = slug.pop()
+
+    variables = {
+      slug: postSlug
+    }
   }
 
   const pageData = await fetcher(query, { variables })

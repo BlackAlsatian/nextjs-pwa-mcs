@@ -16,6 +16,7 @@ export default SinglePage
 
 export async function getStaticProps({ params }) {
   const response = await getPageData({ params })
+  // console.log('response: ', response)
 
   if (
     isEmpty(response) ||
@@ -41,7 +42,6 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const pagePaths = await getAllPageSlugs()
-
   return {
     paths: pagePaths || [],
     fallback: FALLBACK

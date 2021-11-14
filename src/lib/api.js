@@ -2,6 +2,7 @@ import { AllMenus } from '../data/menus'
 import {
   AllPosts,
   LatestPosts,
+  PageBySlug,
   PostsByCategoryId,
   PostByUri,
   PostBySlug,
@@ -20,6 +21,9 @@ export const LATEST_POSTS = LatestPosts
 
 //all posts
 export const ALL_POSTS = AllPosts
+
+// page by slug
+export const PAGE_BY_SLUG = PageBySlug
 
 // get post by uri
 export const POST_BY_URI = PostByUri

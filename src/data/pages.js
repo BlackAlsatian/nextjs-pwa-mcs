@@ -33,3 +33,22 @@ export const PageByUri = `
     }
     ${SeoFragment}
 `
+
+// query PageBySlugQuery($id: ID!, $idType: PageIdType!) {
+export const PageBySlug = `    
+    query PageBySlug ($slug: ID!) {
+        page(id: $slug, idType: SLUG) {
+            id
+            title
+            slug
+            date
+            modified
+            content
+            uri
+            seo {
+                ...SeoFragment
+            }
+        }
+    }
+    ${SeoFragment}
+`
