@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import styles from '../styles/coverImage.module.scss'
+import styles from './coverImage.module.scss'
 
 export default function CoverImage({ title, coverImage, slug, uri, width }) {
   const imgWidth = width

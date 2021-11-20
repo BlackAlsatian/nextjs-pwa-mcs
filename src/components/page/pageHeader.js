@@ -1,5 +1,5 @@
-import Container from './container'
-import styles from '../styles/pageHeader.module.scss'
+import Container from '../layout/container'
+import styles from './pageHeader.module.scss'
 
 const PageHeader = ({ title }) => {
   return (

@@ -1,7 +1,7 @@
 import { isEmpty } from 'lodash'
-import { getAllCatPostsData, getAllCatPostSlugs } from '../../lib/query'
-import Layout from '../../components/layout'
-import Post from '../../components/post'
+import { getAllCatPostsData, getAllCatPostSlugs } from '../../query/blogQuery'
+import Layout from '../../components/layout/layout'
+import Post from '../../components/post/post'
 import { FALLBACK } from '../../config'
 
 const BlogCatPost = ({ data }) => {

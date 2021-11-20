@@ -1,6 +1,6 @@
-import { getIndexPageData } from '../lib/query'
-import Layout from '../components/layout'
-import Posts from '../components/posts'
+import { getIndexPageData } from '../query/indexPageQuery'
+import Layout from '../components/layout/layout'
+import Posts from '../components/post/posts'
 
 const Home = ({ data }) => {
   return (

@@ -1,6 +1,6 @@
-import Container from './container'
-import ParseHTML from '../utils/parseHTML'
-import styles from '../styles/pageBody.module.scss'
+import Container from '../layout/container'
+import ParseHTML from '../../utils/parseHTML'
+import styles from './pageBody.module.scss'
 
 const PageBody = ({ content }) => {
   return (

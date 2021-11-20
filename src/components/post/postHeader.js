@@ -1,5 +1,5 @@
-import Container from './container'
-import styles from '../styles/postHeader.module.scss'
+import Container from '../layout/container'
+import styles from './postHeader.module.scss'
 
 const PostHeader = ({ title }) => {
   return (

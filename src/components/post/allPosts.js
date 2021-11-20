@@ -1,5 +1,5 @@
 import PostIntro from './postIntro'
-import styles from '../styles/allPosts.module.scss'
+import styles from './allPosts.module.scss'
 
 const AllPosts = ({ posts }) => {
   return (

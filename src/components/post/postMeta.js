@@ -1,8 +1,8 @@
 import Link from 'next/link'
-import Container from './container'
-import Date from './date'
-import Avatar from './avatar'
-import styles from '../styles/postMeta.module.scss'
+import Container from '../layout/container'
+import Date from '../meta/date'
+import Avatar from '../meta/avatar'
+import styles from './postMeta.module.scss'
 
 const PostMeta = ({ tags, date, author }) => {
   return (

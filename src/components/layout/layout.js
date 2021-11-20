@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import Seo from '../seo'
+import Seo from '../seo/seo'
 import { sanitize } from '../../utils/helpers'
-import Header from './header'
-import Footer from './footer'
-import styles from '../styles/layout.module.scss'
+import Header from '../header/header'
+import Footer from '../footer/footer'
+import styles from './layout.module.scss'
 
 const Layout = ({ children, data }) => {
   const document = data || {}

@@ -1,10 +1,10 @@
 import Link from 'next/link'
-import Avatar from './avatar'
-import Date from './date'
+import Avatar from '../meta/avatar'
+import Date from '../meta/date'
 import PostIntroImage from './postIntroImage'
-import { decodeHTML } from '../utils/helpers'
-import ParseHTML from '../utils/parseHTML'
-import styles from '../styles/postIntro.module.scss'
+import { decodeHTML } from '../../utils/helpers'
+import ParseHTML from '../../utils/parseHTML'
+import styles from './postIntro.module.scss'
 
 const PostIntro = ({ title, coverImage, date, excerpt, author, slug, uri }) => {
   return (

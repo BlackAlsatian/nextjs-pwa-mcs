@@ -1,6 +1,6 @@
 import { NextSeo } from 'next-seo'
 import PropTypes from 'prop-types'
-import { siteMeta } from '../config'
+import { siteMeta } from '../../config/index'
 
 const Seo = ({ seo, uri }) => {
   // const metaRobotsNofollow = seo.metaRobotsNofollow === 'follow' ? true : false

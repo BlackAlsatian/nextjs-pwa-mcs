@@ -1,7 +1,7 @@
 import Container from '../layout/container'
 import HeroPost from './heroPost'
 import AllPosts from './allPosts'
-import PageHeader from '../pageHeader'
+import PostHeader from './postHeader'
 
 const Posts = ({ data, title, isHome }) => {
   const posts = data?.edges
@@ -9,7 +9,7 @@ const Posts = ({ data, title, isHome }) => {
   const morePosts = posts.slice(1)
   return (
     <Container>
-      {!isHome && <PageHeader title={title} />}
+      {!isHome && <PostHeader title={title} />}
       {heroPost && (
         <HeroPost
           title={heroPost.title}

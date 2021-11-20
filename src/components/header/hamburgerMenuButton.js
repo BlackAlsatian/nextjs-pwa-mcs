@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { OffCanvasContext } from './../store/offCanvasProvider'
+import { OffCanvasContext } from '../../store/offCanvasProvider'
 // import styles from '../styles/hamburgerMenuButton.module.scss'
 
 const HamburgerMenuButton = () => {

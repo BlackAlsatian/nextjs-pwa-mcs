@@ -2,9 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { siteMeta } from '../../config/index'
 import Container from '../layout/container'
-import MainNav from '../mainNav'
+import MainNav from './mainNav'
 import HamburgerMenuButton from './hamburgerMenuButton'
-import styles from '../styles/header.module.scss'
+import styles from './header.module.scss'
 import OffCanvasMenu from './offCanvasMenu'
 
 export default function Header({ meta, nav }) {

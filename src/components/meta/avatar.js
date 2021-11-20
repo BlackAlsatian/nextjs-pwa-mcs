@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import styles from '../styles/avatar.module.scss'
+import styles from './avatar.module.scss'
 
 const Avatar = ({ author }) => {
   const name = author

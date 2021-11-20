@@ -1,8 +1,8 @@
 import fetcher from '../lib/fetcher'
 import { ALL_MENUS, ALL_SITE_META } from '../lib/api'
 import Link from 'next/link'
-import Layout from '../components/layout'
-import Container from '../components/container'
+import Layout from '../components/layout/layout'
+import Container from '../components/layout/container'
 import styles from '../styles/404.module.scss'
 
 function NotFoundPage({ data }) {

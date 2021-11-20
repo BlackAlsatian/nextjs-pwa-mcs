@@ -1,8 +1,8 @@
 import { isEmpty } from 'lodash'
-import Layout from '../../components/layout'
-import Posts from '../../components/posts'
+import Layout from '../../components/layout/layout'
+import Posts from '../../components/post/posts'
 import { FALLBACK } from '../../config'
-import { getAllTagPostsData, getAllTagSlugs } from '../../lib/query'
+import { getAllTagPostsData, getAllTagSlugs } from '../../query/tagQuery'
 
 const SingleTag = ({ data }) => {
   return (
