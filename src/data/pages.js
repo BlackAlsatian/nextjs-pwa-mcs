@@ -3,7 +3,7 @@ import { SeoFragment } from './seo'
 // All Pages
 export const AllPages = `
     query AllPagesQuery {
-        pages(where: {status: PUBLISH}, first: 5) {
+        pages(where: {status: PUBLISH}, first: 10) {
             edges {
                 node {
                     id

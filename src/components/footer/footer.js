@@ -1,5 +1,5 @@
-import Container from './container'
-import ParseHTML from './../utils/parseHTML'
+import Container from '../layout/container'
+import ParseHTML from '../../utils/parseHTML'
 // import FooterNav from './footerNav'
 import styles from '../styles/footer.module.scss'
 

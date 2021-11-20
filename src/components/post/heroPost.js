@@ -1,5 +1,5 @@
-import Avatar from './avatar'
-import Date from './date'
+import Avatar from '../meta/avatar'
+import Date from '../meta/date'
 import CoverImage from './coverImage'
 import Link from 'next/link'
 import styles from '../styles/heroPost.module.scss'

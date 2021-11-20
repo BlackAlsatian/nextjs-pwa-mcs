@@ -1,7 +1,7 @@
-import Container from './container'
+import Container from '../layout/container'
 import HeroPost from './heroPost'
 import AllPosts from './allPosts'
-import PageHeader from './pageHeader'
+import PageHeader from '../pageHeader'
 
 const Posts = ({ data, title, isHome }) => {
   const posts = data?.edges

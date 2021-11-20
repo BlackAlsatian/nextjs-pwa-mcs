@@ -6,6 +6,9 @@ module.exports = {
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    fontFamily: {
+      sans: ['Barlow', 'Barlow Condensed']
+    },
     extend: {
       colors: {
         'accent-1': '#FAFAFA',

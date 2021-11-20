@@ -1,5 +1,5 @@
 import { useContext } from 'react'
-import { OffCanvasContext } from '../store/offCanvasProvider'
+import { OffCanvasContext } from '../../store/offCanvasProvider'
 import MainNav from './mainNav'
 import styles from '../styles/offCanvasMenu.module.scss'
 

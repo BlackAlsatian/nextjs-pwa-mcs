@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { siteMeta } from '../config'
+import { siteMeta } from '../../config'
 
 const Meta = ({ title, description }) => {
   return (

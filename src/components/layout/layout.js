@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Seo from './seo'
-import { sanitize } from '../utils/helpers'
+import Seo from '../seo'
+import { sanitize } from '../../utils/helpers'
 import Header from './header'
 import Footer from './footer'
 import styles from '../styles/layout.module.scss'
