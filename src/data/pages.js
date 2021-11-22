@@ -1,4 +1,5 @@
 import { SeoFragment } from './seo'
+import { BlocksField } from './blocks'
 
 // All Pages
 export const AllPages = `
@@ -24,6 +25,7 @@ export const PageByUri = `
             slug
             date
             modified
+            ...BlocksField
             content
             uri
             seo {
@@ -32,6 +34,7 @@ export const PageByUri = `
         }
     }
     ${SeoFragment}
+    ${BlocksField}
 `
 
 // query PageBySlugQuery($id: ID!, $idType: PageIdType!) {
@@ -43,6 +46,7 @@ export const PageBySlug = `
             slug
             date
             modified
+            ...BlocksField
             content
             uri
             seo {
@@ -51,4 +55,5 @@ export const PageBySlug = `
         }
     }
     ${SeoFragment}
+    ${BlocksField}
 `

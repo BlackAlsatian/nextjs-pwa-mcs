@@ -1,22 +1,27 @@
 import { useContext } from 'react'
 import { OffCanvasContext } from '../../store/offCanvasProvider'
-import MainNav from './mainNav'
+import HamburgerMenuButton from './hamburgerMenuButton'
+import OffCanvasNav from './offCanvasNav'
 import styles from './offCanvasMenu.module.scss'
 
 const OffCanvasMenu = ({ nav }) => {
   const { isOpen, handleBurgerMenuClick } = useContext(OffCanvasContext)
+
   return (
     <>
-      {isOpen && (
-        <div
-          className={styles.wrapper}
+      <div
+        className={`${styles.wrapper} ${isOpen ? 'opacity-90' : 'opacity-0'}`}
+      >
+        <div className={styles.hamburger}>
+          <HamburgerMenuButton />
+        </div>
+        <OffCanvasNav
+          nav={nav}
           onClick={() => {
             handleBurgerMenuClick()
           }}
-        >
-          <MainNav nav={nav} />
-        </div>
-      )}
+        />
+      </div>
     </>
   )
 }

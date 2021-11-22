@@ -1,0 +1,25 @@
+.bgWrap {
+  @apply relative flex items-center justify-center min-h-screen w-full p-0 m-0;
+}
+.imgWrap {
+  @apply absolute w-full h-screen z-0 object-bottom md:object-top;
+  img {
+    // background-image:
+    //         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    @apply bg-gradient-to-b;
+  }
+}
+.bgText {
+  @apply flex flex-col justify-center items-center relative min-h-screen z-10 bg-opacity-50 w-full bg-black;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply leading-tighter md:w-1/3 mb-4 tracking-normal break-normal;
+  }
+  p {
+    @apply md:w-1/3 text-xl;
+  }
+}

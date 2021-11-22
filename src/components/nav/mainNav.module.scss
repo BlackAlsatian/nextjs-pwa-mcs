@@ -1,0 +1,16 @@
+.main {
+  @apply justify-items-end h-16 px-4 items-center hidden lg:flex text-xl;
+  ul {
+    @apply flex items-center justify-between py-4 mx-auto;
+    li {
+      @apply block px-2;
+    }
+  }
+}
+
+.inActive {
+  @apply no-underline text-white filter contrast-150 drop-shadow-xl hover:text-primary;
+}
+.active {
+  @apply text-primary hover:text-secondary;
+}

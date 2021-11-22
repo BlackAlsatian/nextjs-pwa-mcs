@@ -5,7 +5,7 @@ const Page = ({ page }) => {
   return (
     <>
       <PageHeader title={page?.title} />
-      <PageBody content={page?.content} />
+      <PageBody content={page} />
     </>
   )
 }

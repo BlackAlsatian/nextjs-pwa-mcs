@@ -83,7 +83,6 @@ export async function getAllCatPostsData({ params: { slug } }) {
 
   //get post data
   const response = await getAllPageData(slug, POST_BY_SLUG, true)
-  console.log('query response: ', response)
   const documentData = {
     pageData: response?.pageData?.data?.post
   }

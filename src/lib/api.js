@@ -12,9 +12,13 @@ import { AllPages, PageByUri } from '../data/pages'
 import { AllCategories, CategoryByUri } from '../data/categories'
 import { AllTags, TagBySlug } from '../data/tags'
 import { AllSiteMeta } from '../data/meta'
+import { BlocksField } from '../data/blocks'
 
 //all menus
 export const ALL_MENUS = AllMenus
+
+//all blocks
+export const BLOCKS_FIELD = BlocksField
 
 // latest posts
 export const LATEST_POSTS = LatestPosts

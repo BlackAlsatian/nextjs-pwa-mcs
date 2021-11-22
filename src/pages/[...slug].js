@@ -16,7 +16,6 @@ export default SinglePage
 
 export async function getStaticProps({ params }) {
   const response = await getPageData({ params })
-  // console.log('response: ', response)
 
   if (
     isEmpty(response) ||

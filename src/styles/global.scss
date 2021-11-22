@@ -1,5 +1,13 @@
 @use 'sass:math';
 
+:root {
+  --color-primary: #00a6d0;
+  --color-secondary: #0073b5;
+  --color-accent: #74cee2;
+  --color-muted: #6d6e71;
+  --color-neutral: #74cee2;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,8 +21,31 @@
 @import '~@wordpress/block-library/src/style.scss';
 @import '~@wordpress/block-library/src/theme.scss';
 
+@layer base {
+  ::selection {
+    @apply bg-primary;
+  }
+  ::-webkit-scrollbar {
+    @apply w-2 bg-primary;
+  }
+  ::-webkit-scrollbar-track {
+    -webkit-box-shadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)';
+    box-shadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)';
+    @apply bg-accent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary border-8 border-accent;
+  }
+  html {
+    scroll-behavior: smooth;
+    @media screen and (prefersreducedmotion: reduce) {
+      scroll-behavior: 'auto';
+    }
+  }
+}
+
 body {
-  font-family: 'Barlow', sans-serif;
+  font-family: 'Poppins', sans-serif;
   @apply min-h-screen;
 }
 h1,
@@ -26,7 +57,7 @@ h6 {
   font-family: 'Barlow Condensed', sans-serif;
 }
 h1 {
-  @apply text-6xl md:text-8xl font-semibold tracking-tighter leading-tight md:pr-8;
+  @apply text-7xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 uppercase;
 }
 
 h2,
@@ -34,25 +65,27 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-medium;
+  @apply font-semibold mb-4 leading-snug;
 }
 
 h2 {
-  @apply text-3xl mt-12 mb-4 leading-snug;
+  @apply text-3xl md:text-4xl;
 }
 
 h3 {
-  @apply text-2xl mt-8 mb-4 leading-snug;
+  @apply text-2xl mt-8;
 }
 
-h4 {
-  @apply text-xl mt-6 mb-4 leading-snug;
+h4,
+h5,
+h6 {
+  @apply text-xl mt-6;
 }
 p,
 ul,
 ol,
 blockquote {
-  @apply my-6;
+  @apply my-6 text-base;
 }
 
 a {
@@ -85,7 +118,7 @@ ul > li > ul {
 }
 
 pre {
-  @apply whitespace-pre overflow-x-auto p-4 text-sm leading-tight border border-gray-400 bg-gray-100;
+  @apply whitespace-pre overflow-x-auto p-4 text-sm leading-tight border border-gray bg-muted;
 }
 
 code {

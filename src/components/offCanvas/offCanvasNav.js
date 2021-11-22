@@ -1,14 +1,15 @@
 import NavLink from './navLink'
+import styles from './offCanvasNav.module.scss'
 
-const MainNav = ({ nav }) => {
+const OffCanvasNav = ({ nav, onClick }) => {
   const menuItems = nav
 
   return (
-    <nav>
+    <nav className={styles.main}>
       <ul>
         {menuItems.map(item => {
           return (
-            <li key={item.node.id}>
+            <li key={item.node.id} onClick={onClick}>
               <NavLink link={item.node} />
             </li>
           )
@@ -18,4 +19,4 @@ const MainNav = ({ nav }) => {
   )
 }
 
-export default MainNav
+export default OffCanvasNav

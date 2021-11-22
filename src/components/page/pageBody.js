@@ -2,7 +2,7 @@ import Container from '../layout/container'
 import ParseHTML from '../../utils/parseHTML'
 import styles from './pageBody.module.scss'
 
-const PageBody = ({ content }) => {
+const PageBody = ({ content: { content } }) => {
   return (
     <section>
       <Container>

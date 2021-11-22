@@ -7,13 +7,13 @@ class WPDocument extends Document {
       <Html lang='en'>
         <Head>
           <link rel='preconnect' href='https://fonts.googleapis.com' />
-          <link rel='preconnect' href='https://fonts.gstatic.com' crossOrigin />
           <link
-            href='https://fonts.googleapis.com/css2?family=Barlow:ital@0;1&display=swap'
-            rel='stylesheet'
+            rel='preconnect'
+            href='https://fonts.gstatic.com'
+            crossOrigin='true'
           />
           <link
-            href='https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600&family=Barlow:ital@0;1&display=swap'
+            href='https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Poppins:ital@0;1&display=swap'
             rel='stylesheet'
           />
         </Head>

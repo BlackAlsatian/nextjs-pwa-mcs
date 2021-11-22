@@ -2,7 +2,7 @@ import parse from 'html-react-parser'
 import { Element } from 'domhandler/lib/node'
 import Image from 'next/image'
 import Link from 'next/link'
-import { isInternal } from '../utils/helpers'
+import { isInternal } from './helpers'
 import { siteMeta, siteConfig } from '../config'
 
 const config = {

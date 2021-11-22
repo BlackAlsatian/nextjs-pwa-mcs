@@ -1,5 +1,5 @@
 .wrapper {
-  @apply border-t bg-accent-1 border-accent-2;
+  @apply border-t bg-accent border-accent;
 }
 .inner {
   @apply flex flex-col items-start py-28 lg:flex-row;
@@ -10,7 +10,7 @@
 .links {
   @apply flex flex-col justify-center lg:pl-4 lg:w-1/2 text-2xl;
   a {
-    @apply no-underline px-12 py-3 mx-3 mb-6 font-semibold transition-colors text-black duration-200 hover:text-gray-800 lg:px-8 lg:mb-0 hover:underline;
+    @apply no-underline px-12 py-3 mx-3 mb-6 font-semibold transition-colors text-black duration-200 hover:text-neutral lg:px-8 lg:mb-0 hover:underline;
     &:hover {
       text-decoration-style: dotted;
     }
