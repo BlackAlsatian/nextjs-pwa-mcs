@@ -1,4 +1,5 @@
 import React from 'react'
+import { getblockAtributes } from '../../utils/blockAttributes'
 import ParseHTML from '../../utils/parseHTML'
 
 const ParagraphBlock = ({
@@ -11,11 +12,15 @@ const ParagraphBlock = ({
   // style,
   textColor
 }) => {
-  const paragraphAlignment = align ? `text-${align}` : `text-left`
-  const paragraphColor = textColor ? `text-${textColor}` : `text-white`
+  const { blockId, color, alignment } = getblockAtributes(
+    anchor,
+    textColor,
+    align
+  )
+
   const paragraph = React.createElement(
     `p`,
-    { id: anchor, className: `${paragraphAlignment} ${paragraphColor}` },
+    { id: blockId, className: `${color} ${alignment}` },
     ParseHTML(content)
   )
   return paragraph

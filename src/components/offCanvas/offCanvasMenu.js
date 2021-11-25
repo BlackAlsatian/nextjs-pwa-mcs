@@ -1,8 +1,8 @@
 import { useContext } from 'react'
 import { OffCanvasContext } from '../../store/offCanvasProvider'
 import HamburgerMenuButton from './hamburgerMenuButton'
-import OffCanvasNav from './offCanvasNav'
 import styles from './offCanvasMenu.module.scss'
+import OffCanvasNav from './offCanvasNav'
 
 const OffCanvasMenu = ({ nav }) => {
   const { isOpen, handleBurgerMenuClick } = useContext(OffCanvasContext)

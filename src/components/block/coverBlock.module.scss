@@ -3,14 +3,14 @@
 }
 .imgWrap {
   @apply absolute w-full h-screen z-0 object-bottom md:object-top;
-  img {
-    // background-image:
-    //         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    @apply bg-gradient-to-b;
-  }
+  // img {
+  // background-image:
+  //         linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  // @apply bg-gradient-to-b;
+  // }
 }
 .bgText {
-  @apply flex flex-col justify-center items-center relative min-h-screen z-10 bg-opacity-50 w-full bg-black;
+  @apply flex flex-col justify-end relative min-h-screen pb-36 bg-black bg-opacity-30 z-50 w-full;
   h1,
   h2,
   h3,

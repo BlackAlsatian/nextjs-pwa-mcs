@@ -1,6 +1,6 @@
-import { getBlogPageData } from '../../query/blogQuery'
 import Layout from '../../components/layout/layout'
 import Posts from '../../components/post/posts'
+import { getBlogPageData } from '../../query/blogQuery'
 
 const Blog = ({ data }) => {
   return (

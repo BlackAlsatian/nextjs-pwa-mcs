@@ -1,25 +1,25 @@
 @use 'sass:math';
 
-:root {
-  --color-primary: #00a6d0;
-  --color-secondary: #0073b5;
-  --color-accent: #74cee2;
-  --color-muted: #6d6e71;
-  --color-neutral: #74cee2;
-}
+// :root {
+//   --color-primary: #00a6d0;
+//   --color-secondary: #0073b5;
+//   --color-accent: #74cee2;
+//   --color-muted: #6d6e71;
+//   --color-neutral: #74cee2;
+// }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import '~@wordpress/base-styles/colors';
-@import '~@wordpress/base-styles/variables';
-@import '~@wordpress/base-styles/mixins';
-@import '~@wordpress/base-styles/breakpoints';
-@import '~@wordpress/base-styles/animations';
-@import '~@wordpress/base-styles/z-index';
-@import '~@wordpress/block-library/src/style.scss';
-@import '~@wordpress/block-library/src/theme.scss';
+// @import '~@wordpress/base-styles/colors';
+// @import '~@wordpress/base-styles/variables';
+// @import '~@wordpress/base-styles/mixins';
+// @import '~@wordpress/base-styles/breakpoints';
+// @import '~@wordpress/base-styles/animations';
+// @import '~@wordpress/base-styles/z-index';
+// @import '~@wordpress/block-library/src/style.scss';
+// @import '~@wordpress/block-library/src/theme.scss';
 
 @layer base {
   ::selection {
@@ -42,107 +42,105 @@
       scroll-behavior: 'auto';
     }
   }
-}
 
-body {
-  font-family: 'Poppins', sans-serif;
-  @apply min-h-screen;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: 'Barlow Condensed', sans-serif;
-}
-h1 {
-  @apply text-7xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 uppercase;
-}
-
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @apply font-semibold mb-4 leading-snug;
-}
-
-h2 {
-  @apply text-3xl md:text-4xl;
-}
-
-h3 {
-  @apply text-2xl mt-8;
-}
-
-h4,
-h5,
-h6 {
-  @apply text-xl mt-6;
-}
-p,
-ul,
-ol,
-blockquote {
-  @apply my-6 text-base;
-}
-
-a {
-  @apply underline;
-  &:hover {
-    text-decoration-style: dotted;
+  // custom
+  body {
+    font-family: 'Poppins', sans-serif;
+    @apply min-h-screen;
   }
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  h1 {
+    @apply text-7xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 uppercase;
+  }
+  h2 {
+    @apply text-6xl md:text-7xl font-semibold tracking-tighter leading-tight md:pr-8;
+  }
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold mb-4 leading-snug;
+  }
 
-ul,
-ol {
-  @apply pl-4;
-}
+  h3 {
+    @apply text-4xl mt-8;
+  }
 
-ul {
-  @apply list-disc;
-}
+  h4,
+  h5,
+  h6 {
+    @apply text-xl mt-6;
+  }
+  p,
+  ul,
+  ol,
+  blockquote {
+    @apply my-6 text-base;
+  }
 
-ol {
-  @apply list-decimal;
-}
+  a {
+    @apply underline;
+    &:hover {
+      text-decoration-style: dotted;
+    }
+  }
 
-ul > li > ul,
-ol > li > ol {
-  @apply my-0 ml-4;
-}
+  ul,
+  ol {
+    @apply pl-4;
+  }
 
-ul > li > ul {
-  list-style: circle;
-}
+  ul {
+    @apply list-disc;
+  }
 
-pre {
-  @apply whitespace-pre overflow-x-auto p-4 text-sm leading-tight border border-gray bg-muted;
-}
+  ol {
+    @apply list-decimal;
+  }
 
-code {
-  @apply text-sm;
-}
+  ul > li > ul,
+  ol > li > ol {
+    @apply my-0 ml-4;
+  }
 
-figcaption {
-  @apply text-center text-sm;
-}
+  ul > li > ul {
+    list-style: circle;
+  }
 
-// blockquote {
-//   @apply border-l-4 border-gray-500 bg-gray-200 italic ml-0 py-4 px-6;
-// }
+  pre {
+    @apply whitespace-pre overflow-x-auto p-4 text-sm leading-tight border border-gray bg-muted;
+  }
 
-// blockquote p {
-//   @apply mt-0;
-// }
+  code {
+    @apply text-sm;
+  }
 
-// blockquote cite {
-//   @apply not-italic;
-// }
+  figcaption {
+    @apply text-center text-sm;
+  }
 
-audio {
-  @apply w-full;
+  // blockquote {
+  //   @apply border-l-4 border-gray-500 bg-gray-200 italic ml-0 py-4 px-6;
+  // }
+
+  // blockquote p {
+  //   @apply mt-0;
+  // }
+
+  // blockquote cite {
+  //   @apply not-italic;
+  // }
+
+  audio {
+    @apply w-full;
+  }
 }
 
 // .has-text-align-left {

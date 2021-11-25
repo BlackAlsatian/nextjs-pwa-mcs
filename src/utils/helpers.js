@@ -81,3 +81,7 @@ export function decodeHTML(html) {
     return String.fromCharCode(dec)
   })
 }
+
+export function randomID() {
+  return Math.random().toString(36).substring(7)
+}

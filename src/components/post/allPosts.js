@@ -5,7 +5,7 @@ const AllPosts = ({ posts }) => {
   return (
     <section className={styles.wrapper}>
       <h2>More Stories</h2>
-      <div className={styles.grid}>
+      <div className={styles.gridWrap}>
         {posts.map(post => {
           return (
             <PostIntro

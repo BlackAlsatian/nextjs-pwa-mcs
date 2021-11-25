@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import Container from '../layout/container'
 import Block from '../../lib/block'
-import { bgWrap, bgText, imgWrap } from './coverBlock.module.scss'
+import Container from './../layout/container'
+import { bgText, bgWrap, imgWrap } from './coverBlock.module.scss'
 
 const CoverBlock = ({
   attributes: {
@@ -21,17 +21,8 @@ const CoverBlock = ({
 }) => {
   return (
     <section className={bgWrap} id={anchor}>
-      {innerBlocks ? (
-        <div className={bgText}>
-          <Container>
-            {innerBlocks.map((block, index) => (
-              <Block block={block} key={index} />
-            ))}
-          </Container>
-        </div>
-      ) : null}
       <Image
-        alt='Industrial Internet of Things'
+        alt=''
         src={url}
         layout='fill'
         objectFit='cover'
@@ -40,6 +31,15 @@ const CoverBlock = ({
         blurDataURL='/images/placeholder.png'
         className={imgWrap}
       />
+      {innerBlocks ? (
+        <div className={bgText}>
+          <Container>
+            {innerBlocks.map((block, index) => (
+              <Block block={block} key={`cover-${index}`} />
+            ))}
+          </Container>
+        </div>
+      ) : null}
     </section>
   )
 }

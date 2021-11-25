@@ -1,10 +1,10 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 import { siteMeta } from '../../config/index'
-import MainNav from './mainNav'
+import MainNav from '../nav/mainNav'
 import HamburgerMenuButton from '../offCanvas/hamburgerMenuButton'
-import styles from './header.module.scss'
 import OffCanvasMenu from '../offCanvas/offCanvasMenu'
+import styles from './header.module.scss'
 
 export default function Header({ meta, nav }) {
   return (

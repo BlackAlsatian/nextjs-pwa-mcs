@@ -6,7 +6,9 @@ export const HeadingBlockAttributes = `
         backgroundColor
         className
         content
+        fontSize
         level
+        style
         textAlign
         textColor
     }
@@ -106,6 +108,8 @@ export const ColumnsBlockAttributes = `
         anchor
         backgroundColor
         className
+        gradient
+        style
         textColor
         verticalAlignment
     }
@@ -116,6 +120,8 @@ export const ColumnBlockAttributes = `
         anchor
         backgroundColor
         className
+        gradient
+        style
         textColor
         verticalAlignment
         percentageWidth: width
@@ -215,6 +221,8 @@ export const ColumnBlock = `
             ${ParagraphBlock}
             ${ImageBlock}
             ${ListBlock}
+            ${QuoteBlock}
+            ${ButtonBlock}
         }
     }
 `

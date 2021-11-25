@@ -1,7 +1,7 @@
-import { getIndexPageData } from '../query/indexPageQuery'
 import Layout from '../components/layout/layout'
 import Posts from '../components/post/posts'
-import Block from '../components/block'
+import Block from '../lib/block'
+import { getIndexPageData } from '../query/indexPageQuery'
 
 const Home = ({ data }) => {
   return (
@@ -11,6 +11,10 @@ const Home = ({ data }) => {
             <Block block={block} key={index} />
           ))
         : null}
+
+      {/* {data?.pageData?.page?.blocks ? (
+        <Block blocks={data?.pageData?.page?.blocks} />
+      ) : null} */}
       <Posts
         data={data?.pageData?.posts}
         title={data?.pageData?.page?.title}

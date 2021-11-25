@@ -1,12 +1,20 @@
-import ButtonBlock from '../components/block/buttonBlock'
-import ColumnBlock from '../components/block/ColumnBlock'
-import ColumnsBlock from '../components/block/ColumnsBlock'
-import CoverBlock from '../components/block/coverBlock'
-import HeadingBlock from '../components/block/headingBlock'
-import ImageBlock from '../components/block/imageBlock'
-import ListBlock from '../components/block/listBlock'
-import ParagraphBlock from '../components/block/paragraphBlock'
-import QuoteBlock from '../components/block/quoteBlock'
+import dynamic from 'next/dynamic'
+
+// const BlockQuote = dynamic(() =>
+// 	import('@/components/blocks/Gutenberg/BlockQuote')
+// )
+
+const ButtonBlock = dynamic(() => import('../components/block/buttonBlock'))
+const ColumnBlock = dynamic(() => import('../components/block/ColumnBlock'))
+const ColumnsBlock = dynamic(() => import('../components/block/ColumnsBlock'))
+const CoverBlock = dynamic(() => import('../components/block/coverBlock'))
+const HeadingBlock = dynamic(() => import('../components/block/headingBlock'))
+const ImageBlock = dynamic(() => import('../components/block/imageBlock'))
+const ListBlock = dynamic(() => import('../components/block/listBlock'))
+const ParagraphBlock = dynamic(() =>
+  import('../components/block/paragraphBlock')
+)
+const QuoteBlock = dynamic(() => import('../components/block/quoteBlock'))
 
 const blockMap = {
   'core/heading': HeadingBlock,

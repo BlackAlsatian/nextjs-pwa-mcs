@@ -5,7 +5,7 @@
     li {
       @apply block px-2;
       a {
-        @apply font-extrabold no-underline hover:underline text-3xl;
+        @apply font-extrabold no-underline hover:underline text-3xl text-primary hover:text-secondary hover:no-underline transition-colors duration-300 ease-in-out;
       }
     }
   }

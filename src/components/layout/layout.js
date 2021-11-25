@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import Seo from '../seo/seo'
 import { sanitize } from '../../utils/helpers'
-import Header from '../header/header'
 import Footer from '../footer/footer'
+import Header from '../header/header'
+import Seo from '../seo/seo'
 import styles from './layout.module.scss'
 
 const Layout = ({ children, data }) => {

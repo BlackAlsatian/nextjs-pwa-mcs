@@ -1,4 +1,4 @@
-import NavLink from './navLink'
+import NavLink from '../nav/navLink'
 import styles from './offCanvasNav.module.scss'
 
 const OffCanvasNav = ({ nav, onClick }) => {
