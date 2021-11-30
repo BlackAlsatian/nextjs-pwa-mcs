@@ -6,8 +6,8 @@ export const getblockAtributes = (
   fontSize,
   style
 ) => {
-  // const blockStyles = JSON.parse(style)
-  // const blockStyles = style?.replace(/\"/g, '')
+  const blockStyles = style ? JSON.parse(style) : null
+
   const blockWidth = {
     '20%': 'w-full md:w-1/5',
     '25%': 'w-full md:w-1/4',
@@ -39,9 +39,9 @@ export const getblockAtributes = (
     color: color ? 'text-' + color : 'text-light',
     alignment: align ? 'text-' + align : 'text-left',
     width: percentageWidth ? `${blockWidth[percentageWidth]}` : 'w-full',
-    blockFontSize: fontSize ? `${textSize[fontSize]}` : 'text-base',
-    blockFontHeight: style?.typography?.lineHeight
-      ? `${textHeight[style?.typography?.lineHeight]}`
+    blockFontSize: fontSize ? `${textSize[fontSize]}` : '',
+    blockFontHeight: blockStyles?.typography?.lineHeight
+      ? `${textHeight[blockStyles?.typography?.lineHeight]}`
       : 'leading-none'
   }
 

@@ -1,9 +1,11 @@
-import NavLink from './navLink'
+import NavLink from '../nav/navLink'
+import styles from './footerNav.module.scss'
 
-const FooterNav = ({ nav }) => {
+const FooterNav = ({ nav, title }) => {
   const menuItems = nav
   return (
-    <div>
+    <div className={styles.footer}>
+      <h3>{title}</h3>
       <ul>
         {menuItems.map(item => {
           return (

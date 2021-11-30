@@ -1,18 +1,23 @@
 .wrapper {
-  @apply border-t bg-accent border-accent;
+  @apply bg-primary text-sm;
 }
 .inner {
-  @apply flex flex-col items-start py-28 lg:flex-row;
+  @apply flex flex-col-reverse items-start py-28 lg:flex-row;
   h3 {
-    @apply mb-10 text-4xl font-bold leading-tight tracking-tighter text-center lg:text-5xl lg:text-left lg:mb-0 lg:pr-4 lg:w-1/2;
+    font-family: 'Poppins', sans-serif;
+    @apply text-xl mb-4 text-white;
   }
 }
 .links {
-  @apply flex flex-col justify-center lg:pl-4 lg:w-1/2 text-2xl;
+  @apply flex flex-col justify-center lg:pl-4 lg:w-1/2 text-sm;
+  p {
+    @apply text-sm text-accent-1;
+  }
   a {
-    @apply no-underline px-12 py-3 mx-3 mb-6 font-semibold transition-colors text-black duration-200 hover:text-neutral lg:px-8 lg:mb-0 hover:underline;
+    @apply mb-6 font-semibold transition-colors text-accent-1 duration-200 hover:text-accent lg:mb-0 hover:underline text-sm;
+    text-decoration-style: dotted;
     &:hover {
-      text-decoration-style: dotted;
+      @apply no-underline;
     }
   }
   ul {
@@ -24,13 +29,7 @@
       }
     }
   }
-}
-// .darkLink {
-//   @apply no-underline px-12 py-3 mx-3 mb-6 font-bold text-white transition-colors duration-200 bg-black border border-black hover:bg-white hover:text-black lg:px-8 lg:mb-0;
-// }
-// .lightLink {
-//   @apply no-underline mx-3 font-bold hover:underline;
-// }
-.copyright {
-  @apply text-center text-sm py-4;
+  &.sideTwo {
+    @apply md:w-1/2;
+  }
 }

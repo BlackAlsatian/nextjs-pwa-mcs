@@ -22,7 +22,7 @@ const ColumnBlock = ({
       {innerBlocks ? (
         <>
           {innerBlocks.map((block, index) => (
-            <Block block={block} key={`child-${index}`} />
+            <Block block={block} key={`element-${index}`} />
           ))}
         </>
       ) : null}

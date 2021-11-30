@@ -1,7 +1,7 @@
 import blockMap from './blockMap'
 
 function Block({ block }) {
-  const { attributes, name, innerBlocks } = block
+  const { attributes, name, innerBlocks, isGroup } = block
 
   const BlockComponent = blockMap[name]
 
@@ -10,7 +10,13 @@ function Block({ block }) {
   }
 
   if (innerBlocks) {
-    return <BlockComponent attributes={attributes} innerBlocks={innerBlocks} />
+    return (
+      <BlockComponent
+        attributes={attributes}
+        innerBlocks={innerBlocks}
+        isGroup={isGroup}
+      />
+    )
   }
 
   return <BlockComponent {...attributes} />

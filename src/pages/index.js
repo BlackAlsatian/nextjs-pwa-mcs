@@ -1,5 +1,5 @@
 import Layout from '../components/layout/layout'
-import Posts from '../components/post/posts'
+import LatestPosts from '../components/widget/latestPosts'
 import Block from '../lib/block'
 import { getIndexPageData } from '../query/indexPageQuery'
 
@@ -8,14 +8,14 @@ const Home = ({ data }) => {
     <Layout data={data}>
       {data?.pageData?.page?.blocks
         ? data?.pageData?.page?.blocks.map((block, index) => (
-            <Block block={block} key={index} />
+            <Block block={block} key={`section-${index}`} />
           ))
         : null}
 
       {/* {data?.pageData?.page?.blocks ? (
         <Block blocks={data?.pageData?.page?.blocks} />
       ) : null} */}
-      <Posts
+      <LatestPosts
         data={data?.pageData?.posts}
         title={data?.pageData?.page?.title}
         isHome

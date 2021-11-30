@@ -31,7 +31,6 @@ module.exports = {
     },
     extend: {
       colors: {
-        'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
         success: '#79FFE1',
@@ -43,6 +42,7 @@ module.exports = {
         primary: '#00a6d0',
         secondary: '#0073b5',
         accent: '#74cee2',
+        'accent-1': '#ade9f7',
         // muted: '#6d6e71',
         muted: '#6d6e71',
         neutral: '#74cee2',

@@ -1,0 +1,6 @@
+.social {
+  @apply w-full flex flex-row;
+  a {
+    @apply cursor-pointer block;
+  }
+}

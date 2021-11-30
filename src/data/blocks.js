@@ -129,6 +129,21 @@ export const ColumnBlockAttributes = `
     }
 `
 
+export const GroupBlockAttributes = `
+    fragment GroupBlockAttributes on CoreGroupBlockAttributes {
+        align
+        anchor
+        backgroundColor
+        borderColor
+        className
+        gradient
+        layout
+        style
+        tagName
+        textColor
+    }
+`
+
 // ## blocks
 export const HeadingBlock = `
     ... on CoreHeadingBlock {
@@ -241,6 +256,20 @@ export const ColumnsBlock = `
     }
 `
 
+export const GroupBlock = `
+    ... on CoreGroupBlock {
+        name
+        attributes {
+            ... on CoreGroupBlockAttributes {
+                ...GroupBlockAttributes
+            }
+        }
+        innerBlocks {
+            ${ColumnBlock}
+        }
+    }
+`
+
 // all blocks query
 export const BlocksField = `
   fragment BlocksField on Page {
@@ -255,6 +284,7 @@ export const BlocksField = `
       ${CoverBlock}
       ${ColumnsBlock}
       ${ColumnBlock}
+      ${GroupBlock}
     }
   }
   ${HeadingBlockAttributes}
@@ -266,4 +296,5 @@ export const BlocksField = `
   ${CoverBlockAttributes}
   ${ColumnsBlockAttributes}
   ${ColumnBlockAttributes}
+  ${GroupBlockAttributes}
 `

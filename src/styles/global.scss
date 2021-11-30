@@ -46,7 +46,7 @@
   // custom
   body {
     font-family: 'Poppins', sans-serif;
-    @apply min-h-screen;
+    @apply min-h-screen subpixel-antialiased;
   }
   h1,
   h2,
@@ -55,12 +55,17 @@
   h5,
   h6 {
     font-family: 'Barlow Condensed', sans-serif;
+    @apply text-black;
+  }
+  h1,
+  h2 {
+    @apply leading-tight  md:pr-8 tracking-tighter;
   }
   h1 {
-    @apply text-7xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8 uppercase;
+    @apply text-7xl md:text-8xl font-bold uppercase;
   }
   h2 {
-    @apply text-6xl md:text-7xl font-semibold tracking-tighter leading-tight md:pr-8;
+    @apply text-6xl md:text-7xl font-semibold;
   }
   h3,
   h4,
@@ -82,12 +87,13 @@
   ul,
   ol,
   blockquote {
-    @apply my-6 text-base;
+    @apply my-6 text-lg;
   }
 
   a {
-    @apply underline;
+    @apply underline text-black transition ease-in duration-500;
     &:hover {
+      @apply transition ease-out duration-300;
       text-decoration-style: dotted;
     }
   }
@@ -143,21 +149,24 @@
   }
 }
 
-// .has-text-align-left {
-//   @apply text-left;
-// }
-//
-// .has-text-align-center {
-//   @apply text-center;
-// }
-//
-// .has-text-align-right {
-//   @apply text-right;
-// }
-//
-// .has-large-font-size {
-//   @apply text-4xl;
-// }
+.has-text-align-left {
+  @apply text-left;
+}
+
+.has-text-align-center {
+  @apply text-center;
+}
+
+.has-text-align-right {
+  @apply text-right;
+}
+
+.has-large-font-size {
+  @apply text-4xl;
+}
+.has-white-color {
+  @apply text-white;
+}
 //
 // .alignfull {
 //   @apply w-screen relative;

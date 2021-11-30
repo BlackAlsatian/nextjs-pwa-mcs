@@ -41,6 +41,7 @@ const Layout = ({ children, data }) => {
         <main>{children}</main>
         <Footer
           data={document?.siteMeta?.footerMeta}
+          mainNav={document?.menus?.primaryMenu?.edges}
           footerNav={document?.menus?.secondaryMenu?.edges}
         />
       </div>

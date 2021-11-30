@@ -1,0 +1,10 @@
+.copyright {
+  @apply text-center text-xs py-4 text-white uppercase;
+  a {
+    @apply text-white;
+    text-decoration-style: dotted;
+    &:hover {
+      @apply no-underline;
+    }
+  }
+}
