@@ -1,5 +1,5 @@
-import fetcher from '../lib/fetcher'
 import { ALL_MENUS, ALL_SITE_META, LATEST_POSTS, PAGE_BY_URI } from '../lib/api'
+import fetcher from '../lib/fetcher'
 
 // get index page data
 export async function getIndexPageData() {

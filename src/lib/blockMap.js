@@ -14,18 +14,24 @@ const ListBlock = dynamic(() => import('../components/block/listBlock'))
 const ParagraphBlock = dynamic(() =>
   import('../components/block/paragraphBlock')
 )
+const SeparatorBlock = dynamic(() =>
+  import('../components/block/separatorBlock')
+)
 const QuoteBlock = dynamic(() => import('../components/block/quoteBlock'))
+const IconBlock = dynamic(() => import('../components/block/iconBlock'))
 
 const blockMap = {
   'core/heading': HeadingBlock,
   'core/paragraph': ParagraphBlock,
+  'core/separator': SeparatorBlock,
   'core/quote': QuoteBlock,
   'core/list': ListBlock,
   'core/image': ImageBlock,
   'core/button': ButtonBlock,
   'core/column': ColumnBlock,
   'core/columns': ColumnsBlock,
-  'core/cover': CoverBlock
+  'core/cover': CoverBlock,
+  'outermost/icon-block': IconBlock
   // 'core/pullquote': PullquoteBlock,
   // 'core/code': CodeBlock,
   // 'core/preformatted': PreformattedBlock,
@@ -34,7 +40,6 @@ const blockMap = {
   // 'core/buttons': ButtonsBlock,
   // 'core/gallery': GalleryBlock,
   // 'core/table': TableBlock,
-  // 'core/separator': SeparatorBlock,
   // 'core/spacer': SpacerBlock,
 }
 

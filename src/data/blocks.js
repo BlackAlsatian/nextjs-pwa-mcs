@@ -27,6 +27,16 @@ export const ParagraphBlockAttributes = `
     }
 `
 
+export const SeparatorBlockAttributes = `
+    fragment SeparatorBlockAttributes on CoreSeparatorBlockAttributes {
+        align
+        anchor
+        className
+        color
+        customColor
+    }
+`
+
 export const ImageBlockAttributes = `
     fragment ImageBlockAttributes on CoreImageBlockAttributes {
         align
@@ -167,6 +177,17 @@ export const ParagraphBlock = `
     }
 `
 
+export const SeparatorBlock = `
+    ... on CoreSeparatorBlock {
+        name
+        attributes {
+            ... on CoreSeparatorBlockAttributes {
+                ...SeparatorBlockAttributes
+            }
+        }
+    }
+`
+
 export const ImageBlock = `
     ... on CoreImageBlock {
         name
@@ -209,13 +230,22 @@ export const ButtonBlock = `
     }
 `
 
+export const IconBlock = `
+    ... on OutermostIconBlock {
+        name
+        attributes {
+            align
+            icon
+        }
+    }
+`
 export const CoverBlock = `
     ... on CoreCoverBlock {
         name
         attributes {
-        ... on CoreCoverBlockAttributes {
-            ...CoverBlockAttributes
-        }
+            ... on CoreCoverBlockAttributes {
+                ...CoverBlockAttributes
+            }
         }
         innerBlocks {
             ${HeadingBlock}
@@ -234,10 +264,12 @@ export const ColumnBlock = `
         innerBlocks {
             ${HeadingBlock}
             ${ParagraphBlock}
+            ${SeparatorBlock}
             ${ImageBlock}
             ${ListBlock}
             ${QuoteBlock}
             ${ButtonBlock}
+            ${IconBlock}
         }
     }
 `
@@ -277,10 +309,12 @@ export const BlocksField = `
       name
       ${HeadingBlock}
       ${ParagraphBlock}
+      ${SeparatorBlock}
       ${ImageBlock}
       ${ListBlock}
       ${QuoteBlock}
       ${ButtonBlock}
+      ${IconBlock}
       ${CoverBlock}
       ${ColumnsBlock}
       ${ColumnBlock}
@@ -289,6 +323,7 @@ export const BlocksField = `
   }
   ${HeadingBlockAttributes}
   ${ParagraphBlockAttributes}
+  ${SeparatorBlockAttributes}
   ${ImageBlockAttributes}
   ${ListBlockAttributes}
   ${QuoteBlockAttributes}
