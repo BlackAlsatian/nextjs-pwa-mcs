@@ -1,0 +1,7 @@
+.videoWrapper {
+  @apply w-full;
+  min-height: 380px;
+  .video {
+    @apply w-max min-h-full;
+  }
+}

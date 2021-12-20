@@ -1,17 +1,30 @@
 .wrapper {
-  h3 {
-    @apply mb-3 text-3xl leading-snug text-left;
+  @apply shadow-lg;
+  h2 {
+    @apply mb-3 text-3xl leading-tight text-left;
     a {
       @apply no-underline hover:underline;
     }
   }
 }
+.postMeta {
+  @apply p-8;
+}
 .image {
   @apply mb-5;
 }
+.dateAndAuthor {
+  @apply flex items-center justify-between flex-row;
+}
 .date {
-  @apply mb-4 text-lg;
+  @apply text-sm text-light;
 }
 .excerpt {
-  @apply mb-4 text-lg leading-relaxed;
+  @apply mb-4 text-base text-light leading-relaxed;
+}
+.readOn {
+  @apply text-right font-semibold;
+  a {
+    @apply text-primary;
+  }
 }

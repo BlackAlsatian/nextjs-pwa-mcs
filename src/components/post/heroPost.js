@@ -1,12 +1,12 @@
+import Link from 'next/link'
 import Avatar from '../meta/avatar'
 import Date from '../meta/date'
 import CoverImage from './coverImage'
-import Link from 'next/link'
 import styles from './heroPost.module.scss'
 
 const HeroPost = ({ title, coverImage, date, excerpt, author, slug, uri }) => {
   return (
-    <section>
+    <div className={styles.postsWrapper}>
       <div className={styles.image}>
         {coverImage && (
           <CoverImage
@@ -20,24 +20,27 @@ const HeroPost = ({ title, coverImage, date, excerpt, author, slug, uri }) => {
       </div>
       <div className={styles.intro}>
         <div>
-          <h3>
+          <h2>
             <Link href={`${uri}`}>
               <a dangerouslySetInnerHTML={{ __html: title }} />
             </Link>
-          </h3>
+          </h2>
           <div className={styles.date}>
             <Date dateString={date} />
           </div>
+          <Avatar author={author} />
         </div>
-        <div>
+        <div className={styles.excerptContainer}>
           <div
             className={styles.excerpt}
             dangerouslySetInnerHTML={{ __html: excerpt }}
           />
-          <Avatar author={author} />
+          <div className={styles.readOn}>
+            <Link href={`${uri}`}>read on..</Link>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
   )
 }
 

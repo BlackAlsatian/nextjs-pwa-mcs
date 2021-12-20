@@ -7,10 +7,7 @@ import { getAllTagPostsData, getAllTagSlugs } from '../../query/tagQuery'
 const SingleTag = ({ data }) => {
   return (
     <Layout data={data}>
-      <Posts
-        data={data?.pageData?.posts}
-        title={data?.pageData?.pageInfo?.title}
-      />
+      <Posts data={data?.pageData} title={data?.pageData?.pageInfo?.title} />
     </Layout>
   )
 }

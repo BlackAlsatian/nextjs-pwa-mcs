@@ -1,10 +1,14 @@
+.postsWrapper {
+  @apply shadow-lg mt-24;
+}
+
 .image {
   @apply mb-8 md:mb-16;
 }
 .intro {
-  @apply mb-20 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 md:mb-28;
+  @apply mb-20 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 md:mb-28 p-8;
   div {
-    h3 {
+    h2 {
       @apply mb-4 text-4xl leading-tight lg:text-6xl;
       a {
         @apply no-underline hover:underline;
@@ -14,8 +18,17 @@
 }
 
 .date {
-  @apply mb-4 text-lg md:mb-0;
+  @apply mb-4 text-sm text-light;
+}
+.excerptContainer {
+  @apply flex items-center flex-col;
 }
 .excerpt {
-  @apply mb-4 text-lg leading-relaxed;
+  @apply mb-4 text-base leading-relaxed text-light;
+}
+.readOn {
+  @apply font-semibold w-full;
+  a {
+    @apply text-primary;
+  }
 }

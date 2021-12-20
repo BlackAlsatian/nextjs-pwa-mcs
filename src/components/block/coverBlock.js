@@ -35,7 +35,7 @@ const CoverBlock = ({
         <div className={bgText}>
           <Container>
             {innerBlocks.map((block, index) => (
-              <Block block={block} key={`cover-${index}`} />
+              <Block block={block} key={`cover-block-${index}`} />
             ))}
           </Container>
         </div>

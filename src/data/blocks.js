@@ -27,6 +27,19 @@ export const ParagraphBlockAttributes = `
     }
 `
 
+export const EmbedBlockAttributes = `
+    fragment EmbedBlockAttributes on CoreEmbedBlockAttributes {
+        align
+        caption
+        allowResponsive
+        previewable
+        providerNameSlug
+        responsive
+        type
+        url
+    }
+`
+
 export const SeparatorBlockAttributes = `
     fragment SeparatorBlockAttributes on CoreSeparatorBlockAttributes {
         align
@@ -176,7 +189,16 @@ export const ParagraphBlock = `
         }
     }
 `
-
+export const EmbedBlock = `
+    ... on CoreEmbedBlock {
+        name
+        attributes {
+            ... on CoreEmbedBlockAttributes {
+                ...EmbedBlockAttributes
+            }
+        }
+    }
+`
 export const SeparatorBlock = `
     ... on CoreSeparatorBlock {
         name
@@ -264,6 +286,7 @@ export const ColumnBlock = `
         innerBlocks {
             ${HeadingBlock}
             ${ParagraphBlock}
+            ${EmbedBlock}
             ${SeparatorBlock}
             ${ImageBlock}
             ${ListBlock}
@@ -309,6 +332,7 @@ export const BlocksField = `
       name
       ${HeadingBlock}
       ${ParagraphBlock}
+      ${EmbedBlock}
       ${SeparatorBlock}
       ${ImageBlock}
       ${ListBlock}
@@ -323,6 +347,7 @@ export const BlocksField = `
   }
   ${HeadingBlockAttributes}
   ${ParagraphBlockAttributes}
+  ${EmbedBlockAttributes}
   ${SeparatorBlockAttributes}
   ${ImageBlockAttributes}
   ${ListBlockAttributes}

@@ -17,9 +17,9 @@
   h4,
   h5,
   h6 {
-    @apply leading-tighter md:w-1/3 mb-4 tracking-normal break-normal;
+    @apply leading-tighter md:w-1/3 mb-4 tracking-normal break-normal text-white;
   }
   p {
-    @apply md:w-1/3 text-xl;
+    @apply md:w-1/3 text-xl text-white;
   }
 }

@@ -1,9 +1,6 @@
 .wrapper {
   @apply min-h-full;
-  h2 {
-    @apply mb-8 text-6xl font-bold leading-tight tracking-tighter md:text-7xl;
-  }
   .gridWrap {
-    @apply grid grid-cols-1 gap-y-20 mb-32 md:grid-cols-2 md:gap-x-16 lg:gap-x-32 md:gap-y-32;
+    @apply grid grid-cols-1 gap-y-20 mb-32 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-8 md:gap-y-8;
   }
 }

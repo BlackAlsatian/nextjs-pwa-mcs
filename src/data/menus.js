@@ -10,14 +10,14 @@ export const MenuFragment = `
 
 // get all menus menu items
 export const MenuItems = `
-    primaryMenu: menuItems(where: {location: PRIMARY}) {
+    primaryMenu: menuItems(where: {location: PRIMARY_MENU}) {
         edges {
             node {
                 ...MenuFragment
             }
         }
     }
-    secondaryMenu: menuItems(where: {location: FOOTER}) {
+    secondaryMenu: menuItems(where: {location: FOOTER_MENU}) {
         edges {
             node {
                 ...MenuFragment
@@ -28,14 +28,14 @@ export const MenuItems = `
 //all menus
 export const AllMenus = `
     query AllMenusQuery {
-        primaryMenu: menuItems(where: {location: PRIMARY}) {
+        primaryMenu: menuItems(where: {location: PRIMARY_MENU}) {
             edges {
                 node {
                     ...MenuFragment
                 }
             }
         }
-        secondaryMenu: menuItems(where: {location: FOOTER}) {
+        secondaryMenu: menuItems(where: {location: FOOTER_MENU}) {
             edges {
                 node {
                     ...MenuFragment

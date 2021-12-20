@@ -1,18 +1,17 @@
+import { BlocksField } from '../data/blocks'
+import { AllCategories, CategoryByUri } from '../data/categories'
 import { AllMenus } from '../data/menus'
+import { AllSiteMeta } from '../data/meta'
+import { AllPages, PageBySlug, PageByUri } from '../data/pages'
 import {
   AllPosts,
   LatestPosts,
-  PageBySlug,
-  PostsByCategoryId,
-  PostByUri,
   PostBySlug,
+  PostByUri,
+  PostsByCategoryId,
   PostsByTagId
 } from '../data/posts'
-import { AllPages, PageByUri } from '../data/pages'
-import { AllCategories, CategoryByUri } from '../data/categories'
 import { AllTags, TagBySlug } from '../data/tags'
-import { AllSiteMeta } from '../data/meta'
-import { BlocksField } from '../data/blocks'
 
 //all menus
 export const ALL_MENUS = AllMenus

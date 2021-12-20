@@ -1,5 +1,6 @@
-import { SeoFragment } from './seo'
 import { BlocksField } from './blocks'
+import { FeaturedImageFragment } from './posts'
+import { SeoFragment } from './seo'
 
 // All Pages
 export const AllPages = `
@@ -24,6 +25,11 @@ export const PageByUri = `
             title
             slug
             date
+            featuredImage {
+                node {
+                    ...FeaturedImageFragment
+                }
+            }
             modified
             ...BlocksField
             content
@@ -31,9 +37,11 @@ export const PageByUri = `
             seo {
                 ...SeoFragment
             }
+            pageIntro
         }
     }
     ${SeoFragment}
+    ${FeaturedImageFragment}
     ${BlocksField}
 `
 
@@ -52,8 +60,10 @@ export const PageBySlug = `
             seo {
                 ...SeoFragment
             }
+            pageIntro
         }
     }
     ${SeoFragment}
+    ${FeaturedImageFragment}
     ${BlocksField}
 `

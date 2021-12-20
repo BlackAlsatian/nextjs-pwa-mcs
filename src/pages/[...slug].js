@@ -1,8 +1,8 @@
 import { isEmpty } from 'lodash'
-import { getPageData, getAllPageSlugs } from '../query/pageQuery'
 import Layout from '../components/layout/layout'
 import Page from '../components/page/page'
 import { FALLBACK } from '../config'
+import { getAllPageSlugs, getPageData } from '../query/pageQuery'
 
 const SinglePage = ({ data }) => {
   return (

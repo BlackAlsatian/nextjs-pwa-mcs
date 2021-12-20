@@ -1,10 +1,27 @@
+import styles from './separatorBlock.module.scss'
+
 const SeparatorBlock = ({
-  //   align,
+  align,
   // anchor,
   // className,
   color
   // customColor
 }) => {
-  return <div className={`bg-${color} w-2/3 h-1 mx-auto my-8`}></div>
+  let separatorAlignment = styles.wideAlign
+
+  if (align === 'center') {
+    separatorAlignment = styles.centerAlign
+  }
+
+  if (align === 'wide') {
+    separatorAlignment = styles.wideAlign
+  }
+
+  if (align === 'full') {
+    separatorAlignment = styles.fullAlign
+  }
+  return (
+    <div className={`bg-${color} h-1 mt-8 mb-16 ${separatorAlignment}`}></div>
+  )
 }
 export default SeparatorBlock

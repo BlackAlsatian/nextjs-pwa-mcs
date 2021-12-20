@@ -14,6 +14,7 @@ const ListBlock = dynamic(() => import('../components/block/listBlock'))
 const ParagraphBlock = dynamic(() =>
   import('../components/block/paragraphBlock')
 )
+const EmbedBlock = dynamic(() => import('../components/block/embedBlock'))
 const SeparatorBlock = dynamic(() =>
   import('../components/block/separatorBlock')
 )
@@ -23,6 +24,7 @@ const IconBlock = dynamic(() => import('../components/block/iconBlock'))
 const blockMap = {
   'core/heading': HeadingBlock,
   'core/paragraph': ParagraphBlock,
+  'core/embed': EmbedBlock,
   'core/separator': SeparatorBlock,
   'core/quote': QuoteBlock,
   'core/list': ListBlock,

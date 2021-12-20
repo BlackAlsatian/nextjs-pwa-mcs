@@ -9,8 +9,8 @@
 }
 
 .inActive {
-  @apply no-underline text-white filter contrast-150 drop-shadow-xl hover:text-primary;
+  @apply no-underline text-white filter contrast-150 drop-shadow-xl border-b border-transparent hover:no-underline hover:border-white;
 }
 .active {
-  @apply text-primary hover:text-secondary;
+  @apply text-primary no-underline transition ease-in duration-300  border-b border-primary hover:border-transparent;
 }

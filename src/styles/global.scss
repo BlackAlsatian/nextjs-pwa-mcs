@@ -26,7 +26,7 @@
     @apply bg-primary;
   }
   ::-webkit-scrollbar {
-    @apply w-2 bg-primary;
+    @apply w-1 bg-primary;
   }
   ::-webkit-scrollbar-track {
     -webkit-box-shadow: 'inset 0 0 6px rgba(0, 0, 0, 0.3)';
@@ -34,7 +34,7 @@
     @apply bg-accent;
   }
   ::-webkit-scrollbar-thumb {
-    @apply bg-primary border-8 border-accent;
+    @apply bg-primary;
   }
   html {
     scroll-behavior: smooth;
@@ -54,8 +54,8 @@
   h4,
   h5,
   h6 {
-    font-family: 'Barlow Condensed', sans-serif;
-    @apply text-black;
+    // font-family: 'Barlow Condensed', sans-serif;
+    @apply text-black font-heading;
   }
   h1,
   h2 {

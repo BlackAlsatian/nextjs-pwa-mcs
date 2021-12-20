@@ -12,6 +12,9 @@
   }
   h3 {
     @apply mb-8;
+    a {
+      @apply no-underline;
+    }
   }
   p {
     @apply my-0;

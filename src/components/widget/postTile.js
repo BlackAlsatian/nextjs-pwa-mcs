@@ -21,13 +21,17 @@ const PostTile = ({ post }) => {
       />
       <div className={styles.postText}>
         <Container>
-          <h3>{latestPost?.title}</h3>
+          <h3>
+            <Link href={`/blog/${latestPost?.slug}/`}>
+              <a>{latestPost?.title}</a>
+            </Link>
+          </h3>
           <p className={styles.small}>
             <Date dateString={latestPost?.date} />
           </p>
           {ParseHTML(latestPost?.excerpt)}
           <p className={styles.readmore}>
-            <Link href={`/${latestPost?.slug}/`}>
+            <Link href={`/blog/${latestPost?.slug}/`}>
               <a className={styles.small}>read more..</a>
             </Link>
           </p>

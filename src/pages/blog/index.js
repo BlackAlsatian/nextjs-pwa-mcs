@@ -5,7 +5,7 @@ import { getBlogPageData } from '../../query/blogQuery'
 const Blog = ({ data }) => {
   return (
     <Layout data={data}>
-      <Posts data={data?.pageData?.posts} title={data?.pageData?.page?.title} />
+      <Posts data={data?.pageData} title={data?.pageData?.page?.title} />
     </Layout>
   )
 }

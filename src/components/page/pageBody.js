@@ -1,5 +1,5 @@
-import Container from '../layout/container'
 import ParseHTML from '../../utils/parseHTML'
+import Container from '../layout/container'
 import styles from './pageBody.module.scss'
 
 const PageBody = ({ content: { content } }) => {
@@ -7,10 +7,6 @@ const PageBody = ({ content: { content } }) => {
     <section>
       <Container>
         <article>
-          {/* <div
-            className={styles.wrapper}
-            dangerouslySetInnerHTML={{ __html: content }}
-          /> */}
           <div className={styles.wrapper}>{ParseHTML(content)}</div>
         </article>
       </Container>

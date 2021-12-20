@@ -2,11 +2,11 @@
   @apply flex items-center;
 }
 .image {
-  @apply w-12 h-12 relative mr-4;
+  @apply w-8 h-8 relative mr-4;
   img {
     @apply rounded-full;
   }
 }
 .name {
-  @apply text-xl font-bold;
+  @apply text-base font-normal text-primary;
 }
