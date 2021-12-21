@@ -5,8 +5,8 @@ import dynamic from 'next/dynamic'
 // )
 
 const ButtonBlock = dynamic(() => import('../components/block/buttonBlock'))
-const ColumnBlock = dynamic(() => import('../components/block/ColumnBlock'))
-const ColumnsBlock = dynamic(() => import('../components/block/ColumnsBlock'))
+const ColumnBlock = dynamic(() => import('../components/block/columnBlock'))
+const ColumnsBlock = dynamic(() => import('../components/block/columnsBlock'))
 const CoverBlock = dynamic(() => import('../components/block/coverBlock'))
 const HeadingBlock = dynamic(() => import('../components/block/headingBlock'))
 const ImageBlock = dynamic(() => import('../components/block/imageBlock'))
