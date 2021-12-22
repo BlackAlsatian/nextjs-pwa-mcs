@@ -13,10 +13,6 @@ const SeparatorBlock = ({
     separatorAlignment = styles.centerAlign
   }
 
-  if (align === 'wide') {
-    separatorAlignment = styles.wideAlign
-  }
-
   if (align === 'full') {
     separatorAlignment = styles.fullAlign
   }

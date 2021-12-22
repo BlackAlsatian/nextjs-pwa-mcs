@@ -1,3 +1,4 @@
+import ContactForm from '../components/form/contactForm'
 import Layout from '../components/layout/layout'
 import LatestPosts from '../components/widget/latestPosts'
 import Block from '../lib/block'
@@ -11,10 +12,7 @@ const Home = ({ data }) => {
             <Block block={block} key={`section-${index}`} />
           ))
         : null}
-
-      {/* {data?.pageData?.page?.blocks ? (
-        <Block blocks={data?.pageData?.page?.blocks} />
-      ) : null} */}
+      <ContactForm />
       <LatestPosts
         data={data?.pageData?.posts}
         title={data?.pageData?.page?.title}

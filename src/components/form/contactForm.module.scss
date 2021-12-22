@@ -1,0 +1,33 @@
+.contactForm {
+  @apply w-full;
+}
+.containerWrap {
+  @apply flex flex-col lg:flex-row lg:items-center container mx-auto my-24;
+}
+.copyWrap {
+  @apply w-full md:w-2/5 p-8;
+  p {
+    @apply text-light;
+  }
+}
+.formWrap {
+  @apply w-full md:w-3/5 p-8;
+}
+.separator {
+  @apply bg-black h-1 mt-8 mb-16 w-2/3;
+}
+.inputWrap {
+  @apply flex mx-4 my-8 border-b-2 border-black md:mx-2;
+  label {
+    @apply font-semibold;
+  }
+}
+.textInput {
+  @apply w-full py-3 pl-5 border-0 md:pl-2 focus:outline-none;
+}
+.textareaInput {
+  @apply w-full py-3 pl-2 border-0 md:pl-0 focus:outline-none;
+}
+.button {
+  @apply ml-2 my-8 px-6 py-4 bg-primary text-white hover:bg-secondary hover:text-white;
+}

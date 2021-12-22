@@ -5,7 +5,7 @@ const Copyright = () => {
       Copyright &copy; {new Date().getFullYear()} Motion Control Systems - All
       Rights Reserved.{' '}
       <a
-        href='htps://www.blackalsatian.co.za'
+        href='https://www.blackalsatian.co.za'
         title='Custom Web Development &amp; Digital Marketing'
         target='_blank'
         rel='noopener noreferrer'

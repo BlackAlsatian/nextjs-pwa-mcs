@@ -1,4 +1,5 @@
 import Block from '../../lib/block'
+import ContactForm from '../form/contactForm'
 import PageHeader from './pageHeader'
 
 const Page = ({ page }) => {
@@ -15,6 +16,7 @@ const Page = ({ page }) => {
           ))
         : null}
       {/* <PageBody content={page} /> */}
+      <ContactForm />
     </>
   )
 }
