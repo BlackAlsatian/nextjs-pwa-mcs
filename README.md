@@ -1,19 +1,22 @@
-# Next.js + Headless WordPress + TailwindCSS Starter
+# Motion Control Systems
 
-Basic styling with TailwindCSS.
-Design based on NextJS official CMS examples.
+A web app for Motion Control Systems.
+
+## Next.js + Headless WordPress + TailwindCSS Starter
+
+Styling with TailwindCSS, Sass and CSS Modules.
 Source from a WP GraphQL endpoint.
 
 ## Features
 
-- Blog with categories and sub categories
+- Blog
 - Posts
 - Tags
 - Pages with nested pages
 - Replaces internal links with 'next/link'
 - Replaces 'inline images' with 'next/image'
 - Off Canvas menu
-- Gutenberg blocks CSS (not tested)
+- Gutenberg blocks
 
 ## WordPress Plugins
 
@@ -27,9 +30,3 @@ Source from a WP GraphQL endpoint.
 1. Clone repository
 2. Copy `.env-example` and rename, configure
 3. Additional options in `/src/config/index.js`
-
-## TODO
-
-- Custom Gutenberg blocks
-- Elementor.. ?
-- Match WP theme.. ?
