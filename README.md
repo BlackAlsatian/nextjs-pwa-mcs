@@ -1,6 +1,6 @@
 # Motion Control Systems
 
-A web app for Motion Control Systems.
+A web app for Motion Control Systems, IIoT & Edge Solutions provider.
 
 ## Next.js + Headless WordPress + TailwindCSS Starter
 
