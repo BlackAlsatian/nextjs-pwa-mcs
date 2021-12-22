@@ -1,10 +1,13 @@
 .wrapper {
-  @apply py-4;
+  @apply py-4 mt-24;
 }
 .tags {
   @apply py-1;
-  a {
-    @apply bg-primary text-white no-underline font-semibold hover:no-underline hover:text-white hover:bg-secondary rounded-full pt-2 pb-2 px-4 text-sm lowercase;
+  span {
+    @apply inline-block my-2 mx-1;
+    a {
+      @apply bg-primary text-white no-underline font-semibold hover:no-underline hover:text-white hover:bg-secondary rounded-full pt-2 pb-2 px-4 text-sm lowercase;
+    }
   }
 }
 .categories {

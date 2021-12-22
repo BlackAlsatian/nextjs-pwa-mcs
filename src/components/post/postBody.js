@@ -4,10 +4,10 @@ import styles from './postBody.module.scss'
 
 const PostBody = ({ content }) => {
   return (
-    <section>
+    <section className={styles.wrapper}>
       <Container>
         <article>
-          <div className={styles.wrapper}>{ParseHTML(content)}</div>
+          <div className={styles.article}>{ParseHTML(content)}</div>
         </article>
       </Container>
     </section>

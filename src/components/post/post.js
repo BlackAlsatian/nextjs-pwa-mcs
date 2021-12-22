@@ -1,12 +1,12 @@
-import CoverImage from './coverImage'
-import PostHeader from './postHeader'
+// import PostHeader from './postHeader'
+import PageHeader from '../page/pageHeader'
 import PostBody from './postBody'
 import PostMeta from './postMeta'
 
 const Post = ({ post }) => {
   return (
     <>
-      {post?.featuredImage?.node && (
+      {/* {post?.featuredImage?.node && (
         <CoverImage
           title={post?.title}
           coverImage={post?.featuredImage?.node}
@@ -14,8 +14,14 @@ const Post = ({ post }) => {
           uri={post?.uri}
           width='1920'
         />
-      )}
-      <PostHeader title={post?.title} />
+      )} */}
+      {/* <PostHeader title={post?.title} /> */}
+      <PageHeader
+        title={post?.title}
+        intro={post?.excerpt}
+        image={post?.featuredImage}
+        isPost='true'
+      />
       <PostMeta
         tags={post?.tags}
         // categories={post?.categories}

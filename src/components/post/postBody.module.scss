@@ -1,3 +1,7 @@
 .wrapper {
+  @apply mb-24;
+}
+
+.article {
   @apply max-w-2xl mx-auto text-lg leading-relaxed text-light;
 }
