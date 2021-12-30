@@ -1,0 +1,10 @@
+.copyWrap {
+  @apply w-full md:w-2/5 p-8;
+  p {
+    @apply text-light;
+  }
+}
+
+.separator {
+  @apply bg-black h-1 mt-8 mb-16 w-2/3;
+}

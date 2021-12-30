@@ -13,7 +13,7 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     fontFamily: {
-      sans: ['Barlow Condensed', 'sans-serif'],
+      sans: ['Poppins', 'sans-serif'],
       heading: ['Barlow Condensed', 'sans-serif']
     },
     colors: {
@@ -49,7 +49,6 @@ module.exports = {
         neutral: '#74cee2',
         light: '#868686'
       },
-
       spacing: {
         28: '7rem'
       },

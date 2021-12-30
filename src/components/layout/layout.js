@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { sanitize } from '../../utils/helpers'
+import CookieNotice from '../cookieConsent/cookieNotice'
 import Footer from '../footer/footer'
 import Header from '../header/header'
 import Seo from '../seo/seo'
@@ -44,6 +45,7 @@ const Layout = ({ children, data }) => {
           mainNav={document?.menus?.primaryMenu?.edges}
           footerNav={document?.menus?.secondaryMenu?.edges}
         />
+        <CookieNotice />
       </div>
     </>
   )

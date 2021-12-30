@@ -1,0 +1,22 @@
+.cookieCard {
+  @apply fixed bottom-4 right-4 ml-4 p-1 bg-white shadow-2xl opacity-40 z-50;
+  max-width: 640px;
+  div {
+    @apply p-1;
+    h4 {
+      @apply text-base leading-none my-0 block font-bold text-primary uppercase;
+    }
+    p {
+      @apply my-0 text-primary flex-1 text-xs;
+    }
+    div {
+      @apply flex items-center justify-end;
+      button {
+        @apply text-xs underline text-primary font-semibold;
+      }
+      a {
+        @apply block ml-4 text-xs text-primary font-semibold;
+      }
+    }
+  }
+}
