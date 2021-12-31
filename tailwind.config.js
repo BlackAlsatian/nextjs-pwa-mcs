@@ -47,7 +47,8 @@ module.exports = {
         // muted: '#6d6e71',
         muted: '#6d6e71',
         neutral: '#74cee2',
-        light: '#868686'
+        light: '#868686',
+        warning: colors.red
       },
       spacing: {
         28: '7rem'

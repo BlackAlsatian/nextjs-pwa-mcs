@@ -1,34 +1,63 @@
-import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { emailRegExp, phoneRegExp } from './../../utils/helpers'
 import styles from './enquiryForm.module.scss'
 
 const EnquiryForm = () => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [number, setNumber] = useState('')
-  const [message, setMessage] = useState('')
-
-  const handleSubmit = async e => {
-    e.preventDefault()
-    const data = {
-      name,
-      lastname: '',
-      email,
-      number,
-      message
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+    reset
+  } = useForm({
+    mode: 'all',
+    defaultValues: {
+      name: '',
+      email: '',
+      number: '',
+      message: ''
     }
-    console.log('Form data: ', data)
+  })
 
-    const res = await fetch('/api/enquiry', {
+  const onSubmit = data => {
+    console.log('Form data: ', data)
+    const res = fetch('/api/enquiry', {
       method: 'POST',
       body: JSON.stringify(data)
     })
 
     console.log('form result', res)
-    e.target.reset()
+    // e.target.reset()
+    reset(getValues)
   }
 
+  // const [name, setName] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [number, setNumber] = useState('')
+  // const [message, setMessage] = useState('')
+
+  //   const handleSubmit = async e => {
+  //     e.preventDefault()
+  //     const data = {
+  //       name,
+  //       lastname: '',
+  //       email,
+  //       number,
+  //       message
+  //     }
+  //     console.log('Form data: ', data)
+  //
+  //     const res = await fetch('/api/enquiry', {
+  //       method: 'POST',
+  //       body: JSON.stringify(data)
+  //     })
+  //
+  //     console.log('form result', res)
+  //     e.target.reset()
+  //   }
+
   return (
-    <form className={styles.formWrap} onSubmit={handleSubmit}>
+    <form className={styles.formWrap} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.inputWrap}>
         <label className='self-center' htmlFor='name'>
           Name*
@@ -39,10 +68,26 @@ const EnquiryForm = () => {
           className={styles.textInput}
           type='text'
           autoComplete='name'
-          required
-          onChange={e => setName(e.target.value)}
+          // required
+          // onChange={e => setName(e.target.value)}
+          aria-invalid={errors.name ? 'true' : 'false'}
+          {...register('name', {
+            required: 'Required field',
+            minLength: {
+              value: 3,
+              message:
+                'The minimum required length for this field is 3 characters.'
+            },
+            maxLength: {
+              value: 50,
+              message: 'That is a bit long for a name field.'
+            }
+          })}
         />
       </div>
+      {errors.name && (
+        <div className={styles.inputError}>{errors.name.message}</div>
+      )}
       <div className={styles.inputWrap}>
         <label className='self-center' htmlFor='email'>
           Email*
@@ -53,10 +98,25 @@ const EnquiryForm = () => {
           className={styles.textInput}
           type='email'
           autoComplete='email'
-          required
-          onChange={e => setEmail(e.target.value)}
+          // required
+          // onChange={e => setEmail(e.target.value)}
+          aria-invalid={errors.email ? 'true' : 'false'}
+          {...register('email', {
+            required: 'Required field.',
+            pattern: {
+              value: emailRegExp,
+              message: 'There is something wrong with that email.'
+            },
+            maxLength: {
+              value: 80,
+              message: 'That is a bit long for an email address.'
+            }
+          })}
         />
       </div>
+      {errors.email && (
+        <div className={styles.inputError}>{errors.email.message}</div>
+      )}
       <div className={styles.inputWrap}>
         <label className='self-center' htmlFor='number'>
           Number*
@@ -67,10 +127,25 @@ const EnquiryForm = () => {
           className={styles.textInput}
           type='tel'
           autoComplete='phone'
-          required
-          onChange={e => setNumber(e.target.value)}
+          // required
+          // onChange={e => setNumber(e.target.value)}
+          aria-invalid={errors.number ? 'true' : 'false'}
+          {...register('number', {
+            required: 'Required field',
+            minLength: {
+              value: 10,
+              message: 'Seems a bit short.'
+            },
+            pattern: {
+              value: phoneRegExp,
+              message: "There's something not quite right with this number?"
+            }
+          })}
         />
       </div>
+      {errors.number && (
+        <div className={styles.inputError}>{errors.number.message}</div>
+      )}
       <div className={`${styles.inputWrap} flex-col`}>
         <label className='self-start' htmlFor='message'>
           Message*
@@ -82,10 +157,21 @@ const EnquiryForm = () => {
           rows='4'
           placeholder='How may we assist?'
           className={styles.textareaInput}
-          required
-          onChange={e => setMessage(e.target.value)}
+          // required
+          // onChange={e => setMessage(e.target.value)}
+          aria-invalid={errors.message ? 'true' : 'false'}
+          {...register('message', {
+            required: 'How may we assist?',
+            minLength: {
+              value: 40,
+              message: 'At least 40 characters are required.'
+            }
+          })}
         ></textarea>
       </div>
+      {errors.message && (
+        <div className={styles.inputError}>{errors.message.message}</div>
+      )}
       <button className={styles.button} type='submit'>
         Let{`'`}s Connect
       </button>

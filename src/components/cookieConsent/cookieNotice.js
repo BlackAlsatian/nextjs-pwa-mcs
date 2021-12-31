@@ -53,7 +53,7 @@ const CookieConsent = () => {
     <>
       {!bannerHidden && (
         <CookieCard
-          header='Heads up! Another cookie notice.'
+          header='We use cookies'
           message='We use cookies to personalize content and analyze our website performance to improve your experience.'
           onClick={SetCookie}
           button='Accept'

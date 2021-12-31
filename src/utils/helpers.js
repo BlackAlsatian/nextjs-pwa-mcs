@@ -85,3 +85,8 @@ export function decodeHTML(html) {
 export function randomID() {
   return Math.random().toString(36).substring(7)
 }
+
+export const phoneRegExp =
+  /^(\+?\d{0,4})?\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{3}\)?)\s?-?\s?(\(?\d{4}\)?)?$/
+
+export const emailRegExp = /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
