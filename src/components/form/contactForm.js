@@ -1,5 +1,5 @@
 import styles from './contactForm.module.scss'
-import ContactFormCopy from './contactformCopy'
+import ContactFormCopy from './contactFormCopy'
 import EnquiryForm from './enquiryForm'
 
 const ContactForm = () => {
