@@ -15,11 +15,11 @@ export default function Header({ meta, nav }) {
             <Link href='/'>
               <a>
                 <Image
-                  width={350}
-                  height={310}
+                  width={200}
+                  height={86}
+                  // layout='fixed'
                   alt={`${meta.siteTitle} Logo`}
                   src={meta.siteLogoUrl}
-                  className={styles.logo}
                 />
               </a>
             </Link>

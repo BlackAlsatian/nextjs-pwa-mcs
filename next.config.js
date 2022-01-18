@@ -1,6 +1,7 @@
 const path = require('path')
 
 module.exports = {
+  swcMinify: true,
   trailingSlash: true,
   reactStrictMode: true,
   images: {

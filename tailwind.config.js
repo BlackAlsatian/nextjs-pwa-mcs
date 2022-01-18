@@ -1,14 +1,11 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  // mode: 'jit',
   purge: [
     './src/components/**/*.{js,ts,jsx,tsx}',
     './src/lib/**/*.{js,ts,jsx,tsx}',
     './src/pages/**/*.{js,ts,jsx,tsx}',
     './src/utils/**/*.{js,ts,jsx,tsx}'
-    // './src/components/**/*.{js,ts,jsx,tsx}',
-    // './src/components/**/*.{js,ts,jsx,tsx}',
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
@@ -24,22 +21,12 @@ module.exports = {
       gray: '#6d6e71',
       // blue: '#00a6d0',
       cyan: '#79FFE1'
-      // primary: 'var(--color-primary)',
-      // secondary: 'var(--color-secondary)',
-      // accent: 'var(--color-accent)',
-      // muted: 'var(--color-muted)',
-      // neutral: 'var(--color-neutral)'
     },
     extend: {
       colors: {
         'accent-2': '#EAEAEA',
         'accent-7': '#333',
         success: '#79FFE1',
-        // primary: 'var(--color-primary)',
-        // secondary: 'var(--color-secondary)',
-        // accent: 'var(--color-accent)',
-        // muted: 'var(--color-muted)',
-        // neutral: 'var(--color-neutral)'
         primary: '#00a6d0',
         secondary: '#0073b5',
         accent: '#74cee2',
