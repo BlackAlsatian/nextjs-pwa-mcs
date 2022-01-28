@@ -11,6 +11,7 @@ import {
   PostsByCategoryId,
   PostsByTagId
 } from '../data/posts'
+import { AllProductCategories } from '../data/productCategories'
 import { AllTags, TagBySlug } from '../data/tags'
 
 //all menus
@@ -42,6 +43,9 @@ export const PAGE_BY_URI = PageByUri
 
 // query all categories
 export const ALL_CATEGORIES = AllCategories
+
+// query all product categories
+export const ALL_PRODUCT_CATEGORIES = AllProductCategories
 
 // query category by uri
 export const CATEGORY_BY_URI = CategoryByUri

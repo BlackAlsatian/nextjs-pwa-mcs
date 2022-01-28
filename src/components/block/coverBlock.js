@@ -27,7 +27,7 @@ const CoverBlock = ({
         priority
         layout='fill'
         objectFit='cover'
-        quality={80}
+        quality={90}
         placeholder='blur'
         blurDataURL='/images/placeholder.png'
         className={imgWrap}

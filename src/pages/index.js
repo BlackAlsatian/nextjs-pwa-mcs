@@ -5,6 +5,7 @@ import Block from '../lib/block'
 import { getIndexPageData } from '../query/indexPageQuery'
 
 const Home = ({ data }) => {
+  console.log(data)
   return (
     <Layout data={data}>
       {data?.pageData?.page?.blocks

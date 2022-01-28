@@ -25,7 +25,7 @@ export const getSingularOrPluralText = (count, text) => {
 }
 
 export const includesPageUri = uri => {
-  const excludePages = ['/', '/blog/']
+  const excludePages = ['/', '/blog/', '/products/']
 
   return excludePages.includes(uri)
 }

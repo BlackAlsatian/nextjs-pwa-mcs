@@ -1,10 +1,13 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 import { siteMeta } from '../../config/index'
 import MainNav from '../nav/mainNav'
-import HamburgerMenuButton from '../offCanvas/hamburgerMenuButton'
-import OffCanvasMenu from '../offCanvas/offCanvasMenu'
 import styles from './header.module.scss'
+const HamburgerMenuButton = dynamic(() =>
+  import('../offCanvas/hamburgerMenuButton')
+)
+const OffCanvasMenu = dynamic(() => import('../offCanvas/offCanvasMenu'))
 
 export default function Header({ meta, nav }) {
   return (
