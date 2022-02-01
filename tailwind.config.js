@@ -54,7 +54,8 @@ module.exports = {
       },
       boxShadow: {
         small: '0 5px 10px rgba(0, 0, 0, 0.12)',
-        medium: '0 8px 30px rgba(0, 0, 0, 0.12)'
+        medium: '0 8px 30px rgba(0, 0, 0, 0.12)',
+        '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)'
       },
       dropShadow: {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.35)'
