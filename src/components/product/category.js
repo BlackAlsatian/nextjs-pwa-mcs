@@ -1,6 +1,7 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
-const Category = ({ name, slug, image }) => {
+const Category = ({ title, slug, image, uri }) => {
   const imgWidth = 400
   return (
     <div>
@@ -16,8 +17,14 @@ const Category = ({ name, slug, image }) => {
           blurDataURL='/images/placeholder.png'
         />
       )}
-      <h2>{name}</h2>
+      <h2>{title}</h2>
       <p>slug: {slug}</p>
+      <p>
+        uri:{' '}
+        <Link href={uri}>
+          <a>{title}</a>
+        </Link>
+      </p>
     </div>
   )
 }

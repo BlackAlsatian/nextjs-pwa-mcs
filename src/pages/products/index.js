@@ -1,9 +1,8 @@
 import Layout from '../../components/layout/layout'
 import Categories from '../../components/product/categories'
-import { getProductCategoryPageData } from '../../query/productCategoryQuery'
+import { getProductCategoriesPageData } from '../../query/productCategoryQuery'
 
 const Products = ({ data }) => {
-  console.log(data.pageData)
   return (
     <Layout data={data}>
       <Categories
@@ -17,8 +16,7 @@ const Products = ({ data }) => {
 export default Products
 
 export async function getStaticProps() {
-  const response = await getProductCategoryPageData()
-
+  const response = await getProductCategoriesPageData()
   return {
     props: {
       data: {

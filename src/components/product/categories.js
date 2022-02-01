@@ -19,10 +19,10 @@ const Categories = ({ page, categories }) => {
         : null}
       <section>
         <Container>
-          {productCategories.length > 0 && (
+          {productCategories?.length > 0 && (
             <AllCategories productCategories={productCategories} />
           )}
-          {productCategories.length < 1 && <p>No products found</p>}
+          {productCategories?.length < 1 && <p>No products found</p>}
         </Container>
       </section>
     </>
