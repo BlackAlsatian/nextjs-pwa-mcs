@@ -1,5 +1,5 @@
 .cookieCard {
-  @apply fixed bottom-0 right-0 left-0 py-4 px-24 bg-secondary opacity-80 z-50 w-full;
+  @apply fixed bottom-0 right-0 left-0 py-4 px-24 bg-secondary opacity-80 z-50 w-full drop-shadow-2xl;
   div {
     h4 {
       @apply text-base leading-none my-0 block font-bold text-white uppercase;
@@ -10,10 +10,10 @@
     div {
       @apply flex items-center justify-end;
       button {
-        @apply text-xs underline text-white font-semibold;
+        @apply bg-white py-1 px-2 rounded-sm no-underline hover:bg-neutral text-xs underline text-secondary font-semibold;
       }
       a {
-        @apply block ml-4 text-xs text-white font-semibold;
+        @apply bg-white py-1 px-2 rounded-sm no-underline hover:bg-neutral block ml-4 text-xs text-secondary font-semibold;
       }
     }
   }
