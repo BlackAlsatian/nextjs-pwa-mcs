@@ -6,7 +6,6 @@ import {
 } from '../../../query/productCategoryQuery'
 
 const ProductCategory = ({ data }) => {
-  console.log(data)
   return <p>I am a product category</p>
 }
 

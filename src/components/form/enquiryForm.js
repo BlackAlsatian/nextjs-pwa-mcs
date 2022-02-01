@@ -20,41 +20,13 @@ const EnquiryForm = () => {
   })
 
   const onSubmit = data => {
-    console.log('Form data: ', data)
     const res = fetch('/api/enquiry', {
       method: 'POST',
       body: JSON.stringify(data)
     })
 
-    console.log('form result', res)
-    // e.target.reset()
     reset(getValues)
   }
-
-  // const [name, setName] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [number, setNumber] = useState('')
-  // const [message, setMessage] = useState('')
-
-  //   const handleSubmit = async e => {
-  //     e.preventDefault()
-  //     const data = {
-  //       name,
-  //       lastname: '',
-  //       email,
-  //       number,
-  //       message
-  //     }
-  //     console.log('Form data: ', data)
-  //
-  //     const res = await fetch('/api/enquiry', {
-  //       method: 'POST',
-  //       body: JSON.stringify(data)
-  //     })
-  //
-  //     console.log('form result', res)
-  //     e.target.reset()
-  //   }
 
   return (
     <form className={styles.formWrap} onSubmit={handleSubmit(onSubmit)}>
@@ -68,8 +40,6 @@ const EnquiryForm = () => {
           className={styles.textInput}
           type='text'
           autoComplete='name'
-          // required
-          // onChange={e => setName(e.target.value)}
           aria-invalid={errors.name ? 'true' : 'false'}
           {...register('name', {
             required: 'Required field',
@@ -98,8 +68,6 @@ const EnquiryForm = () => {
           className={styles.textInput}
           type='email'
           autoComplete='email'
-          // required
-          // onChange={e => setEmail(e.target.value)}
           aria-invalid={errors.email ? 'true' : 'false'}
           {...register('email', {
             required: 'Required field.',
@@ -127,8 +95,6 @@ const EnquiryForm = () => {
           className={styles.textInput}
           type='tel'
           autoComplete='phone'
-          // required
-          // onChange={e => setNumber(e.target.value)}
           aria-invalid={errors.number ? 'true' : 'false'}
           {...register('number', {
             required: 'Required field',
@@ -157,8 +123,6 @@ const EnquiryForm = () => {
           rows='4'
           placeholder='How may we assist?'
           className={styles.textareaInput}
-          // required
-          // onChange={e => setMessage(e.target.value)}
           aria-invalid={errors.message ? 'true' : 'false'}
           {...register('message', {
             required: 'How may we assist?',

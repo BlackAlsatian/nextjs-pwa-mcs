@@ -1,6 +1,5 @@
 export default async function handler(req, res) {
   const body = JSON.parse(req.body)
-  console.log('api req: ', body)
   if (!body) {
     return res.status(500).json({ msg: 'Body empty' })
   }
@@ -13,6 +12,5 @@ export default async function handler(req, res) {
     },
     body: JSON.stringify(body)
   })
-  console.log('api res: ', result)
   await res.status(200).json({ status: 'OK', result: result })
 }
