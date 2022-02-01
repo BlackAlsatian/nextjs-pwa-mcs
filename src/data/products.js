@@ -44,6 +44,15 @@ export const ProductCategoryByUri = `
             slug
             uri
             title: name
+            description
+            image {
+                altText
+                sourceUrl
+                mediaDetails {
+                    height
+                    width
+                }
+            }
             seo {
                 ${TaxonomySeoItems}
             }
@@ -52,14 +61,14 @@ export const ProductCategoryByUri = `
 `
 
 export const ProductsByCategory = `
-    query ProductsByCategory ($categoryId: Int!) (
-        products(first: 18, where: { categoryId: $categoryId, status: PUBLISH}) {
+    query ProductsByCategory ($categoryId: Int!) {
+        products(where: { categoryId: $categoryId }) {
             edges {
                 node {
                     id
                     databaseId
                     slug
-                    name
+                    title: name
                     image {
                         altText
                         sourceUrl
@@ -72,5 +81,5 @@ export const ProductsByCategory = `
                 }
             }
         }
-    )
+    }
 `

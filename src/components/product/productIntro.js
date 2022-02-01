@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const Category = ({ title, slug, image, uri }) => {
+const ProductIntro = ({ title, image, description, uri }) => {
   return (
     <div>
       {image && (
@@ -16,9 +16,8 @@ const Category = ({ title, slug, image, uri }) => {
         />
       )}
       <h2>{title}</h2>
-      <p>slug: {slug}</p>
+      <p>{description}</p>
       <p>
-        uri:{' '}
         <Link href={uri}>
           <a>{title}</a>
         </Link>
@@ -27,4 +26,4 @@ const Category = ({ title, slug, image, uri }) => {
   )
 }
 
-export default Category
+export default ProductIntro

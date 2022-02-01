@@ -1,4 +1,6 @@
 import { isEmpty } from 'lodash'
+import Layout from '../../../components/layout/layout'
+import CategoryProducts from '../../../components/product/categoryProducts'
 import { FALLBACK } from '../../../config'
 import {
   getAllProductCategoryData,
@@ -6,7 +8,14 @@ import {
 } from '../../../query/productCategoryQuery'
 
 const ProductCategory = ({ data }) => {
-  return <p>I am a product category</p>
+  return (
+    <Layout data={data}>
+      <CategoryProducts
+        page={data?.pageData?.page}
+        products={data?.pageData?.products}
+      />
+    </Layout>
+  )
 }
 
 export default ProductCategory

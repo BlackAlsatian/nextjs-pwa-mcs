@@ -133,7 +133,8 @@ export async function getAllProductCategoryData({ params }) {
       page: {
         uri: productDocumentData?.pageData?.uri || {},
         seo: productDocumentData?.pageData?.seo || {},
-        pageInfo: productDocumentData?.pageData || {}
+        page: productDocumentData?.pageData || {},
+        products: productDocumentData?.productsData || {}
       }
     })
   }

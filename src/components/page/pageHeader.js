@@ -4,7 +4,7 @@ import ParseHTML from './../../utils/parseHTML'
 import styles from './pageHeader.module.scss'
 
 const PageHeader = ({ title, intro, image, isPost }) => {
-  const featuredImage = image?.node
+  const featuredImage = image?.node || image
   return (
     <section className={`${styles.section} ${isPost && 'h-screen'}`}>
       {image && (
