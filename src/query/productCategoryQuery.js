@@ -7,6 +7,7 @@ import {
   ALL_SITE_META,
   PAGE_BY_URI,
   PRODUCTS_BY_CATEGORY,
+  PRODUCT_BY_SLUG,
   PRODUCT_CATEGORY_BY_URI
 } from '../lib/api'
 import fetcher from '../lib/fetcher'
@@ -65,12 +66,21 @@ export async function getAllProductCategoryPaths() {
   return allPaths
 }
 
-export async function getProductCategoryPageData(slug, query) {
+export async function getProductCategoryPageData(slug, query, isProduct) {
   let data = {}
 
-  const uri = `/products/${slug.join('/')}/`
-  const variables = {
-    uri: uri
+  let productSlug = `/products/${slug.join('/')}/`
+
+  let variables = {
+    uri: productSlug
+  }
+
+  if (isProduct) {
+    productSlug = slug.pop()
+
+    variables = {
+      slug: productSlug
+    }
   }
 
   const pageData = await fetcher(query, { variables })
@@ -102,18 +112,15 @@ export async function getAllProductCategoryData({ params }) {
   }
 
   // return if no category paths
-  if (isEmpty(params?.categorySlug)) {
+  if (isEmpty(params?.slug)) {
     return data
   }
 
-  // categorySlug found, top level category, no Children
-  if (
-    Array.isArray(params?.categorySlug) &&
-    params?.categorySlug.length === 1
-  ) {
+  // slug found, top level category, no Children
+  if (Array.isArray(params?.slug) && params?.slug.length === 1) {
     //get category page data
     categoryResponse = await getProductCategoryPageData(
-      params?.categorySlug,
+      params?.slug,
       PRODUCT_CATEGORY_BY_URI
     )
 
@@ -137,5 +144,49 @@ export async function getAllProductCategoryData({ params }) {
         products: productDocumentData?.productsData || {}
       }
     })
+  }
+
+  // slug found, might be category or product
+  if (Array.isArray(params?.slug) && params?.slug.length > 1) {
+    //get category page data
+    categoryResponse = await getProductCategoryPageData(
+      params?.slug,
+      PRODUCT_CATEGORY_BY_URI
+    )
+
+    // if no category ID is found, check if product page
+    if (
+      isEmpty(categoryResponse?.pageData?.data?.productCategory?.databaseId)
+    ) {
+      productPageType = 'product'
+      const productSlug = params?.slug
+
+      productResponse = await getProductCategoryPageData(
+        productSlug,
+        PRODUCT_BY_SLUG,
+        true
+      )
+
+      productDocumentData = {
+        pageData: productResponse?.pageData?.data?.product,
+        productsData: {}
+      }
+
+      return (data = {
+        type: productPageType,
+        menus: menusData.data || {},
+        meta: metaData.data || {},
+        page: {
+          uri: productDocumentData?.pageData?.uri || {},
+          seo: productDocumentData?.pageData?.seo || {},
+          page: productDocumentData?.pageData || {}
+        }
+      })
+    }
+
+    // get Products
+    productResponse = await getCategoryProducts(
+      categoryResponse?.pageData?.data?.productCategory?.databaseId
+    )
   }
 }

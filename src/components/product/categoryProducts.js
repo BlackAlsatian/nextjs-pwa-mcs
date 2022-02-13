@@ -2,7 +2,7 @@ import Container from '../layout/container'
 import PageHeader from '../page/pageHeader'
 import AllCategoryProducts from './allCategoryProducts'
 
-const CategoryProducts = ({ page, products }) => {
+const CategoryProducts = ({ type, page, products }) => {
   console.log(page)
   const categoryProducts = products?.data?.products?.edges
   return (

@@ -14,6 +14,7 @@ import {
 import {
   AllProductCategories,
   AllProductSlugs,
+  ProductBySlug,
   ProductCategoryByUri,
   ProductsByCategory
 } from '../data/products'
@@ -58,8 +59,11 @@ export const ALL_PRODUCT_SLUGS = AllProductSlugs
 // product categories by uri
 export const PRODUCT_CATEGORY_BY_URI = ProductCategoryByUri
 
+// products by category
 export const PRODUCTS_BY_CATEGORY = ProductsByCategory
 
+// query product by slug
+export const PRODUCT_BY_SLUG = ProductBySlug
 // query category by uri
 export const CATEGORY_BY_URI = CategoryByUri
 

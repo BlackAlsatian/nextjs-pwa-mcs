@@ -53,8 +53,7 @@ const CookieConsent = () => {
     <>
       {!bannerHidden && (
         <CookieCard
-          header='We use cookies'
-          message='We use cookies to personalize content and analyze our website performance to improve your experience.'
+          message='We use cookies to personalise content and analyze our website performance to improve your experience.'
           onClick={SetCookie}
           button='Accept'
           privacyUrl='/privacy-policy/'
@@ -63,7 +62,6 @@ const CookieConsent = () => {
       )}
       {bannerHidden && (
         <CookieCard
-          header='Reset Policy'
           message="This is only for testing purposes and won't be in the final build."
           onClick={UnSetCookie}
           button='Revoke'

@@ -1,4 +1,4 @@
-import { TaxonomySeoItems } from './seo'
+import { SeoItems, TaxonomySeoItems } from './seo'
 
 export const AllProductCategories = `
     query ProductCategoriesQuery {
@@ -82,4 +82,77 @@ export const ProductsByCategory = `
             }
         }
     }
+`
+
+// product by slug
+export const ProductBySlug = `
+query ProductBySlugQuery($slug: ID!) {
+    product(id: $slug, idType: SLUG) {
+      id
+      productId: databaseId
+      averageRating
+      slug
+      description
+      galleryImages {
+        nodes {
+          id
+          title
+          altText
+          mediaItemUrl
+        }
+      }
+      image {
+        id
+        uri
+        title
+        srcSet
+        sourceUrl
+      }
+      name
+      ... on SimpleProduct {
+        price
+        id
+        regularPrice
+        uri
+        seo {
+            ${SeoItems}
+        }
+      }
+      ... on VariableProduct {
+        price
+        id
+        regularPrice
+        uri
+        seo {
+            ${SeoItems}
+        }
+      }
+      ... on ExternalProduct {
+        price
+        id
+        regularPrice
+        externalUrl
+        uri
+        seo {
+            ${SeoItems}
+        }
+      }
+      ... on GroupProduct {
+        products {
+          nodes {
+            ... on SimpleProduct {
+              id
+              price
+              regularPrice
+              uri
+              seo {
+                  ${SeoItems}
+              }
+            }
+          }
+        }
+        id
+      }
+    }
+  }
 `

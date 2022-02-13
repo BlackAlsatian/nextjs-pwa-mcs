@@ -1,16 +1,18 @@
 import { isEmpty } from 'lodash'
-import Layout from '../../../components/layout/layout'
-import CategoryProducts from '../../../components/product/categoryProducts'
-import { FALLBACK } from '../../../config'
+import Layout from '../../components/layout/layout'
+import CategoryProducts from '../../components/product/categoryProducts'
+import { FALLBACK } from '../../config'
 import {
   getAllProductCategoryData,
   getAllProductCategoryPaths
-} from '../../../query/productCategoryQuery'
+} from '../../query/productCategoryQuery'
 
 const ProductCategory = ({ data }) => {
+  console.log('product slug data: ', data)
   return (
     <Layout data={data}>
       <CategoryProducts
+        type={data?.pageType}
         page={data?.pageData?.page}
         products={data?.pageData?.products}
       />
@@ -25,6 +27,7 @@ export async function getStaticProps({ params }) {
 
   if (
     isEmpty(response) ||
+    isEmpty(response.type) ||
     isEmpty(response.page.uri) ||
     isEmpty(response.page)
   ) {
@@ -38,6 +41,7 @@ export async function getStaticProps({ params }) {
       data: {
         menus: response.menus || {},
         siteMeta: response.meta || {},
+        pageType: response.type || {},
         pageData: response.page || {}
       }
     },
