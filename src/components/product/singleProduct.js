@@ -2,7 +2,6 @@ import Image from 'next/image'
 import ParseHTML from './../../utils/parseHTML'
 
 const SingleProduct = ({ product }) => {
-  console.log('single product: ', product)
   return (
     <div>
       <Image

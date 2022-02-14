@@ -3,7 +3,7 @@ import Container from '../layout/container'
 import ParseHTML from './../../utils/parseHTML'
 import styles from './pageHeader.module.scss'
 
-const PageHeader = ({ title, intro, image, isPost }) => {
+const PageHeader = ({ title, intro, image, isPost, isProduct }) => {
   const featuredImage = image?.node || image
   return (
     <section className={`${styles.section} ${isPost && 'h-screen'}`}>
@@ -25,9 +25,7 @@ const PageHeader = ({ title, intro, image, isPost }) => {
       <div className={`${styles.headerWrap} ${isPost && 'h-screen'}`}>
         <Container>
           <h1 dangerouslySetInnerHTML={{ __html: title }} />
-          {intro && (
-            <p dangerouslySetInnerHTML={{ __html: ParseHTML(intro) }} />
-          )}
+          {intro && !isProduct && ParseHTML(intro)}
         </Container>
       </div>
     </section>
@@ -35,6 +33,7 @@ const PageHeader = ({ title, intro, image, isPost }) => {
 }
 
 PageHeader.defaultProps = {
-  isPost: false
+  isPost: false,
+  isProduct: false
 }
 export default PageHeader

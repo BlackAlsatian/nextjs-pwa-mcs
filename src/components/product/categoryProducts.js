@@ -11,6 +11,7 @@ const CategoryProducts = ({ type, page, products }) => {
         title={page?.title}
         intro={page?.description}
         image={page?.image}
+        isProduct={type === 'product'}
       />
       <section>
         <Container>
