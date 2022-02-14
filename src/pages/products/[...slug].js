@@ -8,7 +8,6 @@ import {
 } from '../../query/productCategoryQuery'
 
 const ProductCategory = ({ data }) => {
-  console.log('product slug data: ', data)
   return (
     <Layout data={data}>
       <CategoryProducts

@@ -1,7 +1,6 @@
 import ProductIntro from './productIntro'
 
 const AllCategoryProducts = ({ categoryProducts, categoryUri }) => {
-  console.log(categoryProducts)
   return (
     <>
       {categoryProducts ? (

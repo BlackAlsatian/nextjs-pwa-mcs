@@ -102,13 +102,18 @@ query ProductBySlugQuery($slug: ID!) {
         }
       }
       image {
+        altText
         id
         uri
         title
         srcSet
         sourceUrl
+        mediaDetails {
+            height
+            width
+        }
       }
-      name
+      title: name
       ... on SimpleProduct {
         price
         id
