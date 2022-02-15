@@ -2,7 +2,9 @@
 
 A web app for Motion Control Systems, IIoT & Edge Solutions provider.
 
-## Next.js + Headless WordPress + TailwindCSS Starter
+Includes a product catalogue with quoting system.
+
+## Next.js + Headless WordPress/WooCommerce + TailwindCSS Starter
 
 Styling with TailwindCSS, Sass and CSS Modules.
 Source from a WP GraphQL endpoint.
@@ -13,6 +15,7 @@ Source from a WP GraphQL endpoint.
 - Posts
 - Tags
 - Pages with nested pages
+- Product catalogue with nested categories
 - Replaces internal links with 'next/link'
 - Replaces 'inline images' with 'next/image'
 - Off Canvas menu
@@ -21,9 +24,12 @@ Source from a WP GraphQL endpoint.
 ## WordPress Plugins
 
 - [WPGraphQL](https://wordpress.org/plugins/wp-graphql/)
+- [WP GraphQL Gutenberg](https://github.com/pristas-peter/wp-graphql-gutenberg)
 - [Add WPGraphQL SEO](https://wordpress.org/plugins/add-wpgraphql-seo/)
 - [Headless CMS](https://wordpress.org/plugins/headless-cms/)
 - [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/)
+- [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+- [WPGraphQL WooCommerce (WooGraphQL)](https://github.com/wp-graphql/wp-graphql-woocommerce)
 
 ## Setup
 
