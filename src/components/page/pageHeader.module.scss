@@ -19,7 +19,7 @@
   @apply object-center;
 }
 .headerWrap {
-  @apply relative pt-48 pb-24 lg:pt-60 lg:pb-44 bg-black bg-opacity-30 z-50 w-full;
+  @apply relative pt-48 pb-24 lg:pt-60 lg:pb-44 bg-black bg-opacity-30 z-50 w-full text-white;
   h1 {
     // @apply md:text-7xl leading-none capitalize text-white;
     @apply leading-tighter md:w-1/3 mb-4 tracking-normal break-normal text-white;

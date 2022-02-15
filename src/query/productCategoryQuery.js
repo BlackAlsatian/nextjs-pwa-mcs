@@ -8,6 +8,7 @@ import {
   PAGE_BY_URI,
   PRODUCTS_BY_CATEGORY,
   PRODUCT_BY_SLUG,
+  PRODUCT_CATEGORY_BY_SLUG,
   PRODUCT_CATEGORY_BY_URI
 } from '../lib/api'
 import fetcher from '../lib/fetcher'
@@ -66,24 +67,36 @@ export async function getAllProductCategoryPaths() {
   return allPaths
 }
 
-export async function getProductCategoryPageData(slug, query, isProduct) {
+export async function getProductCategoryPageData(slug, query, bySlug) {
   let data = {}
 
-  let productSlug = `/products/${slug.join('/')}/`
+  const uri = `/products/${slug.join('/')}/`
+
+  const categorySlug = slug[slug.length - 1]
 
   let variables = {
-    uri: productSlug
+    uri: uri
   }
 
-  if (isProduct) {
-    productSlug = slug.pop()
-
+  if (bySlug) {
     variables = {
-      slug: productSlug
+      slug: categorySlug
     }
   }
 
   const pageData = await fetcher(query, { variables })
+
+  return (data = { pageData })
+}
+
+export async function getProductPageData(slug) {
+  let data = {}
+
+  const variables = {
+    slug: slug.pop()
+  }
+
+  const pageData = await fetcher(PRODUCT_BY_SLUG, { variables })
 
   return (data = { pageData })
 }
@@ -116,8 +129,8 @@ export async function getAllProductCategoryData({ params }) {
     return data
   }
 
-  // slug found, top level category, no Children
-  if (Array.isArray(params?.slug) && params?.slug.length === 1) {
+  // slug found, top level category
+  if (Array.isArray(params?.slug) && params?.slug?.length === 1) {
     //get category page data
     categoryResponse = await getProductCategoryPageData(
       params?.slug,
@@ -151,21 +164,15 @@ export async function getAllProductCategoryData({ params }) {
     //get category page data
     categoryResponse = await getProductCategoryPageData(
       params?.slug,
-      PRODUCT_CATEGORY_BY_URI
+      PRODUCT_CATEGORY_BY_SLUG,
+      true
     )
 
-    // if no category ID is found, check if product page
-    if (
-      isEmpty(categoryResponse?.pageData?.data?.productCategory?.databaseId)
-    ) {
+    // if no category ID is found, check if product exists
+    if (categoryResponse?.pageData?.data?.productCategory === null) {
       productPageType = 'product'
-      const productSlug = params?.slug
 
-      productResponse = await getProductCategoryPageData(
-        productSlug,
-        PRODUCT_BY_SLUG,
-        true
-      )
+      productResponse = await getProductPageData(params?.slug)
 
       productDocumentData = {
         pageData: productResponse?.pageData?.data?.product,
@@ -184,9 +191,26 @@ export async function getAllProductCategoryData({ params }) {
       })
     }
 
-    // get Products
+    // if no product was found and category id exists get Products
     productResponse = await getCategoryProducts(
       categoryResponse?.pageData?.data?.productCategory?.databaseId
     )
+
+    productDocumentData = {
+      pageData: categoryResponse?.pageData?.data?.productCategory,
+      productsData: productResponse
+    }
+
+    return (data = {
+      type: productPageType,
+      menus: menusData.data || {},
+      meta: metaData.data || {},
+      page: {
+        uri: productDocumentData?.pageData?.uri || {},
+        seo: productDocumentData?.pageData?.seo || {},
+        page: productDocumentData?.pageData || {},
+        products: productDocumentData?.productsData || {}
+      }
+    })
   }
 }

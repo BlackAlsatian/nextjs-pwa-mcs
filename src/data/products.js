@@ -1,5 +1,33 @@
 import { SeoItems, TaxonomySeoItems } from './seo'
 
+export const ImageItems = `
+    altText
+    id
+    uri
+    title
+    srcSet
+    sourceUrl
+    mediaDetails {
+        height
+        width
+    }
+`
+
+export const CategoryItems = `
+    id
+    databaseId
+    parentId
+    slug
+    uri
+    title: name
+    description
+    image {
+        ${ImageItems}
+    }
+    seo {
+        ${TaxonomySeoItems}
+    }
+`
 export const AllProductCategories = `
     query ProductCategoriesQuery {
         productCategories {
@@ -10,12 +38,7 @@ export const AllProductCategories = `
                     slug
                     uri
                     image {
-                        sourceUrl
-                        altText
-                        mediaDetails {
-                            height
-                            width
-                        }
+                        ${ImageItems}
                     }
                 }
             }
@@ -38,24 +61,15 @@ export const AllProductSlugs = `
 export const ProductCategoryByUri = `
     query ProductCategoryByUriQuery ($uri: ID!) {
         productCategory(id: $uri, idType: URI) {
-            id
-            databaseId
-            parentId
-            slug
-            uri
-            title: name
-            description
-            image {
-                altText
-                sourceUrl
-                mediaDetails {
-                    height
-                    width
-                }
-            }
-            seo {
-                ${TaxonomySeoItems}
-            }
+            ${CategoryItems}
+        }
+    }
+`
+
+export const ProductCategoryBySlug = `
+    query ProductCategoryBySlugQuery ($slug: ID!) {
+        productCategory(id: $slug, idType: SLUG) {
+            ${CategoryItems}
         }
     }
 `
@@ -70,12 +84,7 @@ export const ProductsByCategory = `
                     slug
                     title: name
                     image {
-                        altText
-                        sourceUrl
-                        mediaDetails {
-                            width
-                            height
-                        }
+                        ${ImageItems}
                     }
                     shortDescription(format: RENDERED)
                 }
@@ -102,16 +111,7 @@ query ProductBySlugQuery($slug: ID!) {
         }
       }
       image {
-        altText
-        id
-        uri
-        title
-        srcSet
-        sourceUrl
-        mediaDetails {
-            height
-            width
-        }
+            ${ImageItems}
       }
       title: name
       ... on SimpleProduct {
