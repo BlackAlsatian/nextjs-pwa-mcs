@@ -1,14 +1,12 @@
 .cookieCard {
-  @apply fixed bottom-0 right-0 left-0 py-4 px-24 bg-secondary opacity-80 z-50 w-full drop-shadow-2xl;
+  @apply fixed bottom-0 right-0 left-0 py-4 px-4 md:px-24 bg-secondary opacity-80 z-50 w-full drop-shadow-2xl;
   div {
-    h4 {
-      @apply text-base leading-none my-0 block font-bold text-white uppercase;
-    }
+    @apply flex flex-col md:flex-row md:items-center;
     p {
-      @apply my-0 text-white flex-1 text-xs;
+      @apply my-0 text-white flex-1 text-xs pb-2 md:pb-0;
     }
     div {
-      @apply flex items-center justify-end;
+      @apply flex flex-row items-center justify-end;
       button {
         @apply bg-white py-1 px-2 rounded-sm no-underline hover:bg-neutral text-xs underline text-secondary font-semibold;
       }

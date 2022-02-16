@@ -59,10 +59,10 @@
   }
   h1,
   h2 {
-    @apply leading-tight  md:pr-8 tracking-tighter;
+    @apply leading-tight md:pr-8 tracking-tighter;
   }
   h1 {
-    @apply text-7xl md:text-8xl font-bold uppercase;
+    @apply text-6xl md:text-8xl font-bold uppercase;
   }
   h2 {
     @apply text-6xl md:text-7xl font-semibold;
