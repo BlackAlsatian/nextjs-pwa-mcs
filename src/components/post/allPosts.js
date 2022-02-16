@@ -1,10 +1,9 @@
-import styles from './allPosts.module.scss'
 import PostIntro from './postIntro'
 
 const AllPosts = ({ posts }) => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.gridWrap}>
+    <div className='gridWrapper'>
+      <div className='gridWrap'>
         {posts.map(post => {
           return (
             <PostIntro

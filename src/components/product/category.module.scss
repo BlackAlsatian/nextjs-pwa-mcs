@@ -1,0 +1,12 @@
+.wrapper {
+  @apply shadow-lg;
+  h2 {
+    @apply mb-3 text-3xl leading-tight text-left;
+    a {
+      @apply no-underline hover:underline;
+    }
+  }
+}
+.image {
+  @apply mb-5;
+}

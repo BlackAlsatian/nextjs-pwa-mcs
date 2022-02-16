@@ -132,6 +132,13 @@
     @apply text-center text-sm;
   }
 
+  .gridWrapper {
+    @apply min-h-full mt-24;
+    .gridWrap {
+      @apply grid grid-cols-1 gap-y-20 mb-32 md:grid-cols-2 lg:grid-cols-3 md:gap-x-8 lg:gap-x-8 md:gap-y-8;
+    }
+  }
+
   // blockquote {
   //   @apply border-l-4 border-gray-500 bg-gray-200 italic ml-0 py-4 px-6;
   // }
