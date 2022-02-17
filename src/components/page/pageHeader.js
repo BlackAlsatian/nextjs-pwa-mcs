@@ -7,7 +7,7 @@ const PageHeader = ({ title, intro, image, isPost, isProduct }) => {
   const featuredImage = image?.node || image
   return (
     <section className={`${styles.section} ${isPost && 'h-screen'}`}>
-      {image && (
+      {image && !isProduct && (
         <Image
           alt={featuredImage.altText}
           src={featuredImage.sourceUrl}

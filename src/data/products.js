@@ -108,7 +108,7 @@ query ProductBySlugQuery($slug: ID!) {
     product(id: $slug, idType: SLUG) {
       id
       productId: databaseId
-      averageRating
+      sku
       slug
       description
       galleryImages {
@@ -123,6 +123,13 @@ query ProductBySlugQuery($slug: ID!) {
             ${ImageItems}
       }
       title: name
+      productCategories {
+        nodes {
+            id
+            title: name
+            uri
+        }
+      }
       ... on SimpleProduct {
         price
         id

@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import ParseHTML from '../../utils/parseHTML'
 import styles from './productIntro.module.scss'
 
 const ProductIntro = ({ title, image, description, uri, price }) => {
@@ -37,7 +38,7 @@ const ProductIntro = ({ title, image, description, uri, price }) => {
             <a title={title}>{title}</a>
           </Link>
         </h2>
-        <p>{description}</p>
+        <p>{ParseHTML(description)}</p>
         <p>{price}</p>
         <p className={styles.readOn}>
           <Link href={uri}>

@@ -1,0 +1,21 @@
+.product {
+  @apply flex items-start justify-center min-h-full my-24;
+}
+.col {
+  @apply w-full md:w-1/2 p-4;
+  p {
+    @apply text-light mb-12;
+    &.price {
+      @apply text-black text-xl;
+    }
+    &.sku {
+      @apply text-sm uppercase mb-1;
+    }
+    &.category {
+      @apply text-sm mt-0;
+    }
+  }
+  button {
+    @apply bg-primary hover:bg-secondary py-4 px-6 w-full text-white font-semibold mb-8;
+  }
+}
