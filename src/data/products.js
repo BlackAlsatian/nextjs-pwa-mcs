@@ -87,6 +87,15 @@ export const ProductsByCategory = `
                         ${ImageItems}
                     }
                     shortDescription(format: RENDERED)
+                    ... on VariableProduct {
+                        regularPrice
+                      }
+                      ... on ExternalProduct {
+                        regularPrice
+                      }
+                      ... on SimpleProduct {
+                        regularPrice
+                      }
                 }
             }
         }

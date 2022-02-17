@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import styles from './productIntro.module.scss'
 
-const ProductIntro = ({ title, image, description, uri }) => {
+const ProductIntro = ({ title, image, description, uri, price }) => {
   const placeholderImage = {
     altText: 'No image available',
     sourceUrl:
@@ -38,6 +38,7 @@ const ProductIntro = ({ title, image, description, uri }) => {
           </Link>
         </h2>
         <p>{description}</p>
+        <p>{price}</p>
         <p className={styles.readOn}>
           <Link href={uri}>
             <a title={`Read more about ${title}`}>Details</a>

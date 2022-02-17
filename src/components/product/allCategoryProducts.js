@@ -12,6 +12,7 @@ const AllCategoryProducts = ({ categoryProducts, categoryUri }) => {
               image={product?.node?.image}
               description={product?.node?.shortDescription}
               uri={`${categoryUri}${product?.node?.slug}/`}
+              price={product?.node?.regularPrice}
             />
           ))
         ) : (
