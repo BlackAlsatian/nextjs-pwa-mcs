@@ -30,7 +30,7 @@ export const CategoryItems = `
 `
 export const AllProductCategories = `
     query ProductCategoriesQuery {
-        productCategories {
+        productCategories(first: 30) {
             edges {
                 node {
                     id
@@ -48,7 +48,7 @@ export const AllProductCategories = `
 
 export const AllProductSlugs = `
     query ProductSlugQuery {
-        products(first: 5000) {
+        products(first: 500) {
             nodes {
                 id
                 slug
@@ -76,7 +76,7 @@ export const ProductCategoryBySlug = `
 
 export const ProductsByCategory = `
     query ProductsByCategory ($categoryId: Int!) {
-        products(where: { categoryId: $categoryId }) {
+        products(first: 500, where: { categoryId: $categoryId }) {
             edges {
                 node {
                     id
