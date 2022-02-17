@@ -1,27 +1,49 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import styles from './productIntro.module.scss'
 
 const ProductIntro = ({ title, image, description, uri }) => {
+  const placeholderImage = {
+    altText: 'No image available',
+    sourceUrl:
+      'https://wp.motioncontrolsystems.co.za/wp-content/uploads/woocommerce-placeholder.png',
+    mediaDetails: {
+      height: 800,
+      width: 800
+    }
+  }
+
+  const productImage = image || placeholderImage
   return (
-    <div>
-      {image && (
-        <Image
-          width={image?.mediaDetails?.width}
-          height={image?.mediaDetails?.height}
-          alt={image?.altText}
-          src={image?.sourceUrl}
-          layout='responsive'
-          placeholder='blur'
-          blurDataURL='/images/placeholder.png'
-        />
-      )}
-      <h2>{title}</h2>
-      <p>{description}</p>
-      <p>
+    <div className={styles.wrapper}>
+      <div className={styles.image}>
         <Link href={uri}>
-          <a>{title}</a>
+          <a title={productImage?.altText}>
+            <Image
+              width={productImage?.mediaDetails?.width}
+              height={productImage?.mediaDetails?.height}
+              alt={productImage?.altText}
+              src={productImage?.sourceUrl}
+              layout='responsive'
+              placeholder='blur'
+              blurDataURL='/images/placeholder.png'
+            />
+          </a>
         </Link>
-      </p>
+      </div>
+      <div className={styles.productInfo}>
+        <h2>
+          <Link href={uri}>
+            <a title={title}>{title}</a>
+          </Link>
+        </h2>
+        <p>{description}</p>
+        <p className={styles.readOn}>
+          <Link href={uri}>
+            <a title={`Read more about ${title}`}>Details</a>
+          </Link>
+        </p>
+      </div>
     </div>
   )
 }

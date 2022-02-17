@@ -12,16 +12,14 @@ const Category = ({ title, image, uri }) => {
       width: 800
     }
   }
-  console.log('image: ', image)
-  console.log('placeholder image: ', placeholderImage)
+
   const categoryImage = image || placeholderImage
-  console.log('category image: ', categoryImage)
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.image}>
-        {/* {image && ( */}
         <Link href={uri}>
-          <a alt={title}>
+          <a title={title}>
             <Image
               width={categoryImage?.mediaDetails?.width}
               height={categoryImage?.mediaDetails?.height}
@@ -33,7 +31,6 @@ const Category = ({ title, image, uri }) => {
             />
           </a>
         </Link>
-        {/* )} */}
       </div>
       <div className={styles.name}>
         <h2>
