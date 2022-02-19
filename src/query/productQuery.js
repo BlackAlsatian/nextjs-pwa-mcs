@@ -1,9 +1,9 @@
 import { isEmpty } from 'lodash'
 import {
   ALL_MENUS,
-  ALL_PRODUCTS_SLUGS,
   ALL_PRODUCT_CATEGORIES,
   ALL_PRODUCT_CATEGORY_SLUGS,
+  ALL_PRODUCT_SLUGS,
   ALL_SITE_META,
   PAGE_BY_URI,
   PRODUCTS_BY_CATEGORY,
@@ -35,7 +35,7 @@ export async function getProductCategoriesPageData() {
 
 export async function getAllProductCategoryPaths() {
   const allProductCategories = await getSlugs(ALL_PRODUCT_CATEGORY_SLUGS)
-  const allProducts = await getSlugs(ALL_PRODUCTS_SLUGS)
+  const allProducts = await getSlugs(ALL_PRODUCT_SLUGS)
 
   const allPaths = []
 
