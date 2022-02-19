@@ -13,6 +13,7 @@ import {
 } from '../data/posts'
 import {
   AllProductCategories,
+  AllProductCategorySlugs,
   AllProductSlugs,
   ProductBySlug,
   ProductCategoryBySlug,
@@ -53,6 +54,9 @@ export const ALL_CATEGORIES = AllCategories
 
 // query all product categories
 export const ALL_PRODUCT_CATEGORIES = AllProductCategories
+
+// product category slugs
+export const ALL_PRODUCT_CATEGORY_SLUGS = AllProductCategorySlugs
 
 // query all product slugs
 export const ALL_PRODUCT_SLUGS = AllProductSlugs

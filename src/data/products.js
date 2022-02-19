@@ -28,6 +28,18 @@ export const CategoryItems = `
         ${TaxonomySeoItems}
     }
 `
+
+export const AllProductCategorySlugs = `
+    query ProductCategoriesSlugQuery {
+        productCategories(first: 50) {
+            edges {
+                node {
+                    uri
+                }
+            }
+        }
+    }
+`
 export const AllProductCategories = `
     query ProductCategoriesQuery {
         productCategories(first: 30) {
@@ -50,8 +62,6 @@ export const AllProductSlugs = `
     query ProductSlugQuery {
         products(first: 500) {
             nodes {
-                id
-                slug
                 uri
             }
         }
