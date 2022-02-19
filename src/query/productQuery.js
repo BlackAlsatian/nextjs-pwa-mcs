@@ -72,18 +72,9 @@ export async function getProductCategoryPageData(slug, query, bySlug) {
   const uri = `/products/${slug.join('/')}/`
 
   const categorySlug = slug[slug.length - 1]
-
-  // let variables = {
-  //   uri: uri
-  // }
-
-  // if (bySlug) {
   let variables = {
     slug: categorySlug
   }
-  // }
-
-  // const pageData = await fetcher(query, { variables })
   const pageData = await fetcher(PRODUCT_CATEGORY_BY_SLUG, { variables })
 
   return (data = { pageData })
@@ -117,10 +108,6 @@ export async function getAllProductCategoryData({ params }) {
 
   let data = {}
   let productPageType = 'category'
-  // let productDocumentData = {
-  //   pageData: {},
-  //   productsData: {}
-  // }
 
   // return if no category paths
   if (isEmpty(params?.slug)) {
@@ -138,11 +125,6 @@ export async function getAllProductCategoryData({ params }) {
 
       const productResponse = await getProductPageData(params?.slug)
 
-      // productDocumentData = {
-      //   pageData: productResponse?.pageData?.data?.product,
-      //   productsData: {}
-      // }
-
       return (data = {
         type: productPageType,
         menus: menusData.data || {},
@@ -159,11 +141,6 @@ export async function getAllProductCategoryData({ params }) {
     const productResponse = await getCategoryProducts(
       categoryResponse?.pageData?.data?.productCategory?.databaseId
     )
-
-    // productDocumentData = {
-    //   pageData: categoryResponse?.pageData?.data?.productCategory,
-    //   productsData: productResponse
-    // }
 
     return (data = {
       type: productPageType,

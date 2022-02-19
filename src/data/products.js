@@ -2,10 +2,7 @@ import { SeoItems, TaxonomySeoItems } from './seo'
 
 export const ImageItems = `
     altText
-    id
-    uri
     title
-    srcSet
     sourceUrl
     mediaDetails {
         height
