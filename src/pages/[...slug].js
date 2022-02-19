@@ -1,10 +1,17 @@
 import { isEmpty } from 'lodash'
+import { useRouter } from 'next/router'
 import Layout from '../components/layout/layout'
+import Spinner from '../components/loader/spinner'
 import Page from '../components/page/page'
 import { FALLBACK } from '../config'
 import { getAllPageSlugs, getPageData } from '../query/pageQuery'
 
 const SinglePage = ({ data }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Spinner />
+  }
   return (
     <Layout data={data}>
       <Page page={data?.pageData?.pageInfo} />

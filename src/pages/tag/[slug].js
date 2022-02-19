@@ -1,10 +1,17 @@
 import { isEmpty } from 'lodash'
+import { useRouter } from 'next/router'
 import Layout from '../../components/layout/layout'
+import Spinner from '../../components/loader/spinner'
 import Posts from '../../components/post/posts'
 import { FALLBACK } from '../../config'
 import { getAllTagPostsData, getAllTagSlugs } from '../../query/tagQuery'
 
 const SingleTag = ({ data }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Spinner />
+  }
   return (
     <Layout data={data}>
       <Posts data={data?.pageData} title={data?.pageData?.pageInfo?.title} />

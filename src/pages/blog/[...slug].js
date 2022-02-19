@@ -1,10 +1,17 @@
 import { isEmpty } from 'lodash'
-import { getAllCatPostsData, getAllCatPostSlugs } from '../../query/blogQuery'
+import { useRouter } from 'next/router'
 import Layout from '../../components/layout/layout'
+import Spinner from '../../components/loader/spinner'
 import Post from '../../components/post/post'
 import { FALLBACK } from '../../config'
+import { getAllCatPostsData, getAllCatPostSlugs } from '../../query/blogQuery'
 
 const BlogCatPost = ({ data }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Spinner />
+  }
   return (
     <Layout data={data}>
       <Post post={data?.pageData?.pageInfo} />

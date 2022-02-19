@@ -4,7 +4,6 @@ import ParseHTML from './../../utils/parseHTML'
 import styles from './singleProduct.module.scss'
 
 const SingleProduct = ({ product }) => {
-  console.log('product: ', product)
   return (
     <div className={styles.product}>
       <div className={styles.col}>

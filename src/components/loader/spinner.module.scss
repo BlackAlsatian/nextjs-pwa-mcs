@@ -1,0 +1,20 @@
+.container {
+  @apply flex items-center justify-center h-screen;
+}
+.spinner {
+  @apply inline-block w-14 h-14 border-4 rounded-full border animate-spin text-primary opacity-70;
+  vertical-align: -0.125em;
+  border: 0.2em solid;
+  border-right-color: transparent;
+}
+.loading {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}

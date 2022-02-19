@@ -1,13 +1,20 @@
 import { isEmpty } from 'lodash'
+import { useRouter } from 'next/router'
 import Layout from '../../components/layout/layout'
+import Spinner from '../../components/loader/spinner'
 import CategoryProducts from '../../components/product/categoryProducts'
 import { FALLBACK } from '../../config'
 import {
   getAllProductCategoryData,
   getAllProductCategoryPaths
-} from '../../query/productCategoryQuery'
+} from '../../query/productQuery'
 
 const ProductCategory = ({ data }) => {
+  const router = useRouter()
+
+  if (router.isFallback) {
+    return <Spinner />
+  }
   return (
     <Layout data={data}>
       <CategoryProducts

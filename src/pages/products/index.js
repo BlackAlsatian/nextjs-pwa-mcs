@@ -1,6 +1,6 @@
 import Layout from '../../components/layout/layout'
 import Categories from '../../components/product/categories'
-import { getProductCategoriesPageData } from '../../query/productCategoryQuery'
+import { getProductCategoriesPageData } from '../../query/productQuery'
 
 const Products = ({ data }) => {
   return (
