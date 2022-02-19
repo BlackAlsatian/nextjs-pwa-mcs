@@ -2,7 +2,6 @@ import { isEmpty } from 'lodash'
 import {
   ALL_MENUS,
   ALL_PRODUCTS_SLUGS,
-  // ALL_PRODUCTS,
   ALL_PRODUCT_CATEGORIES,
   ALL_SITE_META,
   PAGE_BY_URI,

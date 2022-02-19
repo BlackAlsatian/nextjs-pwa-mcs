@@ -18,7 +18,6 @@ module.exports = {
       black: '#181818',
       white: colors.white,
       gray: '#6d6e71',
-      // blue: '#00a6d0',
       cyan: '#79FFE1'
     },
     extend: {
@@ -30,7 +29,6 @@ module.exports = {
         secondary: '#0073b5',
         accent: '#74cee2',
         'accent-1': '#ade9f7',
-        // muted: '#6d6e71',
         muted: '#6d6e71',
         neutral: '#74cee2',
         light: '#868686',

@@ -1,4 +1,3 @@
-import fetcher from '../lib/fetcher'
 import {
   ALL_MENUS,
   ALL_SITE_META,
@@ -6,6 +5,7 @@ import {
   POSTS_BY_TAG_ID,
   TAG_BY_SLUG
 } from '../lib/api'
+import fetcher from '../lib/fetcher'
 
 // get all tag paths
 export async function getAllTagSlugs() {

@@ -20,7 +20,6 @@ function Block({ block }) {
   }
 
   return <BlockComponent {...attributes} />
-  // })
 }
 
 export default Block
