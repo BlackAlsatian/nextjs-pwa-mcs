@@ -38,7 +38,7 @@ export async function getStaticProps({ params }) {
         pageData: tagData?.page || {}
       }
     },
-    revalidate: 1
+    revalidate: 60
   }
 }
 

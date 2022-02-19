@@ -24,6 +24,7 @@ export async function getStaticProps() {
         siteMeta: response.meta || {},
         pageData: response.page || {}
       }
-    }
+    },
+    revalidate: 60
   }
 }

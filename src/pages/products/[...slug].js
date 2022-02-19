@@ -51,7 +51,7 @@ export async function getStaticProps({ params }) {
         pageData: response.page || {}
       }
     },
-    revalidate: 1
+    revalidate: 60
   }
 }
 

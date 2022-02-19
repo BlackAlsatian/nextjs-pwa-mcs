@@ -35,6 +35,6 @@ export async function getStaticProps() {
         pageData: response.page || {}
       }
     },
-    revalidate: 1
+    revalidate: 10
   }
 }
