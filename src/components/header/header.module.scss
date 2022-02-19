@@ -1,12 +1,9 @@
 .wrapper {
-  @apply flex-row flex items-start md:justify-between p-8 top-0 left-0 right-0 absolute z-100;
-  div {
-    @apply w-1/2;
-  }
+  @apply flex-row flex items-start justify-between md:items-center p-5 md:p-8 top-0 left-0 right-0 absolute z-60;
 }
 .left {
-  @apply flex flex-col items-start justify-start;
-  min-width: 200px !important;
+  @apply flex flex-shrink flex-col items-start md:items-center justify-center cursor-pointer max-w-min md:max-w-max;
+  min-width: 140px !important;
   h1 {
     @apply leading-tighter;
   }
@@ -19,7 +16,7 @@
 }
 .right {
   // font-family: 'Barlow', sans-serif;
-  @apply flex flex-row items-center justify-end;
+  @apply flex flex-row flex-shrink-0 md:flex-auto items-start justify-end;
   span {
     @apply sr-only;
   }

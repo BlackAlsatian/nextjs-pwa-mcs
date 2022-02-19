@@ -1,9 +1,9 @@
 .main {
-  @apply justify-items-start px-4 items-start flex z-100 grow w-full;
+  @apply px-4 items-start flex z-60 grow w-full items-center;
   ul {
     @apply flex flex-col items-start justify-start py-4;
     li {
-      @apply block px-2;
+      @apply flex justify-between px-2;
       a {
         @apply font-extrabold no-underline hover:underline text-3xl text-primary hover:text-secondary hover:no-underline transition-colors duration-300 ease-in-out;
       }

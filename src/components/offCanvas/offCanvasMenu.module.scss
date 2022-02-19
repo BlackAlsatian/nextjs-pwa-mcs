@@ -1,11 +1,12 @@
 .wrapper {
-  @apply transition duration-700 ease-in-out transform flex flex-col items-center w-full top-0 left-0 right-0 fixed p-8 z-80 h-full bg-white lg:hidden lg:w-0 lg:-right-full;
+  @apply flex flex-col items-center lg:hidden bg-white fixed w-0 h-screen top-0 right-0 overflow-x-hidden z-20 transform overflow-y-hidden;
+  // transition duration-700 ease-in-out lg:right-full;
 }
 .close {
-  @apply opacity-0;
+  @apply opacity-0 translate-x-full transition-all duration-500 ease-in;
 }
 .open {
-  @apply opacity-90;
+  @apply opacity-100 w-full translate-x-0 transition-transform duration-300 ease-out;
 }
 .hamburger {
   // @apply absolute top-4 right-4;

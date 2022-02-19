@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { useContext } from 'react'
+import { OffCanvasContext } from '../../store/offCanvasProvider'
 import { sanitize } from '../../utils/helpers'
 import CookieNotice from '../cookieConsent/cookieNotice'
 import Footer from '../footer/footer'
@@ -7,6 +9,7 @@ import Seo from '../seo/seo'
 import styles from './layout.module.scss'
 
 const Layout = ({ children, data }) => {
+  const { isOpen } = useContext(OffCanvasContext)
   const document = data || {}
   return (
     <>
@@ -34,7 +37,11 @@ const Layout = ({ children, data }) => {
           />
         ) : null}
       </Head>
-      <div className={styles.wrapper}>
+      <div
+        className={`${styles.wrapper} ${
+          isOpen && 'max-h-screen overflow-hidden'
+        }`}
+      >
         <Header
           meta={document?.siteMeta?.headerMeta}
           nav={document?.menus?.primaryMenu?.edges}
