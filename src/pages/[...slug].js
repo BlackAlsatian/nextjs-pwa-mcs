@@ -9,7 +9,7 @@ import { getAllPageSlugs, getPageData } from '../query/pageQuery'
 const SinglePage = ({ data }) => {
   const router = useRouter()
 
-  if (router.isFallback) {
+  if (router.isFallback || !data) {
     return <Spinner />
   }
   return (

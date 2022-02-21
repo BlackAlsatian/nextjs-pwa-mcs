@@ -9,7 +9,7 @@ import { getAllCatPostsData, getAllCatPostSlugs } from '../../query/blogQuery'
 const BlogCatPost = ({ data }) => {
   const router = useRouter()
 
-  if (router.isFallback) {
+  if (router.isFallback || !data) {
     return <Spinner />
   }
   return (

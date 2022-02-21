@@ -9,7 +9,7 @@ import { getAllTagPostsData, getAllTagSlugs } from '../../query/tagQuery'
 const SingleTag = ({ data }) => {
   const router = useRouter()
 
-  if (router.isFallback) {
+  if (router.isFallback || !data) {
     return <Spinner />
   }
   return (
