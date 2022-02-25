@@ -1,5 +1,6 @@
 import Container from '../layout/container'
 import PageHeader from '../page/pageHeader'
+import Breadcrumbs from '../widget/breadcrumbs'
 import AllCategoryProducts from './allCategoryProducts'
 import SingleProduct from './singleProduct'
 
@@ -13,6 +14,7 @@ const CategoryProducts = ({ type, page, products }) => {
         image={page?.image}
         isProduct={type === 'product'}
       />
+      <Breadcrumbs type={type} page={page} />
       <section>
         <Container>
           {type === 'product' && <SingleProduct product={page} />}

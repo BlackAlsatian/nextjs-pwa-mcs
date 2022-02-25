@@ -1,0 +1,12 @@
+.breadcrumbs {
+  @apply py-6;
+  p {
+    @apply text-sm text-primary;
+    a {
+      @apply text-primary;
+    }
+    span {
+      @apply font-bold;
+    }
+  }
+}
