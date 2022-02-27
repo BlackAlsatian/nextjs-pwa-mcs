@@ -43,11 +43,11 @@ const CookieConsent = () => {
       'mcs-cookie-notice=true; ' + expires + '; SameSite=Lax; Secure'
     setBannerHidden(true)
   }
-  const UnSetCookie = () => {
-    document.cookie =
-      'mcs-cookie-notice=false; ' + expires + '; SameSite=Lax; Secure'
-    setBannerHidden(false)
-  }
+  // const UnSetCookie = () => {
+  //   document.cookie =
+  //     'mcs-cookie-notice=false; ' + expires + '; SameSite=Lax; Secure'
+  //   setBannerHidden(false)
+  // }
 
   return (
     <>
@@ -60,13 +60,13 @@ const CookieConsent = () => {
           privacyText='Privacy Policy'
         />
       )}
-      {bannerHidden && (
+      {/* {bannerHidden && (
         <CookieCard
           message="This is only for testing purposes and won't be in the final build."
           onClick={UnSetCookie}
           button='Revoke'
         />
-      )}
+      )} */}
     </>
   )
 }
