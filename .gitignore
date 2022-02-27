@@ -36,3 +36,5 @@ yarn-error.log*
 
 # custom
 /.bak/
+# Local Netlify folder
+.netlify
