@@ -5,15 +5,18 @@ const AllCategories = ({ productCategories }) => {
     <div className='gridWrapper'>
       <div className='gridWrap'>
         {productCategories
-          ? productCategories.map((category, index) => (
-              <Category
-                key={`category-${category.node.id || index}`}
-                title={category.node.title}
-                slug={category.node.slug}
-                image={category.node.image}
-                uri={category.node.uri}
-              />
-            ))
+          ? productCategories.map(
+              (category, index) =>
+                category.node.count !== null && (
+                  <Category
+                    key={`category-${category.node.id || index}`}
+                    title={category.node.title}
+                    slug={category.node.slug}
+                    image={category.node.image}
+                    uri={category.node.uri}
+                  />
+                )
+            )
           : null}
       </div>
     </div>

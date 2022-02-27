@@ -1,7 +1,6 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
-import { siteMeta } from '../../config/index'
 import MainNav from '../nav/mainNav'
 import styles from './header.module.scss'
 const HamburgerMenuButton = dynamic(() =>
@@ -14,29 +13,16 @@ export default function Header({ meta, nav }) {
     <header>
       <div className={styles.wrapper}>
         <div className={styles.left}>
-          {meta.siteLogoUrl ? (
-            <Link href='/'>
-              <a>
-                <Image
-                  width={200}
-                  height={86}
-                  // layout='fixed'
-                  alt={`${meta.siteTitle} Logo`}
-                  src={meta.siteLogoUrl}
-                />
-              </a>
-            </Link>
-          ) : (
-            <>
-              <h1>
-                <Link href='/'>
-                  <a>{siteMeta.siteName}</a>
-                </Link>
-                .
-              </h1>
-              <p>{siteMeta.siteDescription}</p>
-            </>
-          )}
+          <Link href='/'>
+            <a>
+              <Image
+                width={200}
+                height={86}
+                alt={`${meta.siteTitle} Logo`}
+                src='/images/motion-control-systems-logo.png'
+              />
+            </a>
+          </Link>
         </div>
 
         <div className={styles.right}>

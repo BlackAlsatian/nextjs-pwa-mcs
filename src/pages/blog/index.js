@@ -23,6 +23,6 @@ export async function getStaticProps() {
         pageData: response.page || {}
       }
     },
-    revalidate: 60
+    revalidate: 1
   }
 }

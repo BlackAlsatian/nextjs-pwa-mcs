@@ -1,8 +1,8 @@
-import fetcher from './../lib/fetcher'
 import { isEmpty } from 'lodash'
-import { getSlugs, getAllPageData } from '../lib/query'
+import { ALL_PAGES, PAGE_BY_URI } from '../lib/api'
+import { getAllPageData, getSlugs } from '../lib/query'
 import { includesPageUri } from '../utils/helpers'
-import { ALL_PAGES, ALL_MENUS, ALL_SITE_META, PAGE_BY_URI } from '../lib/api'
+import getMenusMetaData from './menusMetaQuery'
 
 // get all page slugs
 export async function getAllPageSlugs() {
@@ -25,9 +25,7 @@ export async function getAllPageSlugs() {
 
 // get all page data
 export async function getPageData({ params: { slug } }) {
-  const menusData = await fetcher(ALL_MENUS)
-
-  const metaData = await fetcher(ALL_SITE_META)
+  const { metaData } = await getMenusMetaData()
 
   let data = {}
   const response = await getAllPageData(slug, PAGE_BY_URI)
@@ -40,7 +38,6 @@ export async function getPageData({ params: { slug } }) {
   }
 
   return (data = {
-    menus: menusData.data || {},
     meta: metaData.data || {},
     page: {
       uri: pageData?.uri || {},

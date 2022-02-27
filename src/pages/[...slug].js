@@ -13,7 +13,7 @@ const SinglePage = ({ data }) => {
     return <Spinner />
   }
   return (
-    <Layout data={data}>
+    <Layout seo={data?.pageData?.seo} uri={data?.pageData?.uri}>
       <Page page={data?.pageData?.pageInfo} />
     </Layout>
   )
@@ -42,7 +42,7 @@ export async function getStaticProps({ params }) {
         pageData: response.page || {}
       }
     },
-    revalidate: 30
+    revalidate: 10
   }
 }
 

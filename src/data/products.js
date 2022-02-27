@@ -43,6 +43,7 @@ export const AllProductCategories = `
             edges {
                 node {
                     id
+                    count
                     title: name
                     slug
                     uri

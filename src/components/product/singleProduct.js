@@ -19,7 +19,7 @@ const SingleProduct = ({ product }) => {
         <p className={styles.price}>{product?.regularPrice}</p>
         {/* <p>{product?.title}</p> */}
         {ParseHTML(product?.description)}
-        <button>Add To Quote</button>
+        {/* <button>Add To Quote</button> */}
         <p className={styles.sku}>SKU: {product?.sku}</p>
         {product?.productCategories && (
           <p className={styles.category}>

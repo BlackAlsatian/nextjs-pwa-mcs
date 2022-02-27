@@ -4,20 +4,17 @@ import LatestPosts from '../components/widget/latestPosts'
 import Block from '../lib/block'
 import { getIndexPageData } from '../query/indexPageQuery'
 
-const Home = ({ data }) => {
+const Home = ({ pageData }) => {
+  const { page, posts } = pageData
   return (
-    <Layout data={data}>
-      {data?.pageData?.page?.blocks
-        ? data?.pageData?.page?.blocks.map((block, index) => (
+    <Layout seo={page?.seo} uri={page?.uri}>
+      {page?.blocks
+        ? page?.blocks.map((block, index) => (
             <Block block={block} key={`section-${index}`} />
           ))
         : null}
       <ContactForm />
-      <LatestPosts
-        data={data?.pageData?.posts}
-        title={data?.pageData?.page?.title}
-        isHome
-      />
+      <LatestPosts data={posts} title={page?.title} isHome />
     </Layout>
   )
 }
@@ -25,16 +22,5 @@ const Home = ({ data }) => {
 export default Home
 
 export async function getStaticProps() {
-  const response = await getIndexPageData()
-
-  return {
-    props: {
-      data: {
-        menus: response.menus || {},
-        siteMeta: response.meta || {},
-        pageData: response.page || {}
-      }
-    },
-    revalidate: 1
-  }
+  return getIndexPageData()
 }

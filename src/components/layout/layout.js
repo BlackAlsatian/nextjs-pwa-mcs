@@ -1,38 +1,32 @@
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useContext } from 'react'
+import { useGlobalPropsContext } from '../../store/globalPropsProvider'
 import { OffCanvasContext } from '../../store/offCanvasProvider'
 import { sanitize } from '../../utils/helpers'
-import CookieNotice from '../cookieConsent/cookieNotice'
-import Footer from '../footer/footer'
 import Header from '../header/header'
 import Seo from '../seo/seo'
 import styles from './layout.module.scss'
+const Footer = dynamic(() => import('../footer/footer'))
+const Favicon = dynamic(() => import('./favicon'))
+const CookieNotice = dynamic(() => import('../cookieConsent/cookieNotice'))
 
-const Layout = ({ children, data }) => {
+const Layout = ({ children, seo, uri }) => {
   const { isOpen } = useContext(OffCanvasContext)
-  const document = data || {}
+  const { menus, siteMeta } = useGlobalPropsContext()
   return (
     <>
-      <Seo seo={document?.pageData?.seo} uri={document?.pageData?.uri} />
+      <Seo seo={seo} uri={uri} />
       <Head>
-        {document?.siteMeta?.headerMeta?.favicon && (
-          <link
-            rel='shortcut icon'
-            href={document?.siteMeta?.headerMeta?.favicon}
-          />
-        )}
+        {siteMeta?.headerMeta?.favicon && <Favicon />}
 
-        {document?.pageData?.seo?.schemaDetails ||
-        document?.pageData?.seo?.schema?.raw ? (
+        {seo?.schemaDetails || seo?.schema?.raw ? (
           <script
             type='application/ld+json'
             className='yoast-schema-graph'
             key='yoastSchema'
             dangerouslySetInnerHTML={{
-              __html: sanitize(
-                document?.pageData?.seo.schemaDetails ||
-                  document?.pageData?.seo?.schema?.raw
-              )
+              __html: sanitize(seo.schemaDetails || seo?.schema?.raw)
             }}
           />
         ) : null}
@@ -42,15 +36,12 @@ const Layout = ({ children, data }) => {
           isOpen && 'max-h-screen overflow-hidden'
         }`}
       >
-        <Header
-          meta={document?.siteMeta?.headerMeta}
-          nav={document?.menus?.primaryMenu?.edges}
-        />
+        <Header meta={siteMeta?.headerMeta} nav={menus?.primaryMenu?.edges} />
         <main>{children}</main>
         <Footer
-          data={document?.siteMeta?.footerMeta}
-          mainNav={document?.menus?.primaryMenu?.edges}
-          footerNav={document?.menus?.secondaryMenu?.edges}
+          data={siteMeta?.footerMeta}
+          mainNav={menus?.primaryMenu?.edges}
+          footerNav={menus?.secondaryMenu?.edges}
         />
         <CookieNotice />
       </div>

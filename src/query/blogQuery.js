@@ -1,20 +1,12 @@
 import { isEmpty } from 'lodash'
+import { ALL_POSTS, LATEST_POSTS, PAGE_BY_URI, POST_BY_SLUG } from '../lib/api'
 import fetcher from '../lib/fetcher'
-import { getSlugs, getAllPageData } from '../lib/query'
-import {
-  ALL_CATEGORIES,
-  ALL_POSTS,
-  ALL_MENUS,
-  ALL_SITE_META,
-  LATEST_POSTS,
-  PAGE_BY_URI,
-  POST_BY_SLUG
-} from '../lib/api'
+import { getAllPageData, getSlugs } from '../lib/query'
+import getMenusMetaData from './menusMetaQuery'
 
 // get blog post page data
 export async function getBlogPageData() {
-  const menusData = await fetcher(ALL_MENUS)
-  const metaData = await fetcher(ALL_SITE_META)
+  const { metaData } = await getMenusMetaData()
 
   let data = {}
   const variables = {
@@ -25,7 +17,7 @@ export async function getBlogPageData() {
   const pageData = await fetcher(PAGE_BY_URI, { variables })
 
   return (data = {
-    menus: menusData.data || {},
+    menus: metaData.data || {},
     meta: metaData.data || {},
     page: {
       uri: pageData?.data?.page?.uri || {},
@@ -38,22 +30,9 @@ export async function getBlogPageData() {
 
 // get all category and post slugs and return array of paths
 export async function getAllCatPostSlugs() {
-  const allCategories = await getSlugs(ALL_CATEGORIES)
   const allPosts = await getSlugs(ALL_POSTS)
 
   const allPaths = []
-
-  allCategories &&
-    allCategories?.categories?.edges.map(category => {
-      if (!isEmpty(category?.node?.uri)) {
-        const slugs = category?.node?.uri
-          .split('/')
-          .filter(categorySlug => categorySlug)
-        allPaths.push({
-          params: { slug: slugs }
-        })
-      }
-    })
 
   allPosts &&
     allPosts?.posts?.edges.map(post => {
@@ -70,9 +49,7 @@ export async function getAllCatPostSlugs() {
 
 // all category/posts data
 export async function getAllCatPostsData({ params: { slug } }) {
-  const menusData = await fetcher(ALL_MENUS)
-
-  const metaData = await fetcher(ALL_SITE_META)
+  const { metaData } = await getMenusMetaData()
 
   let data = {}
 
@@ -88,7 +65,7 @@ export async function getAllCatPostsData({ params: { slug } }) {
   }
 
   return (data = {
-    menus: menusData.data || {},
+    menus: metaData.data || {},
     meta: metaData.data || {},
     page: {
       uri: documentData?.pageData?.uri || {},

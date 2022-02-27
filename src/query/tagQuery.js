@@ -1,11 +1,6 @@
-import {
-  ALL_MENUS,
-  ALL_SITE_META,
-  ALL_TAGS,
-  POSTS_BY_TAG_ID,
-  TAG_BY_SLUG
-} from '../lib/api'
+import { ALL_TAGS, POSTS_BY_TAG_ID, TAG_BY_SLUG } from '../lib/api'
 import fetcher from '../lib/fetcher'
+import getMenusMetaData from './menusMetaQuery'
 
 // get all tag paths
 export async function getAllTagSlugs() {
@@ -22,8 +17,7 @@ export async function getAllTagSlugs() {
 
 // get all tag posts data
 export async function getAllTagPostsData(slug) {
-  const menusData = await fetcher(ALL_MENUS)
-  const metaData = await fetcher(ALL_SITE_META)
+  const { metaData } = await getMenusMetaData()
   let data = {}
   let variables = {
     slug: slug
@@ -37,7 +31,7 @@ export async function getAllTagPostsData(slug) {
   const postsData = await fetcher(POSTS_BY_TAG_ID, { variables })
 
   return (data = {
-    menus: menusData.data || {},
+    menus: metaData.data || {},
     meta: metaData.data || {},
     page: {
       uri: pageData?.data?.tag?.uri || {},

@@ -1,10 +1,8 @@
 import { isEmpty } from 'lodash'
 import {
-  ALL_MENUS,
   ALL_PRODUCT_CATEGORIES,
   ALL_PRODUCT_CATEGORY_SLUGS,
   ALL_PRODUCT_SLUGS,
-  ALL_SITE_META,
   PAGE_BY_URI,
   PRODUCTS_BY_CATEGORY,
   PRODUCT_BY_SLUG,
@@ -12,17 +10,17 @@ import {
 } from '../lib/api'
 import fetcher from '../lib/fetcher'
 import { getAllPageData, getSlugs } from '../lib/query'
+import getMenusMetaData from './menusMetaQuery'
 
 // get all product Categories & page data
 export async function getProductCategoriesPageData() {
   let data = {}
-  const menusData = await fetcher(ALL_MENUS)
-  const metaData = await fetcher(ALL_SITE_META)
+  const { metaData } = await getMenusMetaData()
   const pageQuery = await getAllPageData(['products'], PAGE_BY_URI)
   const categories = await fetcher(ALL_PRODUCT_CATEGORIES)
 
   return (data = {
-    menus: menusData.data || {},
+    menus: metaData.data || {},
     meta: metaData.data || {},
     page: {
       uri: pageQuery?.pageData?.data?.page?.uri || {},
@@ -103,8 +101,7 @@ export async function getCategoryProducts(categoryId) {
 }
 
 export async function getAllProductCategoryData({ params }) {
-  const menusData = await fetcher(ALL_MENUS)
-  const metaData = await fetcher(ALL_SITE_META)
+  const { metaData } = await getMenusMetaData()
 
   let data = {}
   let productPageType = 'category'
@@ -127,7 +124,7 @@ export async function getAllProductCategoryData({ params }) {
 
       return (data = {
         type: productPageType,
-        menus: menusData.data || {},
+        menus: metaData.data || {},
         meta: metaData.data || {},
         page: {
           uri: productResponse?.pageData?.data?.product?.uri || {},
@@ -144,7 +141,7 @@ export async function getAllProductCategoryData({ params }) {
 
     return (data = {
       type: productPageType,
-      menus: menusData.data || {},
+      menus: metaData.data || {},
       meta: metaData.data || {},
       page: {
         uri: categoryResponse?.pageData?.data?.productCategory?.uri || {},
