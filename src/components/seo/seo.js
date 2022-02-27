@@ -3,8 +3,6 @@ import PropTypes from 'prop-types'
 import { siteMeta } from '../../config/index'
 
 const Seo = ({ seo, uri }) => {
-  // const metaRobotsNofollow = seo.metaRobotsNofollow === 'follow' ? true : false
-  // const metaRobotsNoindex = seo.metaRobotsNoindex === 'index' ? true : false
   const {
     title,
     metaDesc,
@@ -67,7 +65,7 @@ Seo.defaultProps = {
     opengraphDescription: '',
     opengraphTitle: '',
     opengraphImage: {
-      sourceUrl: ''
+      sourceUrl: '/images/og-image-mcs.jpg'
     },
     opengraphUrl: '',
     opengraphSiteName: ''

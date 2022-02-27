@@ -1,3 +1,4 @@
+import { isEmpty } from 'lodash'
 import { ALL_TAGS, POSTS_BY_TAG_ID, TAG_BY_SLUG } from '../lib/api'
 import fetcher from '../lib/fetcher'
 import getMenusMetaData from './menusMetaQuery'
@@ -18,26 +19,37 @@ export async function getAllTagSlugs() {
 // get all tag posts data
 export async function getAllTagPostsData(slug) {
   const { metaData } = await getMenusMetaData()
-  let data = {}
+
   let variables = {
     slug: slug
   }
-  const pageData = await fetcher(TAG_BY_SLUG, { variables })
+  const {
+    data: { tag }
+  } = await fetcher(TAG_BY_SLUG, { variables })
 
   variables = {
-    tagId: pageData?.data?.tag?.id
+    tagId: tag?.id
   }
 
-  const postsData = await fetcher(POSTS_BY_TAG_ID, { variables })
+  const {
+    data: { posts }
+  } = await fetcher(POSTS_BY_TAG_ID, { variables })
 
-  return (data = {
-    menus: metaData.data || {},
-    meta: metaData.data || {},
-    page: {
-      uri: pageData?.data?.tag?.uri || {},
-      seo: pageData?.data?.tag?.seo || {},
-      pageInfo: pageData?.data?.tag || {},
-      posts: postsData?.data?.posts || {}
+  if (isEmpty(tag) || isEmpty(tag.uri)) {
+    return {
+      notFound: true
     }
-  })
+  }
+
+  return {
+    props: {
+      siteMeta: metaData.data || {},
+      pageData:
+        {
+          page: tag || {},
+          posts: posts || {}
+        } || {}
+    },
+    revalidate: 60
+  }
 }

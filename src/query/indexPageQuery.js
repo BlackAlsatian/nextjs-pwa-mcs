@@ -6,20 +6,23 @@ import getMenusMetaData from './menusMetaQuery'
 export async function getIndexPageData() {
   const { metaData } = await getMenusMetaData()
 
-  let data = {}
   const variables = {
     uri: '/'
   }
 
-  const latestPosts = await fetcher(LATEST_POSTS)
-  const pageData = await fetcher(PAGE_BY_URI, { variables })
+  const {
+    data: { posts }
+  } = await fetcher(LATEST_POSTS)
+  const {
+    data: { page }
+  } = await fetcher(PAGE_BY_URI, { variables })
 
   return {
     props: {
       siteMeta: metaData.data || {},
       pageData: {
-        page: pageData?.data?.page || {},
-        posts: latestPosts?.data?.posts || {}
+        page: page || {},
+        posts: posts || {}
       }
     },
     revalidate: 1

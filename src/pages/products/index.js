@@ -2,13 +2,11 @@ import Layout from '../../components/layout/layout'
 import Categories from '../../components/product/categories'
 import { getProductCategoriesPageData } from '../../query/productQuery'
 
-const Products = ({ data }) => {
+const Products = ({ pageData }) => {
+  const { page, categories } = pageData
   return (
-    <Layout data={data}>
-      <Categories
-        page={data?.pageData?.page}
-        categories={data?.pageData?.categories}
-      />
+    <Layout seo={page?.seo} uri={page?.uri}>
+      <Categories page={page} categories={categories} />
     </Layout>
   )
 }
@@ -16,15 +14,5 @@ const Products = ({ data }) => {
 export default Products
 
 export async function getStaticProps() {
-  const response = await getProductCategoriesPageData()
-  return {
-    props: {
-      data: {
-        menus: response.menus || {},
-        siteMeta: response.meta || {},
-        pageData: response.page || {}
-      }
-    },
-    revalidate: 1
-  }
+  return getProductCategoriesPageData()
 }

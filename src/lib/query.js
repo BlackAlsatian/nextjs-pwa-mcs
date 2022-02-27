@@ -8,22 +8,26 @@ export async function getSlugs(allPosts) {
 
 // all pages data
 export async function getAllPageData(slug, query, isPost) {
-  let data = {}
-
   let postSlug = `/${slug.join('/')}/`
 
   let variables = {
     uri: postSlug
   }
+
   if (isPost) {
-    postSlug = slug.pop()
-
     variables = {
-      slug: postSlug
+      slug: slug.pop()
     }
+    const {
+      data: { post }
+    } = await fetcher(query, { variables })
+    return { post }
   }
+  const response = await fetcher(query, { variables })
 
-  const pageData = await fetcher(query, { variables })
+  const {
+    data: { page }
+  } = await fetcher(query, { variables })
 
-  return (data = { pageData })
+  return { page }
 }

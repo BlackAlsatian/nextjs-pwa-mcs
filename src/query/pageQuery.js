@@ -27,22 +27,25 @@ export async function getAllPageSlugs() {
 export async function getPageData({ params: { slug } }) {
   const { metaData } = await getMenusMetaData()
 
-  let data = {}
-  const response = await getAllPageData(slug, PAGE_BY_URI)
-
-  const pageData = response?.pageData?.data?.page
+  const data = {}
+  const { page } = await getAllPageData(slug, PAGE_BY_URI)
 
   // return if paths don't exist
   if (isEmpty(slug)) {
     return data
   }
 
-  return (data = {
-    meta: metaData.data || {},
-    page: {
-      uri: pageData?.uri || {},
-      seo: pageData?.seo || {},
-      pageInfo: pageData || {}
+  if (isEmpty(page) || isEmpty(page.uri)) {
+    return {
+      notFound: true
     }
-  })
+  }
+
+  return {
+    props: {
+      siteMeta: metaData.data || {},
+      pageData: page || {}
+    },
+    revalidate: 10
+  }
 }

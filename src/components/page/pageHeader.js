@@ -18,7 +18,9 @@ const PageHeader = ({ title, intro, image, isPost, isProduct }) => {
           placeholder='blur'
           blurDataURL='/images/placeholder.png'
           className={`${styles.imgWrap} ${
-            isPost ? styles.imgPositionCenter : styles.imgPositionBottom
+            isPost || !isProduct
+              ? styles.imgPositionCenter
+              : styles.imgPositionBottom
           }`}
         />
       )}

@@ -15,7 +15,6 @@
   }
 }
 .right {
-  // font-family: 'Barlow', sans-serif;
   @apply flex flex-row flex-shrink-0 md:flex-auto items-start justify-end;
   span {
     @apply sr-only;

@@ -1,7 +1,8 @@
 const Favicon = () => {
   return (
     <>
-      <link rel='shortcut icon' href='/images/mcs-favicon.png' />
+      <link rel='icon' href='favicon.ico' />
+      <link rel='shortcut icon' href='/images/favicon-32x32.png' />
       <link
         rel='apple-touch-icon'
         sizes='57x57'

@@ -2,10 +2,11 @@ import Layout from '../../components/layout/layout'
 import Posts from '../../components/post/posts'
 import { getBlogPageData } from '../../query/blogQuery'
 
-const Blog = ({ data }) => {
+const Blog = ({ pageData }) => {
+  const { page, posts } = pageData
   return (
-    <Layout data={data}>
-      <Posts data={data?.pageData} title={data?.pageData?.page?.title} />
+    <Layout seo={page?.seo} uri={page?.uri}>
+      <Posts page={page} posts={posts} />
     </Layout>
   )
 }
@@ -13,16 +14,5 @@ const Blog = ({ data }) => {
 export default Blog
 
 export async function getStaticProps() {
-  const response = await getBlogPageData()
-
-  return {
-    props: {
-      data: {
-        menus: response.menus || {},
-        siteMeta: response.meta || {},
-        pageData: response.page || {}
-      }
-    },
-    revalidate: 1
-  }
+  return getBlogPageData()
 }

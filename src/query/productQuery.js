@@ -14,21 +14,30 @@ import getMenusMetaData from './menusMetaQuery'
 
 // get all product Categories & page data
 export async function getProductCategoriesPageData() {
-  let data = {}
   const { metaData } = await getMenusMetaData()
-  const pageQuery = await getAllPageData(['products'], PAGE_BY_URI)
-  const categories = await fetcher(ALL_PRODUCT_CATEGORIES)
 
-  return (data = {
-    menus: metaData.data || {},
-    meta: metaData.data || {},
-    page: {
-      uri: pageQuery?.pageData?.data?.page?.uri || {},
-      seo: pageQuery?.pageData?.data?.page?.seo || {},
-      page: pageQuery?.pageData?.data?.page || {},
-      categories: categories?.data?.productCategories || {}
+  const { page } = await getAllPageData(['products'], PAGE_BY_URI)
+  const {
+    data: { productCategories }
+  } = await fetcher(ALL_PRODUCT_CATEGORIES)
+
+  if (isEmpty(page) || isEmpty(page.uri)) {
+    return {
+      notFound: true
     }
-  })
+  }
+
+  return {
+    props: {
+      siteMeta: metaData.data || {},
+      pageData:
+        {
+          page: page || {},
+          categories: productCategories || {}
+        } || {}
+    },
+    revalidate: 1
+  }
 }
 
 export async function getAllProductCategoryPaths() {
@@ -65,29 +74,29 @@ export async function getAllProductCategoryPaths() {
 }
 
 export async function getProductCategoryPageData(slug, query, bySlug) {
-  let data = {}
-
   const uri = `/products/${slug.join('/')}/`
 
   const categorySlug = slug[slug.length - 1]
   let variables = {
     slug: categorySlug
   }
-  const pageData = await fetcher(PRODUCT_CATEGORY_BY_SLUG, { variables })
+  const {
+    data: { productCategory }
+  } = await fetcher(PRODUCT_CATEGORY_BY_SLUG, { variables })
 
-  return (data = { pageData })
+  return { productCategory }
 }
 
 export async function getProductPageData(slug) {
-  let data = {}
-
   const variables = {
     slug: slug.pop()
   }
 
-  const pageData = await fetcher(PRODUCT_BY_SLUG, { variables })
+  const {
+    data: { product }
+  } = await fetcher(PRODUCT_BY_SLUG, { variables })
 
-  return (data = { pageData })
+  return { product }
 }
 
 export async function getCategoryProducts(categoryId) {
@@ -114,41 +123,55 @@ export async function getAllProductCategoryData({ params }) {
   // slug found, might be category or product
   if (Array.isArray(params?.slug) && params?.slug.length >= 1) {
     //get category page data
-    const categoryResponse = await getProductCategoryPageData(params?.slug)
-
+    const { productCategory } = await getProductCategoryPageData(params?.slug)
     // if no category ID is found, check if product exists
-    if (categoryResponse?.pageData?.data?.productCategory === null) {
+    if (productCategory === null) {
       productPageType = 'product'
 
-      const productResponse = await getProductPageData(params?.slug)
+      const { product } = await getProductPageData(params?.slug)
 
-      return (data = {
-        type: productPageType,
-        menus: metaData.data || {},
-        meta: metaData.data || {},
-        page: {
-          uri: productResponse?.pageData?.data?.product?.uri || {},
-          seo: productResponse?.pageData?.data?.product?.seo || {},
-          page: productResponse?.pageData?.data?.product || {}
+      if (isEmpty(product) || isEmpty(product.uri)) {
+        return {
+          notFound: true
         }
-      })
+      }
+
+      return {
+        props: {
+          siteMeta: metaData.data || {},
+          pageType: productPageType || {},
+          pageData:
+            {
+              page: product || {},
+              products: {}
+            } || {}
+        },
+        revalidate: 60
+      }
     }
 
     // if no product was found and category id exists get Products
     const productResponse = await getCategoryProducts(
-      categoryResponse?.pageData?.data?.productCategory?.databaseId
+      productCategory?.databaseId
     )
 
-    return (data = {
-      type: productPageType,
-      menus: metaData.data || {},
-      meta: metaData.data || {},
-      page: {
-        uri: categoryResponse?.pageData?.data?.productCategory?.uri || {},
-        seo: categoryResponse?.pageData?.data?.productCategory?.seo || {},
-        page: categoryResponse?.pageData?.data?.productCategory || {},
-        products: productResponse || {}
+    if (isEmpty(productCategory) || isEmpty(productCategory.uri)) {
+      return {
+        notFound: true
       }
-    })
+    }
+
+    return {
+      props: {
+        siteMeta: metaData.data || {},
+        pageType: productPageType || {},
+        pageData:
+          {
+            page: productCategory || {},
+            products: productResponse || {}
+          } || {}
+      },
+      revalidate: 60
+    }
   }
 }

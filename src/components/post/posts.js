@@ -3,9 +3,8 @@ import Container from '../layout/container'
 import PageHeader from '../page/pageHeader'
 import AllPosts from './allPosts'
 
-const Posts = ({ data }) => {
-  const page = data?.page || data?.pageInfo
-  const morePosts = data?.posts?.edges
+const Posts = ({ page, posts }) => {
+  const morePosts = posts?.edges
   return (
     <>
       <PageHeader

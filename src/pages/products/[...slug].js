@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash'
 import { useRouter } from 'next/router'
 import Layout from '../../components/layout/layout'
 import Spinner from '../../components/loader/spinner'
@@ -9,19 +8,16 @@ import {
   getAllProductCategoryPaths
 } from '../../query/productQuery'
 
-const ProductCategory = ({ data }) => {
+const ProductCategory = ({ pageData, pageType }) => {
   const router = useRouter()
 
-  if (router.isFallback || !data) {
+  if (router.isFallback || !pageData) {
     return <Spinner />
   }
+  const { page, products } = pageData
   return (
-    <Layout data={data}>
-      <CategoryProducts
-        type={data?.pageType}
-        page={data?.pageData?.page}
-        products={data?.pageData?.products}
-      />
+    <Layout seo={page.seo} uri={page.uri}>
+      <CategoryProducts type={pageType} page={page} products={products} />
     </Layout>
   )
 }
@@ -29,30 +25,7 @@ const ProductCategory = ({ data }) => {
 export default ProductCategory
 
 export async function getStaticProps({ params }) {
-  const response = await getAllProductCategoryData({ params })
-
-  if (
-    isEmpty(response) ||
-    isEmpty(response.type) ||
-    isEmpty(response.page.uri) ||
-    isEmpty(response.page)
-  ) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      data: {
-        menus: response.menus || {},
-        siteMeta: response.meta || {},
-        pageType: response.type || {},
-        pageData: response.page || {}
-      }
-    },
-    revalidate: 60
-  }
+  return getAllProductCategoryData({ params })
 }
 
 export async function getStaticPaths() {

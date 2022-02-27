@@ -4,6 +4,7 @@ export const SeoItems = `
         text
         url
     }
+    canonical
     title
     metaDesc
     metaRobotsNoindex
@@ -31,6 +32,7 @@ export const TaxonomySeoItems = `
     text
     url
   }
+  canonical
   title
   metaDesc
   metaRobotsNoindex

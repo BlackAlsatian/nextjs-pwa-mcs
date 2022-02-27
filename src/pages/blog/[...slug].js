@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash'
 import { useRouter } from 'next/router'
 import Layout from '../../components/layout/layout'
 import Spinner from '../../components/loader/spinner'
@@ -6,15 +5,15 @@ import Post from '../../components/post/post'
 import { FALLBACK } from '../../config'
 import { getAllCatPostsData, getAllCatPostSlugs } from '../../query/blogQuery'
 
-const BlogCatPost = ({ data }) => {
+const BlogCatPost = ({ pageData }) => {
   const router = useRouter()
 
-  if (router.isFallback || !data) {
+  if (router.isFallback || !pageData) {
     return <Spinner />
   }
   return (
-    <Layout data={data}>
-      <Post post={data?.pageData?.pageInfo} />
+    <Layout seo={pageData?.seo} uri={pageData?.uri}>
+      <Post post={pageData} />
     </Layout>
   )
 }
@@ -22,28 +21,7 @@ const BlogCatPost = ({ data }) => {
 export default BlogCatPost
 
 export async function getStaticProps({ params }) {
-  const response = await getAllCatPostsData({ params })
-
-  if (
-    isEmpty(response) ||
-    isEmpty(response.page.uri) ||
-    isEmpty(response.page)
-  ) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      data: {
-        menus: response.menus || {},
-        siteMeta: response.meta || {},
-        pageData: response.page || {}
-      }
-    },
-    revalidate: 60
-  }
+  return getAllCatPostsData({ params })
 }
 
 export async function getStaticPaths() {

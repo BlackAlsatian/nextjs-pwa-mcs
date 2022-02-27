@@ -3,8 +3,6 @@ import Container from '../layout/container'
 import styles from './breadcrumbs.module.scss'
 
 const Breadcrumbs = ({ type, page }) => {
-  console.log('type: ', type)
-  console.log('page: ', page)
   return (
     <section className={styles.breadcrumbs}>
       <Container>

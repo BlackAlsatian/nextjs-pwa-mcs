@@ -1,4 +1,3 @@
-import { isEmpty } from 'lodash'
 import { useRouter } from 'next/router'
 import Layout from '../components/layout/layout'
 import Spinner from '../components/loader/spinner'
@@ -6,15 +5,15 @@ import Page from '../components/page/page'
 import { FALLBACK } from '../config'
 import { getAllPageSlugs, getPageData } from '../query/pageQuery'
 
-const SinglePage = ({ data }) => {
+const SinglePage = ({ pageData }) => {
   const router = useRouter()
 
-  if (router.isFallback || !data) {
+  if (router.isFallback || !pageData) {
     return <Spinner />
   }
   return (
-    <Layout seo={data?.pageData?.seo} uri={data?.pageData?.uri}>
-      <Page page={data?.pageData?.pageInfo} />
+    <Layout seo={pageData?.seo} uri={pageData?.uri}>
+      <Page page={pageData} />
     </Layout>
   )
 }
@@ -22,28 +21,7 @@ const SinglePage = ({ data }) => {
 export default SinglePage
 
 export async function getStaticProps({ params }) {
-  const response = await getPageData({ params })
-
-  if (
-    isEmpty(response) ||
-    isEmpty(response.page.uri) ||
-    isEmpty(response.page)
-  ) {
-    return {
-      notFound: true
-    }
-  }
-
-  return {
-    props: {
-      data: {
-        menus: response.menus || {},
-        siteMeta: response.meta || {},
-        pageData: response.page || {}
-      }
-    },
-    revalidate: 10
-  }
+  return getPageData({ params })
 }
 
 export async function getStaticPaths() {

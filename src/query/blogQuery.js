@@ -8,24 +8,28 @@ import getMenusMetaData from './menusMetaQuery'
 export async function getBlogPageData() {
   const { metaData } = await getMenusMetaData()
 
-  let data = {}
   const variables = {
     uri: '/blog/'
   }
 
-  const latestPosts = await fetcher(LATEST_POSTS)
-  const pageData = await fetcher(PAGE_BY_URI, { variables })
+  const {
+    data: { posts }
+  } = await fetcher(LATEST_POSTS)
+  const {
+    data: { page }
+  } = await fetcher(PAGE_BY_URI, { variables })
 
-  return (data = {
-    menus: metaData.data || {},
-    meta: metaData.data || {},
-    page: {
-      uri: pageData?.data?.page?.uri || {},
-      seo: pageData?.data?.page?.seo || {},
-      page: pageData?.data?.page || {},
-      posts: latestPosts?.data?.posts || {}
-    }
-  })
+  return {
+    props: {
+      siteMeta: metaData.data || {},
+      pageData:
+        {
+          page: page || {},
+          posts: posts || {}
+        } || {}
+    },
+    revalidate: 1
+  }
 }
 
 // get all category and post slugs and return array of paths
@@ -51,7 +55,7 @@ export async function getAllCatPostSlugs() {
 export async function getAllCatPostsData({ params: { slug } }) {
   const { metaData } = await getMenusMetaData()
 
-  let data = {}
+  const data = {}
 
   // return if paths don't exist
   if (isEmpty(slug)) {
@@ -59,18 +63,19 @@ export async function getAllCatPostsData({ params: { slug } }) {
   }
 
   //get post data
-  const response = await getAllPageData(slug, POST_BY_SLUG, true)
-  const documentData = {
-    pageData: response?.pageData?.data?.post
+  const { post } = await getAllPageData(slug, POST_BY_SLUG, true)
+
+  if (isEmpty(post) || isEmpty(post.uri)) {
+    return {
+      notFound: true
+    }
   }
 
-  return (data = {
-    menus: metaData.data || {},
-    meta: metaData.data || {},
-    page: {
-      uri: documentData?.pageData?.uri || {},
-      seo: documentData?.pageData?.seo || {},
-      pageInfo: documentData?.pageData || {}
-    }
-  })
+  return {
+    props: {
+      siteMeta: metaData.data || {},
+      pageData: post || {}
+    },
+    revalidate: 60
+  }
 }
