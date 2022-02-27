@@ -1,16 +1,7 @@
 import { BlocksField } from '../data/blocks'
-import { AllCategories, CategoryByUri } from '../data/categories'
-import { AllMenus } from '../data/menus'
 import { AllSiteMeta } from '../data/meta'
-import { AllPages, PageBySlug, PageByUri } from '../data/pages'
-import {
-  AllPosts,
-  LatestPosts,
-  PostBySlug,
-  PostByUri,
-  PostsByCategoryId,
-  PostsByTagId
-} from '../data/posts'
+import { AllPages, PageByUri } from '../data/pages'
+import { AllPosts, LatestPosts, PostBySlug, PostsByTagId } from '../data/posts'
 import {
   AllProductCategories,
   AllProductCategorySlugs,
@@ -23,7 +14,7 @@ import {
 import { AllTags, TagBySlug } from '../data/tags'
 
 //all menus
-export const ALL_MENUS = AllMenus
+// export const ALL_MENUS = AllMenus
 
 //all blocks
 export const BLOCKS_FIELD = BlocksField
@@ -35,10 +26,10 @@ export const LATEST_POSTS = LatestPosts
 export const ALL_POSTS = AllPosts
 
 // page by slug
-export const PAGE_BY_SLUG = PageBySlug
+// export const PAGE_BY_SLUG = PageBySlug
 
 // get post by uri
-export const POST_BY_URI = PostByUri
+// export const POST_BY_URI = PostByUri
 
 // get post by slug
 export const POST_BY_SLUG = PostBySlug
@@ -50,7 +41,7 @@ export const ALL_PAGES = AllPages
 export const PAGE_BY_URI = PageByUri
 
 // query all categories
-export const ALL_CATEGORIES = AllCategories
+// export const ALL_CATEGORIES = AllCategories
 
 // query all product categories
 export const ALL_PRODUCT_CATEGORIES = AllProductCategories
@@ -74,10 +65,10 @@ export const PRODUCTS_BY_CATEGORY = ProductsByCategory
 export const PRODUCT_BY_SLUG = ProductBySlug
 
 // query category by uri
-export const CATEGORY_BY_URI = CategoryByUri
+// export const CATEGORY_BY_URI = CategoryByUri
 
 // query posts by category id
-export const POSTS_BY_CATEGORY_ID = PostsByCategoryId
+// export const POSTS_BY_CATEGORY_ID = PostsByCategoryId
 
 // query all tags
 export const ALL_TAGS = AllTags

@@ -13,36 +13,31 @@ export const CategoryFragment = `
   }
 `
 
-// All categories
-export const AllCategories = `
-  query AllCategories {
-    categories(first: 10) {
-      edges {
-        node {
-          id
-          slug
-          uri
-          title: name
-        }
-      }
-    }
-  }
-`
+// // All categories
+// export const AllCategories = `
+//   query AllCategories {
+//     categories(first: 10) {
+//       edges {
+//         node {
+//           id
+//           slug
+//           uri
+//           title: name
+//         }
+//       }
+//     }
+//   }
+// `
 
 // category by category by uri
 export const CategoryByUri = `
   query CategoryByUriQuery($uri: ID!) {
     category(id: $uri, idType: URI) {
-      categoryId
-      databaseId
-      id
-      parentId
-      slug
-      title: name
-      uri
+      ...CategoryFragment
       seo {
         ${TaxonomySeoItems}
       }
     }
   }
+  ${CategoryFragment}
 `

@@ -8,9 +8,7 @@ export const AllPages = `
         pages(where: {status: PUBLISH}, first: 10) {
             edges {
                 node {
-                    id
                     uri
-                    slug
                 }
             }
         }
@@ -18,7 +16,7 @@ export const AllPages = `
   `
 
 // query PageBySlugQuery($id: ID!, $idType: PageIdType!) {
-export const PageByUri = `    
+export const PageByUri = `
     query PageByUri ($uri: ID!) {
         page(id: $uri, idType: URI) {
             id
@@ -46,24 +44,24 @@ export const PageByUri = `
 `
 
 // query PageBySlugQuery($id: ID!, $idType: PageIdType!) {
-export const PageBySlug = `    
-    query PageBySlug ($slug: ID!) {
-        page(id: $slug, idType: SLUG) {
-            id
-            title
-            slug
-            date
-            modified
-            ...BlocksField
-            content
-            uri
-            seo {
-                ...SeoFragment
-            }
-            pageIntro
-        }
-    }
-    ${SeoFragment}
-    ${FeaturedImageFragment}
-    ${BlocksField}
-`
+// export const PageBySlug = `
+//     query PageBySlug ($slug: ID!) {
+//         page(id: $slug, idType: SLUG) {
+//             id
+//             title
+//             slug
+//             date
+//             modified
+//             ...BlocksField
+//             content
+//             uri
+//             seo {
+//                 ...SeoFragment
+//             }
+//             pageIntro
+//         }
+//     }
+//     ${SeoFragment}
+//     ${FeaturedImageFragment}
+//     ${BlocksField}
+// `

@@ -3,7 +3,6 @@ export const MenuFragment = `
   fragment MenuFragment on MenuItem {
       id
       label
-      url
       path
   }
 `
@@ -26,22 +25,22 @@ export const MenuItems = `
     }
 `
 //all menus
-export const AllMenus = `
-    query AllMenusQuery {
-        primaryMenu: menuItems(where: {location: PRIMARY_MENU}) {
-            edges {
-                node {
-                    ...MenuFragment
-                }
-            }
-        }
-        secondaryMenu: menuItems(where: {location: FOOTER_MENU}) {
-            edges {
-                node {
-                    ...MenuFragment
-                }
-            }
-        }
-    }
-    ${MenuFragment}
-`
+// export const AllMenus = `
+//     query AllMenusQuery {
+//         primaryMenu: menuItems(where: {location: PRIMARY_MENU}) {
+//             edges {
+//                 node {
+//                     ...MenuFragment
+//                 }
+//             }
+//         }
+//         secondaryMenu: menuItems(where: {location: FOOTER_MENU}) {
+//             edges {
+//                 node {
+//                     ...MenuFragment
+//                 }
+//             }
+//         }
+//     }
+//     ${MenuFragment}
+// `

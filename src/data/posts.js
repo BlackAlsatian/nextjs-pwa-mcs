@@ -71,8 +71,6 @@ export const AllPosts = `
         posts(first: 11, where: {orderby: {field: DATE, order: DESC}, status: PUBLISH}) {
             edges {
                 node {
-                    id
-                    slug
                     uri
                 }
             }
@@ -107,42 +105,42 @@ export const LatestPosts = `
 `
 
 //get post data
-export const PostByUri = `
-    query PostByUri ($uri: ID!) {
-        post(id: $uri, idType: URI) {
-            ...PostFragment
-            featuredImage {
-                node {
-                    ...FeaturedImageFragment
-                }
-            }
-            author {
-                node {
-                    ...AuthorFragment
-                }
-            }
-            categories {
-                nodes {
-                    ...CategoryFragment
-                }
-            }
-            seo {
-                ...SeoFragment
-            }
-            tags {
-                nodes{
-                    ...TagFragment
-                }
-            }
-        }
-    }
-    ${PostFragment}
-    ${FeaturedImageFragment}
-    ${AuthorFragment}
-    ${CategoryFragment}
-    ${SeoFragment}
-    ${TagFragment}
-`
+// export const PostByUri = `
+//     query PostByUri ($uri: ID!) {
+//         post(id: $uri, idType: URI) {
+//             ...PostFragment
+//             featuredImage {
+//                 node {
+//                     ...FeaturedImageFragment
+//                 }
+//             }
+//             author {
+//                 node {
+//                     ...AuthorFragment
+//                 }
+//             }
+//             categories {
+//                 nodes {
+//                     ...CategoryFragment
+//                 }
+//             }
+//             seo {
+//                 ...SeoFragment
+//             }
+//             tags {
+//                 nodes{
+//                     ...TagFragment
+//                 }
+//             }
+//         }
+//     }
+//     ${PostFragment}
+//     ${FeaturedImageFragment}
+//     ${AuthorFragment}
+//     ${CategoryFragment}
+//     ${SeoFragment}
+//     ${TagFragment}
+// `
 
 //get post data
 export const PostBySlug = `
@@ -183,39 +181,39 @@ export const PostBySlug = `
 `
 
 // posts by category ID
-export const PostsByCategoryId = `
-    query PostsByCategoryIdQuery($categoryId: Int!) {
-        posts(first: 11, where: { categoryId: $categoryId, orderby: {field: DATE, order: DESC}, status: PUBLISH }) {
-            edges {
-                node {
-                    ${SummaryPostItems}
-                    isSticky
-                    featuredImage {
-                        node {
-                            ...FeaturedImageFragment
-                        }
-                    }
-                    author {
-                        node {
-                            ...AuthorFragment
-                        }
-                    }
-                    categories {
-                        edges {
-                            node {
-                                categoryId
-                                ...CategoryFragment
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    ${FeaturedImageFragment}
-    ${AuthorFragment}
-    ${CategoryFragment}
-`
+// export const PostsByCategoryId = `
+//     query PostsByCategoryIdQuery($categoryId: Int!) {
+//         posts(first: 11, where: { categoryId: $categoryId, orderby: {field: DATE, order: DESC}, status: PUBLISH }) {
+//             edges {
+//                 node {
+//                     ${SummaryPostItems}
+//                     isSticky
+//                     featuredImage {
+//                         node {
+//                             ...FeaturedImageFragment
+//                         }
+//                     }
+//                     author {
+//                         node {
+//                             ...AuthorFragment
+//                         }
+//                     }
+//                     categories {
+//                         edges {
+//                             node {
+//                                 categoryId
+//                                 ...CategoryFragment
+//                             }
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     ${FeaturedImageFragment}
+//     ${AuthorFragment}
+//     ${CategoryFragment}
+// `
 
 // posts by tag ID
 export const PostsByTagId = `

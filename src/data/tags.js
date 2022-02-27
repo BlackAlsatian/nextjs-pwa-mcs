@@ -6,7 +6,7 @@ export const TagFragment = `
       id
       databaseId
       title: name
-      slug 
+      slug
       uri
     }
 `
@@ -17,12 +17,11 @@ query AllTagsQuery {
     tags (first: 100) {
       edges {
         node {
-          ...TagFragment         
+          slug
         }
       }
     }
-  } 
-  ${TagFragment} 
+  }
 `
 export const TagBySlug = `
 query AllTagsQuery($slug: ID!) {

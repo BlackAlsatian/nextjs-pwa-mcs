@@ -8,12 +8,7 @@ query AllMetaQuery {
       siteTitle
     }
     footerMeta: getFooter {
-      copyrightText
       sidebarTwo
-      socialLinks {
-        iconName
-        iconUrl
-      }
     }
     ${MenuItems}
   }
