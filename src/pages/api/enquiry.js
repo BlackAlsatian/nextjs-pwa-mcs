@@ -1,10 +1,19 @@
-export default async function handler(req, res) {
-  const body = JSON.parse(req.body)
-  if (!body) {
-    return res.status(500).json({ msg: 'Body empty' })
+export default function handler(req, res) {
+  const body = req.body
+
+  if (
+    !body.name ||
+    !body.number ||
+    !body.email ||
+    !body.message ||
+    !body.privacy_policy
+  ) {
+    return res
+      .status(400)
+      .json({ status: 'Error', result: 'Form missing fields.' })
   }
 
-  const result = await fetch(process.env.ENQUIRY_FORM_API_ENDPOINT, {
+  const result = fetch(process.env.ENQUIRY_FORM_API_ENDPOINT, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -12,5 +21,6 @@ export default async function handler(req, res) {
     },
     body: JSON.stringify(body)
   })
-  await res.status(200).json({ status: 'OK', result: result })
+
+  res.status(200).json({ status: 'OK', result: result })
 }

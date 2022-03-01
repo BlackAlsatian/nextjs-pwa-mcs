@@ -1,13 +1,21 @@
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import { OffCanvasContext } from '../../store/offCanvasProvider'
 import { emailRegExp, phoneRegExp } from './../../utils/helpers'
 import styles from './enquiryForm.module.scss'
 
 const EnquiryForm = () => {
+  const router = useRouter()
+  const referrerUrl =
+    typeof window !== 'undefined' ? window.location.origin : 'unknown'
+
+  const { handleNotify, prepareModal } = useContext(OffCanvasContext)
   const {
     register,
     handleSubmit,
     formState: { errors },
-    getValues,
     reset
   } = useForm({
     mode: 'all',
@@ -15,17 +23,35 @@ const EnquiryForm = () => {
       name: '',
       email: '',
       number: '',
-      message: ''
+      message: '',
+      status: 'new',
+      subscribe: 0,
+      privacy_policy: 0,
+      page: router.route,
+      traffic_source: referrerUrl,
+      tags: 'enquiry'
     }
   })
 
-  const onSubmit = data => {
-    const res = fetch('/api/enquiry', {
+  const onSubmit = async data => {
+    const res = await fetch(`/api/enquiry`, {
       method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify(data)
     })
 
-    reset(getValues)
+    const result = await res.json()
+    if (result.status === 'OK') {
+      handleNotify()
+      setTimeout(() => {
+        handleNotify()
+        prepareModal()
+      }, 3000)
+    }
+    reset()
   }
 
   return (
@@ -35,7 +61,7 @@ const EnquiryForm = () => {
           Name*
         </label>
         <input
-          id='name'
+          // id='name'
           name='name'
           className={styles.textInput}
           type='text'
@@ -63,7 +89,7 @@ const EnquiryForm = () => {
           Email*
         </label>
         <input
-          id='email'
+          // id='email'
           name='email'
           className={styles.textInput}
           type='email'
@@ -90,7 +116,7 @@ const EnquiryForm = () => {
           Number*
         </label>
         <input
-          id='number'
+          // id='number'
           name='number'
           className={styles.textInput}
           type='tel'
@@ -117,7 +143,7 @@ const EnquiryForm = () => {
           Message*
         </label>
         <textarea
-          id='message'
+          // id='message'
           name='message'
           cols='30'
           rows='4'
@@ -136,7 +162,39 @@ const EnquiryForm = () => {
       {errors.message && (
         <div className={styles.inputError}>{errors.message.message}</div>
       )}
-      <button className={styles.button} type='submit'>
+      <div className={styles.checkboxWrap}>
+        <input
+          type='checkbox'
+          aria-invalid={errors.privacy_policy ? 'true' : 'false'}
+          {...register('privacy_policy', {
+            required: "Without your consent, we won't be able to contact you."
+          })}
+        />
+        <label htmlFor='privacy_policy'>
+          Yes, I understand that you are saving this info I submit for the
+          purpose of contacting me and grant my permission by tickin this box. I
+          have also read and understood your{' '}
+          <Link href='/privacy-policy'>
+            <a title='Motion Control Systems Privacy Policy'>privacy policy</a>
+          </Link>
+          .
+        </label>
+      </div>
+      {errors.privacy_policy && (
+        <div className={styles.inputError}>{errors.privacy_policy.message}</div>
+      )}
+      <div className={styles.checkboxWrap}>
+        <input type='checkbox' {...register('subscribe')} />
+        <label htmlFor='subscribe'>
+          While we{`'`}re here, please add me to your mailing list so that I can
+          stay informed with the latest developments in our industry.
+        </label>
+      </div>
+      <button
+        className={styles.button}
+        type='submit'
+        onClick={() => prepareModal()}
+      >
         Let{`'`}s Connect
       </button>
     </form>

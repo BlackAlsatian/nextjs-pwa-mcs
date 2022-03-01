@@ -1,0 +1,40 @@
+.overlayWrapper {
+  @apply fixed z-10 inset-0 overflow-y-auto;
+}
+.overlayInner {
+  @apply flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0;
+}
+.overlayTransition {
+  @apply fixed inset-0 bg-light bg-opacity-75 transition-opacity duration-300;
+}
+.overlaySpanCenter {
+  @apply hidden sm:inline-block sm:align-middle sm:h-screen;
+}
+
+.notificationContainer {
+  @apply inline-block align-bottom bg-white rounded-sm text-left overflow-hidden shadow-xl transform transition-all duration-300 sm:align-middle sm:max-w-lg sm:w-full;
+}
+.notificationContainerInner {
+  @apply bg-white p-4;
+}
+.notificationContainerFlexBox {
+  @apply sm:flex sm:items-start;
+}
+.closeContainer {
+  @apply flex items-center justify-end w-full;
+  button {
+    @apply transition-transform ease-in-out delay-150 md:hover:rotate-180 duration-200;
+  }
+}
+.message {
+  @apply text-center sm:text-left;
+  h3 {
+    @apply text-2xl font-semibold uppercase;
+  }
+  div {
+    @apply mt-2;
+    p {
+      @apply text-sm;
+    }
+  }
+}

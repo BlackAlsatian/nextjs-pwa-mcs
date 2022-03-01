@@ -10,6 +10,7 @@ import styles from './layout.module.scss'
 const Footer = dynamic(() => import('../footer/footer'))
 const Favicon = dynamic(() => import('./favicon'))
 const CookieNotice = dynamic(() => import('../cookieConsent/cookieNotice'))
+const Notification = dynamic(() => import('./../popups/notification'))
 
 const Layout = ({ children, seo, uri }) => {
   const { isOpen } = useContext(OffCanvasContext)
@@ -43,6 +44,7 @@ const Layout = ({ children, seo, uri }) => {
           mainNav={menus?.primaryMenu?.edges}
           footerNav={menus?.secondaryMenu?.edges}
         />
+        <Notification />
         <CookieNotice />
       </div>
     </>

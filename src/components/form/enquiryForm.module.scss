@@ -7,6 +7,18 @@
     @apply font-semibold;
   }
 }
+.checkboxWrap {
+  @apply flex flex-row items-start justify-between mx-4 my-8 md:mx-2;
+  input {
+    @apply h-4 w-4 p-3 max-h-4 inline-block text-white border border-black outline-none appearance-none cursor-pointer ring-0 checked:relative checked:border-2 checked:outline-none checked:bg-black checked:ring-0 after:content-['✓'] after:text-base after:border-0 after:outline-none after:bg-black after:text-white after:font-semibold after:hidden after:absolute after:rounded-full after:top-0 after:left-1/4 checked:after:block checked:after:outline-none focus:shadow-none focus:outline-none;
+  }
+  label {
+    @apply font-normal text-sm ml-2;
+    a {
+      @apply font-semibold;
+    }
+  }
+}
 .textInput {
   @apply w-full py-3 pl-5 border-0 md:pl-2 focus:outline-none;
 }
