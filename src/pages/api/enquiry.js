@@ -1,6 +1,12 @@
-export default function handler(req, res) {
+export default async function handler(req, res) {
   const body = req.body
 
+  if (body.lastname !== '') {
+    return res.status(200).json({
+      status: 'OK',
+      result: 'Thanks.'
+    })
+  }
   if (
     !body.name ||
     !body.number ||
@@ -8,12 +14,13 @@ export default function handler(req, res) {
     !body.message ||
     !body.privacy_policy
   ) {
-    return res
-      .status(400)
-      .json({ status: 'Error', result: 'Form missing fields.' })
+    return res.status(400).json({
+      status: 'Error',
+      result: 'Name, number, email or message not found.'
+    })
   }
 
-  const result = fetch(process.env.ENQUIRY_FORM_API_ENDPOINT, {
+  const response = await fetch(process.env.ENQUIRY_FORM_API_ENDPOINT, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -22,5 +29,5 @@ export default function handler(req, res) {
     body: JSON.stringify(body)
   })
 
-  res.status(200).json({ status: 'OK', result: result })
+  await res.status(200).json({ status: 'OK', result: response.statusText })
 }

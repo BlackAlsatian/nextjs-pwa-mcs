@@ -21,13 +21,14 @@ const EnquiryForm = () => {
     mode: 'all',
     defaultValues: {
       name: '',
+      lastname: '',
       email: '',
       number: '',
       message: '',
       status: 'new',
       subscribe: 0,
       privacy_policy: 0,
-      page: router.route,
+      page: router.asPath,
       traffic_source: referrerUrl,
       tags: 'enquiry'
     }
@@ -37,14 +38,13 @@ const EnquiryForm = () => {
     const res = await fetch(`/api/enquiry`, {
       method: 'POST',
       headers: {
-        Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
     })
 
-    const result = await res.json()
-    if (result.status === 'OK') {
+    const response = await res.json()
+    if (response.status === 'OK') {
       handleNotify()
       setTimeout(() => {
         handleNotify()
@@ -79,6 +79,16 @@ const EnquiryForm = () => {
               message: 'That is a bit long for a name field.'
             }
           })}
+        />
+        <label className={styles.textInputSecond} htmlFor='lastname'>
+          Lastname*
+        </label>
+        <input
+          // id='name'
+          name='lastname'
+          className={styles.textInputSecond}
+          type='text'
+          autoComplete='off'
         />
       </div>
       {errors.name && (

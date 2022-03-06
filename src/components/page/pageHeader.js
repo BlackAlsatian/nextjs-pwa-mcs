@@ -11,7 +11,7 @@ const PageHeader = ({ title, intro, image, isPost, isProduct }) => {
         <Image
           alt={featuredImage.altText}
           src={featuredImage.sourceUrl}
-          priority
+          priority={true}
           layout='fill'
           objectFit='cover'
           quality={80}

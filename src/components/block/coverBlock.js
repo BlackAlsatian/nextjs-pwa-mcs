@@ -24,7 +24,7 @@ const CoverBlock = ({
       <Image
         alt=''
         src={url}
-        priority
+        priority={true}
         layout='fill'
         objectFit='cover'
         quality={90}
