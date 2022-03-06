@@ -80,7 +80,7 @@
   ul,
   ol,
   blockquote {
-    @apply my-6 text-lg;
+    @apply my-6 text-base md:text-lg;
   }
 
   a {
