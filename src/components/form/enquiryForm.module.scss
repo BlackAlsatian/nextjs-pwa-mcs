@@ -17,6 +17,9 @@
     a {
       @apply font-semibold;
     }
+    &.checkboxLabel {
+      @apply text-xs md:text-sm;
+    }
   }
 }
 .textInput {
